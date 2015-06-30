@@ -33,7 +33,6 @@
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
@@ -47,6 +46,8 @@
             this.ribbonOrbRecentItem3 = new System.Windows.Forms.RibbonOrbRecentItem();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonLabel1 = new System.Windows.Forms.RibbonLabel();
+            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
+            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -71,7 +72,7 @@
             this.ribbon1.OrbDropDown.TabIndex = 0;
             this.ribbon1.OrbImage = null;
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon1.Size = new System.Drawing.Size(1088, 200);
+            this.ribbon1.Size = new System.Drawing.Size(1088, 154);
             this.ribbon1.TabIndex = 0;
             this.ribbon1.Tabs.Add(this.ribbonTab1);
             this.ribbon1.Tabs.Add(this.ribbonTab2);
@@ -90,16 +91,12 @@
             // ribbonPanel1
             // 
             this.ribbonPanel1.Items.Add(this.ribbonButton1);
+            this.ribbonPanel1.Items.Add(this.ribbonButton2);
             this.ribbonPanel1.Text = "Usuarios del sistema";
             // 
             // ribbonPanel2
             // 
-            this.ribbonPanel2.Items.Add(this.ribbonLabel2);
             this.ribbonPanel2.Text = "Clientes";
-            // 
-            // ribbonLabel2
-            // 
-            this.ribbonLabel2.Text = "ribbonLabel2";
             // 
             // ribbonPanel3
             // 
@@ -167,12 +164,22 @@
             this.ribbonButton1.DropDownItems.Add(this.ribbonLabel1);
             this.ribbonButton1.Image = global::app.Properties.Resources.tiposPersonal1___Copy;
             this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "e";
+            this.ribbonButton1.Text = "";
             this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
             // 
             // ribbonLabel1
             // 
             this.ribbonLabel1.Text = "ribbonLabel1";
+            // 
+            // ribbonLabel2
+            // 
+            this.ribbonLabel2.Text = "ribbonLabel2";
+            // 
+            // ribbonButton2
+            // 
+            this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
+            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
+            this.ribbonButton2.Text = "";
             // 
             // Principal
             // 
@@ -210,5 +217,6 @@
         private System.Windows.Forms.RibbonTab ribbonTab3;
         private System.Windows.Forms.RibbonLabel ribbonLabel1;
         private System.Windows.Forms.RibbonLabel ribbonLabel2;
+        private System.Windows.Forms.RibbonButton ribbonButton2;
     }
 }
