@@ -61,10 +61,10 @@
             this.lblCriterio = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
-<<<<<<< HEAD
+
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-=======
+
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +79,7 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
->>>>>>> 05208023520ee471abba6961f27943933ac8e1da
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatosContacto.SuspendLayout();
@@ -424,7 +424,7 @@
             // 
             this.epValida.ContainerControl = this;
             // 
-<<<<<<< HEAD
+
             // btnNuevo
             // 
             this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
@@ -451,7 +451,7 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-=======
+
             // Column1
             // 
             this.Column1.HeaderText = "M";
@@ -544,7 +544,7 @@
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             this.Column12.Visible = false;
->>>>>>> 05208023520ee471abba6961f27943933ac8e1da
+
             // 
             // frmUsuario
             // 
