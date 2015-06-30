@@ -45,8 +45,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.gbDatosContacto = new System.Windows.Forms.GroupBox();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
@@ -77,6 +75,8 @@
             this.lblCriterio = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatosContacto.SuspendLayout();
@@ -108,7 +108,7 @@
             this.dgvDatos.Location = new System.Drawing.Point(0, 263);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(748, 158);
+            this.dgvDatos.Size = new System.Drawing.Size(816, 185);
             this.dgvDatos.TabIndex = 17;
             // 
             // Column1
@@ -211,35 +211,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 263);
+            this.panel1.Size = new System.Drawing.Size(816, 263);
             this.panel1.TabIndex = 2;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
-            this.btnNuevo.Location = new System.Drawing.Point(641, 214);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
-            this.btnGuardar.Location = new System.Drawing.Point(534, 214);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // gbDatosContacto
             // 
@@ -525,7 +498,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(748, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(816, 37);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Administración de usuarios";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -534,11 +507,38 @@
             // 
             this.epValida.ContainerControl = this;
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
+            this.btnNuevo.Location = new System.Drawing.Point(641, 214);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
+            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
+            this.btnGuardar.Location = new System.Drawing.Point(534, 214);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
+            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 421);
+            this.ClientSize = new System.Drawing.Size(816, 448);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Name = "frmUsuario";

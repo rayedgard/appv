@@ -32,5 +32,26 @@ namespace app
             user.MdiParent = this;
             user.Show();
         }
+
+        private void ribobClientes_Click(object sender, EventArgs e)
+        {
+            frmClientes user = new frmClientes();
+            user.MdiParent = this;
+            user.Show();
+        }
+
+        private void ribobProveedor_Click(object sender, EventArgs e)
+        {
+            frmProveedor user = new frmProveedor();
+            user.MdiParent = this;
+            user.Show();
+        }
+
+        private void ribobProducto_Click(object sender, EventArgs e)
+        {
+            frmProducto user = new frmProducto();
+            user.MdiParent = this;
+            user.Show();
+        }
     }
 }

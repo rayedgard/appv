@@ -38,6 +38,7 @@
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
+            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
             this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbMenuItem3 = new System.Windows.Forms.RibbonOrbMenuItem();
@@ -46,8 +47,10 @@
             this.ribbonOrbRecentItem3 = new System.Windows.Forms.RibbonOrbRecentItem();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonLabel1 = new System.Windows.Forms.RibbonLabel();
-            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
+            this.ribobClientes = new System.Windows.Forms.RibbonButton();
+            this.ribobProveedor = new System.Windows.Forms.RibbonButton();
+            this.ribobProducto = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -96,10 +99,12 @@
             // 
             // ribbonPanel2
             // 
+            this.ribbonPanel2.Items.Add(this.ribobClientes);
             this.ribbonPanel2.Text = "Clientes";
             // 
             // ribbonPanel3
             // 
+            this.ribbonPanel3.Items.Add(this.ribobProveedor);
             this.ribbonPanel3.Text = "Proveedores";
             // 
             // ribbonTab2
@@ -110,6 +115,7 @@
             // 
             // ribbonPanel4
             // 
+            this.ribbonPanel4.Items.Add(this.ribobProducto);
             this.ribbonPanel4.Text = "Productos";
             // 
             // ribbonPanel5
@@ -119,6 +125,10 @@
             // ribbonTab3
             // 
             this.ribbonTab3.Text = "ribbonTab3";
+            // 
+            // ribbonLabel2
+            // 
+            this.ribbonLabel2.Text = "ribbonLabel2";
             // 
             // ribbonOrbMenuItem1
             // 
@@ -171,15 +181,32 @@
             // 
             this.ribbonLabel1.Text = "ribbonLabel1";
             // 
-            // ribbonLabel2
-            // 
-            this.ribbonLabel2.Text = "ribbonLabel2";
-            // 
             // ribbonButton2
             // 
             this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
             this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             this.ribbonButton2.Text = "";
+            // 
+            // ribobClientes
+            // 
+            this.ribobClientes.Image = ((System.Drawing.Image)(resources.GetObject("ribobClientes.Image")));
+            this.ribobClientes.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribobClientes.SmallImage")));
+            this.ribobClientes.Text = "Cliente";
+            this.ribobClientes.Click += new System.EventHandler(this.ribobClientes_Click);
+            // 
+            // ribobProveedor
+            // 
+            this.ribobProveedor.Image = ((System.Drawing.Image)(resources.GetObject("ribobProveedor.Image")));
+            this.ribobProveedor.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribobProveedor.SmallImage")));
+            this.ribobProveedor.Text = "Proveedor";
+            this.ribobProveedor.Click += new System.EventHandler(this.ribobProveedor_Click);
+            // 
+            // ribobProducto
+            // 
+            this.ribobProducto.Image = ((System.Drawing.Image)(resources.GetObject("ribobProducto.Image")));
+            this.ribobProducto.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribobProducto.SmallImage")));
+            this.ribobProducto.Text = "Producto";
+            this.ribobProducto.Click += new System.EventHandler(this.ribobProducto_Click);
             // 
             // Principal
             // 
@@ -218,5 +245,8 @@
         private System.Windows.Forms.RibbonLabel ribbonLabel1;
         private System.Windows.Forms.RibbonLabel ribbonLabel2;
         private System.Windows.Forms.RibbonButton ribbonButton2;
+        private System.Windows.Forms.RibbonButton ribobClientes;
+        private System.Windows.Forms.RibbonButton ribobProveedor;
+        private System.Windows.Forms.RibbonButton ribobProducto;
     }
 }
