@@ -15,7 +15,11 @@ namespace app
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new principal());
+
+            frmLoguin login = new frmLoguin();
+            login.ShowDialog();
+            if (login.Login == 1)
+                Application.Run(new Principal());
         }
     }
 }

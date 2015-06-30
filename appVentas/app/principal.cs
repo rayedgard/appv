@@ -9,11 +9,28 @@ using System.Windows.Forms;
 
 namespace app
 {
-    public partial class principal : Form
+    public partial class Principal : Form
     {
-        public principal()
+        string string_ArchivoConfiguracion;
+        public Principal()
         {
+            string_ArchivoConfiguracion = System.Environment.CurrentDirectory + @"\confiRed.cfg";
             InitializeComponent();
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            string content = System.IO.File.ReadAllText("miTema.ini");
+            Theme.ColorTable.ReadThemeIniFile(content);
+            ribbon1.Refresh();
+            this.Refresh();
+        }
+
+        private void ribbonButton1_Click(object sender, EventArgs e)
+        {
+            frmUsuario user = new frmUsuario(string_ArchivoConfiguracion);
+            user.MdiParent = this;
+            user.Show();
         }
     }
 }
