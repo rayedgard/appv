@@ -40,7 +40,7 @@
             // rbtInactivo
             // 
             this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(181, 81);
+            this.rbtInactivo.Location = new System.Drawing.Point(192, 66);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
             this.rbtInactivo.TabIndex = 22;
@@ -51,7 +51,7 @@
             // 
             this.rbtActivo.AutoSize = true;
             this.rbtActivo.Checked = true;
-            this.rbtActivo.Location = new System.Drawing.Point(115, 81);
+            this.rbtActivo.Location = new System.Drawing.Point(126, 66);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
             this.rbtActivo.TabIndex = 21;
@@ -62,7 +62,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 83);
+            this.label6.Location = new System.Drawing.Point(22, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 23;
@@ -71,7 +71,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 55);
+            this.label7.Location = new System.Drawing.Point(22, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 20;
@@ -86,15 +86,15 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(271, 153);
+            this.groupBox1.Size = new System.Drawing.Size(269, 108);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "FORMA DE PAGO ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // tbNombre
             // 
-            this.tbNombre.Location = new System.Drawing.Point(113, 48);
+            this.tbNombre.Location = new System.Drawing.Point(124, 30);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(100, 20);
             this.tbNombre.TabIndex = 24;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 179);
+            this.ClientSize = new System.Drawing.Size(289, 136);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmFormaPago";
             this.Text = "frmFormaPago";

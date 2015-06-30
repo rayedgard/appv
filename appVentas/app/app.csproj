@@ -54,11 +54,59 @@
     <Compile Include="frmCambiarIP.designer.cs">
       <DependentUpon>frmCambiarIP.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCaracteristicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCaracteristicas.Designer.cs">
+      <DependentUpon>frmCaracteristicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategoria.Designer.cs">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompraporProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompraporProducto.Designer.cs">
+      <DependentUpon>frmCompraporProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComprobante.Designer.cs">
+      <DependentUpon>frmComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentaporCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentaporCobrar.Designer.cs">
+      <DependentUpon>frmCuentaporCobrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentasporPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentasporPagar.Designer.cs">
+      <DependentUpon>frmCuentasporPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDescuento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDescuento.Designer.cs">
+      <DependentUpon>frmDescuento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFormaPago.cs">
       <SubType>Form</SubType>
@@ -78,11 +126,29 @@
     <Compile Include="frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPromocion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPromocion.Designer.cs">
+      <DependentUpon>frmPromocion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmProveedor.Designer.cs">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoComprobante.Designer.cs">
+      <DependentUpon>frmTipoComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUnidad.Designer.cs">
+      <DependentUpon>frmUnidad.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUsuario.cs">
       <SubType>Form</SubType>
@@ -98,11 +164,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmVentaPorProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVentaPorProducto.Designer.cs">
+      <DependentUpon>frmVentaPorProducto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCambiarIP.resx">
       <DependentUpon>frmCambiarIP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCaracteristicas.resx">
+      <DependentUpon>frmCaracteristicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategoria.resx">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompraporProducto.resx">
+      <DependentUpon>frmCompraporProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComprobante.resx">
+      <DependentUpon>frmComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentaporCobrar.resx">
+      <DependentUpon>frmCuentaporCobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentasporPagar.resx">
+      <DependentUpon>frmCuentasporPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDescuento.resx">
+      <DependentUpon>frmDescuento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFormaPago.resx">
       <DependentUpon>frmFormaPago.cs</DependentUpon>
@@ -113,8 +209,17 @@
     <EmbeddedResource Include="frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPromocion.resx">
+      <DependentUpon>frmPromocion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoComprobante.resx">
+      <DependentUpon>frmTipoComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUnidad.resx">
+      <DependentUpon>frmUnidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -132,6 +237,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="frmVentaPorProducto.resx">
+      <DependentUpon>frmVentaPorProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
