@@ -113,6 +113,12 @@ namespace app
                     dgvDatos.Rows[i].Cells[11].Value = datos.Tables[0].Rows[i][9];//usuarioName
                     dgvDatos.Rows[i].Cells[12].Value = datos.Tables[0].Rows[i][10];//pass
                     dgvDatos.Rows[i].Cells[13].Value = datos.Tables[0].Rows[i][11];//activo
+
+                    if (Convert.ToInt32(datos.Tables[0].Rows[i][11]) == 1)
+                    {
+                        dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                        dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
+                    }
               
                 }
             }
@@ -197,6 +203,7 @@ namespace app
                 MessageBox.Show("ERROR AL GUARDAR LOS DATOS, INTENTE NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             listar();
+            LimpiarDatos();
         }
 
 
@@ -264,6 +271,83 @@ namespace app
         private void frmUsuario_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 0)))
+            {
+                if (e.ColumnIndex == 0)
+                {// EDITAR
+
+                    tbDni.Text = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    tbNombres.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    tbPaterno.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    tbMaterno.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    if (dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString() == "M")
+                    {
+                        rbtMasculino.Checked = true;
+                    }
+                    else
+                    {
+                        rbtFemenino.Checked = true;
+                    }
+                    
+                    dtpFechaNacimiento.Value= Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[7].Value);
+                    tbTelefono.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    tbDireccion.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
+                    cbTipoUser.SelectedIndex = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString());
+                    tbNombreUser.Text = dgvDatos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                    tbPass.Text = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
+                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value) == 0)
+                    {
+                        rbtActivo.Checked = true;
+                    }
+                    else
+                    {
+                        rbtInactivo.Checked = true;
+                    }
+
+
+                    tipo = Tipo.modificar;
+                    habilitaBoton();
+                }
+                else
+                {//ELIMINAR
+                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE USUARIO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        //LimpiarDatosHorario();
+                        ConexionBD.Conectar(true, string_ArchivoConfiguracion);
+                        bool SeElimino = false;
+                        try
+                        {
+                            ConexionBD.EjecutarProcedimientoReturnVoid("usuario_elimina", "pDni", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.COMMIT();
+                            SeElimino = true;
+
+                            tipo = Tipo.eliminar;
+                            habilitaBoton();
+                        }
+                        catch
+                        {
+                            ConexionBD.ROLLBACK();
+                            SeElimino = false;
+                        }
+                        finally
+                        {
+                            ConexionBD.Desconectar();
+                        }
+
+                        if (SeElimino)
+                            MessageBox.Show("DATOS ELIMINADOS CON EXITO", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR EL USUARIO, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        listar();
+                    }
+
+                }
+            }
         }
 
    

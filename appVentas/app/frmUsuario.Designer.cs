@@ -30,20 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatosContacto = new System.Windows.Forms.GroupBox();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
@@ -75,8 +61,25 @@
             this.lblCriterio = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
+<<<<<<< HEAD
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+=======
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> 05208023520ee471abba6961f27943933ac8e1da
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatosContacto.SuspendLayout();
@@ -88,6 +91,8 @@
             // 
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -110,96 +115,7 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.Size = new System.Drawing.Size(816, 185);
             this.dgvDatos.TabIndex = 17;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "M";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column1.Width = 20;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "E";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column2.Width = 20;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "DNI";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Nombre";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Paterno";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Materno";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Sexo";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Nacimiento";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Telefono";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Dirección";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Tipo";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Usuario";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Contraseña";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Estado";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // panel1
             // 
@@ -273,14 +189,15 @@
             this.cbTipoUser.FormattingEnabled = true;
             this.cbTipoUser.Location = new System.Drawing.Point(93, 68);
             this.cbTipoUser.Name = "cbTipoUser";
-            this.cbTipoUser.Size = new System.Drawing.Size(240, 21);
+            this.cbTipoUser.Size = new System.Drawing.Size(232, 21);
             this.cbTipoUser.TabIndex = 10;
             // 
             // tbPass
             // 
             this.tbPass.Location = new System.Drawing.Point(93, 116);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(240, 20);
+            this.tbPass.PasswordChar = 'o';
+            this.tbPass.Size = new System.Drawing.Size(232, 20);
             this.tbPass.TabIndex = 12;
             // 
             // label7
@@ -296,7 +213,7 @@
             // 
             this.tbNombreUser.Location = new System.Drawing.Point(93, 92);
             this.tbNombreUser.Name = "tbNombreUser";
-            this.tbNombreUser.Size = new System.Drawing.Size(240, 20);
+            this.tbNombreUser.Size = new System.Drawing.Size(232, 20);
             this.tbNombreUser.TabIndex = 11;
             // 
             // label8
@@ -331,7 +248,7 @@
             this.tbDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbDireccion.Location = new System.Drawing.Point(93, 45);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(240, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(232, 20);
             this.tbDireccion.TabIndex = 9;
             // 
             // tbTelefono
@@ -378,7 +295,7 @@
             // 
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(118, 140);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(252, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(240, 20);
             this.dtpFechaNacimiento.TabIndex = 7;
             // 
             // label5
@@ -426,7 +343,7 @@
             this.tbMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbMaterno.Location = new System.Drawing.Point(118, 91);
             this.tbMaterno.Name = "tbMaterno";
-            this.tbMaterno.Size = new System.Drawing.Size(252, 20);
+            this.tbMaterno.Size = new System.Drawing.Size(240, 20);
             this.tbMaterno.TabIndex = 4;
             // 
             // tbPaterno
@@ -434,7 +351,7 @@
             this.tbPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbPaterno.Location = new System.Drawing.Point(118, 68);
             this.tbPaterno.Name = "tbPaterno";
-            this.tbPaterno.Size = new System.Drawing.Size(252, 20);
+            this.tbPaterno.Size = new System.Drawing.Size(240, 20);
             this.tbPaterno.TabIndex = 3;
             // 
             // label3
@@ -469,7 +386,7 @@
             this.tbNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNombres.Location = new System.Drawing.Point(118, 45);
             this.tbNombres.Name = "tbNombres";
-            this.tbNombres.Size = new System.Drawing.Size(252, 20);
+            this.tbNombres.Size = new System.Drawing.Size(240, 20);
             this.tbNombres.TabIndex = 2;
             // 
             // tbDni
@@ -507,6 +424,7 @@
             // 
             this.epValida.ContainerControl = this;
             // 
+<<<<<<< HEAD
             // btnNuevo
             // 
             this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
@@ -533,6 +451,100 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+=======
+            // Column1
+            // 
+            this.Column1.HeaderText = "M";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column1.Width = 20;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "E";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column2.Width = 20;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "DNI";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Nombre";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Paterno";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Materno";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Sexo";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Nacimiento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Telefono";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Dirección";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Tipo";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Usuario";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Contraseña";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Estado";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
+>>>>>>> 05208023520ee471abba6961f27943933ac8e1da
             // 
             // frmUsuario
             // 
