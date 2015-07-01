@@ -35,14 +35,14 @@ namespace app
 
         private void ribobClientes_Click(object sender, EventArgs e)
         {
-            frmClientes user = new frmClientes();
+            frmClientes user = new frmClientes(string_ArchivoConfiguracion);
             user.MdiParent = this;
             user.Show();
         }
 
         private void ribobProveedor_Click(object sender, EventArgs e)
         {
-            frmProveedor user = new frmProveedor();
+            frmProveedor user = new frmProveedor(string_ArchivoConfiguracion);
             user.MdiParent = this;
             user.Show();
         }

@@ -179,7 +179,7 @@ namespace app
                 ConexionBD.EjecutarProcedimientoReturnVoid("usuario_guarda", NombresUser, DatosUser);
                 ConexionBD.COMMIT();
                 SeGuardo = true;
-
+                listar();
                 tipo = Tipo.guardar;
                 habilitaBoton();
             }
@@ -202,7 +202,7 @@ namespace app
             else
                 MessageBox.Show("ERROR AL GUARDAR LOS DATOS, INTENTE NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            listar();
+            
             LimpiarDatos();
         }
 
@@ -275,7 +275,7 @@ namespace app
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 0)))
+            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 1)))
             {
                 if (e.ColumnIndex == 0)
                 {// EDITAR
@@ -311,6 +311,7 @@ namespace app
 
                     tipo = Tipo.modificar;
                     habilitaBoton();
+                    
                 }
                 else
                 {//ELIMINAR
@@ -327,6 +328,7 @@ namespace app
 
                             tipo = Tipo.eliminar;
                             habilitaBoton();
+                            LimpiarDatos();
                         }
                         catch
                         {

@@ -28,8 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.gbDatosContacto = new System.Windows.Forms.GroupBox();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
@@ -48,21 +61,12 @@
             this.tbDniRuc = new System.Windows.Forms.TextBox();
             this.lblCriterio = new System.Windows.Forms.Label();
             this.lblTituloClientes = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatosContacto.SuspendLayout();
             this.gbDatosPersonales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -81,11 +85,74 @@
             this.Column9,
             this.Column12});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 236);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 222);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(789, 185);
+            this.dgvDatos.Size = new System.Drawing.Size(727, 199);
             this.dgvDatos.TabIndex = 19;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "M";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column1.Width = 20;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "E";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column2.Width = 20;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "DNI / RUC";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Razon";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 220;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Registrado";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Teléfono";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Dirección";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Email";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Estado";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
             // 
             // panel1
             // 
@@ -97,8 +164,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(789, 236);
+            this.panel1.Size = new System.Drawing.Size(727, 222);
             this.panel1.TabIndex = 18;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
+            this.btnNuevo.Location = new System.Drawing.Point(624, 174);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
+            this.btnNuevo.TabIndex = 10;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
+            this.btnGuardar.Location = new System.Drawing.Point(519, 174);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
+            this.btnGuardar.TabIndex = 9;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // gbDatosContacto
             // 
@@ -112,9 +206,9 @@
             this.gbDatosContacto.Controls.Add(this.tbTelefono);
             this.gbDatosContacto.Controls.Add(this.label11);
             this.gbDatosContacto.Enabled = false;
-            this.gbDatosContacto.Location = new System.Drawing.Point(392, 51);
+            this.gbDatosContacto.Location = new System.Drawing.Point(394, 45);
             this.gbDatosContacto.Name = "gbDatosContacto";
-            this.gbDatosContacto.Size = new System.Drawing.Size(348, 124);
+            this.gbDatosContacto.Size = new System.Drawing.Size(326, 124);
             this.gbDatosContacto.TabIndex = 20;
             this.gbDatosContacto.TabStop = false;
             this.gbDatosContacto.Text = "DATOS DE CONTACTO";
@@ -122,10 +216,10 @@
             // rbtInactivo
             // 
             this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(161, 98);
+            this.rbtInactivo.Location = new System.Drawing.Point(133, 98);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
-            this.rbtInactivo.TabIndex = 14;
+            this.rbtInactivo.TabIndex = 8;
             this.rbtInactivo.Text = "Inactivo";
             this.rbtInactivo.UseVisualStyleBackColor = true;
             // 
@@ -133,10 +227,10 @@
             // 
             this.rbtActivo.AutoSize = true;
             this.rbtActivo.Checked = true;
-            this.rbtActivo.Location = new System.Drawing.Point(95, 98);
+            this.rbtActivo.Location = new System.Drawing.Point(65, 98);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
-            this.rbtActivo.TabIndex = 13;
+            this.rbtActivo.TabIndex = 7;
             this.rbtActivo.TabStop = true;
             this.rbtActivo.Text = "Activo";
             this.rbtActivo.UseVisualStyleBackColor = true;
@@ -144,7 +238,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 98);
+            this.label6.Location = new System.Drawing.Point(6, 99);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 15;
@@ -152,10 +246,10 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(93, 69);
+            this.tbEmail.Location = new System.Drawing.Point(65, 68);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(240, 20);
-            this.tbEmail.TabIndex = 11;
+            this.tbEmail.TabIndex = 6;
             // 
             // label9
             // 
@@ -178,17 +272,18 @@
             // tbDireccion
             // 
             this.tbDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDireccion.Location = new System.Drawing.Point(93, 45);
+            this.tbDireccion.Location = new System.Drawing.Point(65, 45);
             this.tbDireccion.Name = "tbDireccion";
             this.tbDireccion.Size = new System.Drawing.Size(240, 20);
-            this.tbDireccion.TabIndex = 9;
+            this.tbDireccion.TabIndex = 5;
             // 
             // tbTelefono
             // 
-            this.tbTelefono.Location = new System.Drawing.Point(93, 22);
+            this.tbTelefono.Location = new System.Drawing.Point(65, 22);
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(110, 20);
-            this.tbTelefono.TabIndex = 8;
+            this.tbTelefono.TabIndex = 4;
+            this.tbTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
             // 
             // label11
             // 
@@ -208,24 +303,24 @@
             this.gbDatosPersonales.Controls.Add(this.tbDniRuc);
             this.gbDatosPersonales.Controls.Add(this.lblCriterio);
             this.gbDatosPersonales.Enabled = false;
-            this.gbDatosPersonales.Location = new System.Drawing.Point(3, 51);
+            this.gbDatosPersonales.Location = new System.Drawing.Point(4, 45);
             this.gbDatosPersonales.Name = "gbDatosPersonales";
-            this.gbDatosPersonales.Size = new System.Drawing.Size(382, 124);
+            this.gbDatosPersonales.Size = new System.Drawing.Size(385, 124);
             this.gbDatosPersonales.TabIndex = 19;
             this.gbDatosPersonales.TabStop = false;
             this.gbDatosPersonales.Text = "DATOS PERSONALES";
             // 
             // dtpFechaRegistro
             // 
-            this.dtpFechaRegistro.Location = new System.Drawing.Point(119, 73);
+            this.dtpFechaRegistro.Location = new System.Drawing.Point(107, 69);
             this.dtpFechaRegistro.Name = "dtpFechaRegistro";
-            this.dtpFechaRegistro.Size = new System.Drawing.Size(252, 20);
-            this.dtpFechaRegistro.TabIndex = 7;
+            this.dtpFechaRegistro.Size = new System.Drawing.Size(257, 20);
+            this.dtpFechaRegistro.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 76);
+            this.label5.Location = new System.Drawing.Point(5, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 13);
             this.label5.TabIndex = 13;
@@ -234,28 +329,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
+            this.label1.Location = new System.Drawing.Point(6, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Razon:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbRazon
             // 
             this.tbRazon.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbRazon.Location = new System.Drawing.Point(118, 45);
+            this.tbRazon.Location = new System.Drawing.Point(106, 45);
             this.tbRazon.Name = "tbRazon";
-            this.tbRazon.Size = new System.Drawing.Size(252, 20);
+            this.tbRazon.Size = new System.Drawing.Size(257, 20);
             this.tbRazon.TabIndex = 2;
             // 
             // tbDniRuc
             // 
-            this.tbDniRuc.Location = new System.Drawing.Point(118, 22);
-            this.tbDniRuc.MaxLength = 8;
+            this.tbDniRuc.Location = new System.Drawing.Point(106, 22);
+            this.tbDniRuc.MaxLength = 11;
             this.tbDniRuc.Name = "tbDniRuc";
             this.tbDniRuc.Size = new System.Drawing.Size(110, 20);
             this.tbDniRuc.TabIndex = 1;
+            this.tbDniRuc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
             // 
             // lblCriterio
             // 
@@ -274,113 +369,35 @@
             this.lblTituloClientes.ForeColor = System.Drawing.Color.White;
             this.lblTituloClientes.Location = new System.Drawing.Point(0, 0);
             this.lblTituloClientes.Name = "lblTituloClientes";
-            this.lblTituloClientes.Size = new System.Drawing.Size(789, 37);
+            this.lblTituloClientes.Size = new System.Drawing.Size(727, 37);
             this.lblTituloClientes.TabIndex = 8;
-            this.lblTituloClientes.Text = "Clientes";
+            this.lblTituloClientes.Text = "Adminstración de Clientes";
             this.lblTituloClientes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTituloClientes.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
-            // Column1
+            // epValida
             // 
-            this.Column1.HeaderText = "M";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column1.Width = 20;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "E";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column2.Width = 20;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "DNI o RUC";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Razon";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Registro";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Telefono";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Dirección";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Email";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Estado";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
-            this.btnNuevo.Location = new System.Drawing.Point(642, 184);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
-            this.btnGuardar.Location = new System.Drawing.Point(539, 184);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.epValida.ContainerControl = this;
             // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 421);
+            this.ClientSize = new System.Drawing.Size(727, 421);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.frmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.gbDatosContacto.ResumeLayout(false);
             this.gbDatosContacto.PerformLayout();
             this.gbDatosPersonales.ResumeLayout(false);
             this.gbDatosPersonales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -418,5 +435,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.ErrorProvider epValida;
     }
 }
