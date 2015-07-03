@@ -53,5 +53,21 @@ namespace app
             user.MdiParent = this;
             user.Show();
         }
+
+       
+        private void ribbonButton19_Click(object sender, EventArgs e)
+        {
+            frmTipoDescuento td = new frmTipoDescuento(string_ArchivoConfiguracion);
+            td.MdiParent = this;
+            td.Show();
+
+        }
+
+        private void ribbonButton4_Click(object sender, EventArgs e)
+        {
+            frmUnidad unidad= new frmUnidad(string_ArchivoConfiguracion);
+            unidad.MdiParent = this;
+            unidad.Show();
+        }
     }
 }

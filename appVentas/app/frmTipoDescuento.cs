@@ -10,24 +10,23 @@ using System.Windows.Forms;
 
 namespace app
 {
-    public partial class frmUnidad : Form
+    public partial class frmTipoDescuento : Form
     {
         CConection ConexionBD;
         CValidacion ValidarDatos;
-        object[] DatosUnidad = new object[5];
+        object[] DatosTipoDes = new object[4];
         string string_ArchivoConfiguracion;
 
-        public frmUnidad(string ArchivoCOnfig)
+        public frmTipoDescuento(string ArchivoCOnfig)
         {
             InitializeComponent();
             string_ArchivoConfiguracion = ArchivoCOnfig;
             ConexionBD = new CConection();
             ValidarDatos = new CValidacion();
-            
+
+
             listar();
         }
-
-
 
 
         #region ------para las logica de botoners-------------
@@ -76,7 +75,7 @@ namespace app
             dgvDatos.Rows.Clear();
 
 
-            DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("unidad_lista");
+            DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("tipodescuento_lista");
 
             if (datos.Tables[0].Rows.Count >= 1)
             {
@@ -89,11 +88,10 @@ namespace app
                     dgvDatos.Rows[i].Cells[1].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
                     dgvDatos.Rows[i].Cells[2].Value = datos.Tables[0].Rows[i][0];//id
                     dgvDatos.Rows[i].Cells[3].Value = datos.Tables[0].Rows[i][1];//nombre
-                    dgvDatos.Rows[i].Cells[4].Value = datos.Tables[0].Rows[i][2];//abreviatura
-                    dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//valorbase
-                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//estado
+                    dgvDatos.Rows[i].Cells[4].Value = datos.Tables[0].Rows[i][2];//porcentaje
+                    dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//estado
 
-                    if (Convert.ToInt32(datos.Tables[0].Rows[i][4]) == 1)
+                    if (Convert.ToInt32(datos.Tables[0].Rows[i][3]) == 1)
                     {
                         dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
@@ -111,16 +109,17 @@ namespace app
             LimpiarDatos();
         }
 
+
+
         /// <summary>
         /// METODO PARA LIMPIAR FORM
         /// </summary>
         private void LimpiarDatos()
         {
-            DatosUnidad = new object[5];
+            DatosTipoDes = new object[4];
 
             tbNombre.Text = "";
-            tbAbreviatura.Text = "";
-            tbValorBase.Text = "0";
+            tbPorcentaje.Text = "";
             rbtActivo.Checked = true;
 
             tbNombre.Focus();
@@ -129,11 +128,12 @@ namespace app
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (validaError(tbNombre, "Ingrese el nombre de la unidad") && validaError(tbAbreviatura, "Ingrese abreviatura"))
+            if (validaError(tbNombre, "Ingrese el nombre del Descuento") && validaError(tbPorcentaje, "Ingrese el porcentaje de descuento"))
             {
                 GuardarDatos();
             }
         }
+
 
 
         #region METODO DE VALIDADCION
@@ -164,27 +164,27 @@ namespace app
 
         private void GuardarDatos()
         {
-            if (DatosUnidad == null || DatosUnidad[0] == null)
+            if (DatosTipoDes == null || DatosTipoDes[0] == null)
             {
-                DatosUnidad = new object[5];
-                DatosUnidad[0] = "0";
+                DatosTipoDes = new object[4];
+                DatosTipoDes[0] = "0";
             }
-            DatosUnidad[0] = DatosUnidad[0].ToString().Trim();
-            DatosUnidad[1] = tbNombre.Text;
-            DatosUnidad[2] = tbAbreviatura.Text;
-            DatosUnidad[3] = tbValorBase.Text;
+            DatosTipoDes[0] = DatosTipoDes[0].ToString().Trim();
+            DatosTipoDes[1] = tbNombre.Text;
+            DatosTipoDes[2] = tbPorcentaje.Text;
+   
             if (rbtActivo.Checked)
-                DatosUnidad[4] = 0;
+                DatosTipoDes[3] = 0;
             else
-                DatosUnidad[4] = 1;
+                DatosTipoDes[3] = 1;
 
-            object[] NombresUnidad = { "pId", "pNombre", "pAbreviatura","pValorBase","pEstado" };
+            object[] NombresTipoDes = { "pId","pNombre", "pPorcentaje", "pEstado" };
 
             ConexionBD.Conectar(true, string_ArchivoConfiguracion);
             bool SeGuardo = false;
             try
             {
-                ConexionBD.EjecutarProcedimientoReturnVoid("unidad_guarda", NombresUnidad, DatosUnidad);
+                ConexionBD.EjecutarProcedimientoReturnVoid("tipodescuento_guarda", NombresTipoDes, DatosTipoDes);
                 ConexionBD.COMMIT();
                 SeGuardo = true;
                 listar();
@@ -214,6 +214,17 @@ namespace app
             LimpiarDatos();
         }
 
+
+        private void validaNumeros(object sender, KeyPressEventArgs e)
+        {
+            ValidarDatos.texto_KeyPress(((TextBox)sender).Text, "Numeros", sender, e);
+            if (e.KeyChar == '\r')
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 1)))
@@ -222,9 +233,8 @@ namespace app
                 {// EDITAR
 
                     tbNombre.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    tbAbreviatura.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    tbValorBase.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value) == 0)
+                    tbPorcentaje.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[5].Value) == 0)
                     {
                         rbtActivo.Checked = true;
                     }
@@ -235,8 +245,8 @@ namespace app
 
 
                     /****AQUI ALMACENAMOS LOS DATOS EN EL ARREGLO --- PARA MODIFICACION---***/
-                    DatosUnidad = new object[5];
-                    DatosUnidad[0] = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    DatosTipoDes = new object[4];
+                    DatosTipoDes[0] = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
                     //DatosTipoDes[1] = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
                     //DatosTipoDes[2] = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                     //DatosTipoDes[3] = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -246,14 +256,14 @@ namespace app
                 }
                 else
                 {//ELIMINAR
-                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTA UNIDAD? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE TIPO DE DESCUENTO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         //LimpiarDatosHorario();
                         ConexionBD.Conectar(true, string_ArchivoConfiguracion);
                         bool SeElimino = false;
                         try
                         {
-                            ConexionBD.EjecutarProcedimientoReturnVoid("unidad_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.EjecutarProcedimientoReturnVoid("tipodescuento_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
                             ConexionBD.COMMIT();
                             SeElimino = true;
                             listar();
@@ -274,7 +284,7 @@ namespace app
                         if (SeElimino)
                             MessageBox.Show("DATOS ELIMINADOS CON EXITO", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR LA UNIDAD, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR EL TIPO DE DESCUENTO, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         LimpiarDatos();
                     }
@@ -287,15 +297,7 @@ namespace app
 
 
 
-        private void validaNumeros(object sender, KeyPressEventArgs e)
-        {
-            ValidarDatos.texto_KeyPress(((TextBox)sender).Text, "Numeros", sender, e);
-            if (e.KeyChar == '\r')
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-        }
+
 
 
 

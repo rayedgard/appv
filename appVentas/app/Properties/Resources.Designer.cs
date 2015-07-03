@@ -303,6 +303,26 @@ namespace app.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tipoDescuento {
+            get {
+                object obj = ResourceManager.GetObject("tipoDescuento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tipoDescuento1 {
+            get {
+                object obj = ResourceManager.GetObject("tipoDescuento1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tiposPersonal1___Copy {
             get {
                 object obj = ResourceManager.GetObject("tiposPersonal1 - Copy", resourceCulture);
