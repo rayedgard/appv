@@ -314,13 +314,13 @@ namespace app
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.faq1);
+                        pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.faq);
                     }
 
                 }
                 else
                 {
-                    pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.faq);
+                    pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.fa);
                 }
 
 
