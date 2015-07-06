@@ -69,5 +69,40 @@ namespace app
             unidad.MdiParent = this;
             unidad.Show();
         }
+
+        private void ribbonButton5_Click(object sender, EventArgs e)
+        {
+            frmCategoria cat = new frmCategoria(string_ArchivoConfiguracion);
+            cat.MdiParent = this;
+            cat.Show();
+        }
+
+        private void ribbonButton6_Click(object sender, EventArgs e)
+        {
+            frmCaracteristicas car = new frmCaracteristicas(string_ArchivoConfiguracion);
+            car.MdiParent = this;
+            car.Show();
+        }
+
+        private void ribbonButton16_Click(object sender, EventArgs e)
+        {
+            frmTipoComprobante tipoCom = new frmTipoComprobante(string_ArchivoConfiguracion);
+            tipoCom.MdiParent = this;
+            tipoCom.Show();
+        }
+
+        private void ribbonButton14_Click(object sender, EventArgs e)
+        {
+            frmFormaPago fpago = new frmFormaPago(string_ArchivoConfiguracion);
+            fpago.MdiParent = this;
+            fpago.Show();
+        }
+
+        private void ribbonButton2_Click(object sender, EventArgs e)
+        {
+            frmDescuento desc = new frmDescuento(string_ArchivoConfiguracion);
+            desc.MdiParent = this;
+            desc.Show();
+        }
     }
 }

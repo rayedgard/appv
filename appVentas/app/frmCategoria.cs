@@ -120,6 +120,7 @@ namespace app
 
             tbNombre.Text = "";
             rbtActivo.Checked = true;
+            pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.faq);
 
             tbNombre.Focus();
             tbNombre.Select();
@@ -224,7 +225,7 @@ namespace app
                     }
                     catch
                     {
-                        pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.fa);
+                        pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.fpago);
                     }
 
                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[5].Value) == 0)
@@ -256,7 +257,7 @@ namespace app
                         bool SeElimino = false;
                         try
                         {
-                            ConexionBD.EjecutarProcedimientoReturnVoid("unidad_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.EjecutarProcedimientoReturnVoid("categoria_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
                             ConexionBD.COMMIT();
                             SeElimino = true;
                             listar();
@@ -320,7 +321,7 @@ namespace app
                 }
                 else
                 {
-                    pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.fa);
+                    pbImg.Image = (System.Drawing.Image)(app.Properties.Resources.faq);
                 }
 
 

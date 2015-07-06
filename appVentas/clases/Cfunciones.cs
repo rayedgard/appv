@@ -15,15 +15,8 @@ namespace clases
             /// <summary>
             /// MIEMBROS PUBLICOS PARA EL ACCESO DE TODO EL PROYECTO 
             /// </summary>
-            public static string nombre;
-            public static string Apaterno;
-            public static string Amaterno;
-
-
+            public static string criterio;
             public static string nameUser;
-
-            public static string dni;
-            public static string NombresYapellidos;
             public static int  estado;
 
 

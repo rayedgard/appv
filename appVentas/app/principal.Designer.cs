@@ -241,6 +241,7 @@
             this.ribbonButton2.Image = global::app.Properties.Resources.descuetos;
             this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             this.ribbonButton2.Text = "";
+            this.ribbonButton2.Click += new System.EventHandler(this.ribbonButton2_Click);
             // 
             // ribbonButton17
             // 
@@ -294,6 +295,7 @@
             this.ribbonButton5.Image = global::app.Properties.Resources.cat;
             this.ribbonButton5.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.SmallImage")));
             this.ribbonButton5.Text = "";
+            this.ribbonButton5.Click += new System.EventHandler(this.ribbonButton5_Click);
             // 
             // ribbonPanel9
             // 
@@ -305,6 +307,7 @@
             this.ribbonButton6.Image = global::app.Properties.Resources.caract;
             this.ribbonButton6.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.SmallImage")));
             this.ribbonButton6.Text = "";
+            this.ribbonButton6.Click += new System.EventHandler(this.ribbonButton6_Click);
             // 
             // ribbonTab3
             // 
@@ -411,6 +414,7 @@
             this.ribbonButton14.Image = global::app.Properties.Resources.fpago;
             this.ribbonButton14.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton14.SmallImage")));
             this.ribbonButton14.Text = "";
+            this.ribbonButton14.Click += new System.EventHandler(this.ribbonButton14_Click);
             // 
             // ribbonPanel18
             // 
@@ -429,6 +433,7 @@
             this.ribbonButton16.Image = global::app.Properties.Resources.tComprobante;
             this.ribbonButton16.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton16.SmallImage")));
             this.ribbonButton16.Text = "";
+            this.ribbonButton16.Click += new System.EventHandler(this.ribbonButton16_Click);
             // 
             // ribbonPanel19
             // 

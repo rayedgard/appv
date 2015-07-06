@@ -28,24 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipoComprobante));
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.gbDatos = new System.Windows.Forms.GroupBox();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
-            this.gbDatosPersonales.SuspendLayout();
+            this.gbDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -56,49 +61,78 @@
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column4,
             this.Column3,
             this.Column5});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 228);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 158);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(303, 121);
-            this.dgvDatos.TabIndex = 23;
+            this.dgvDatos.Size = new System.Drawing.Size(285, 159);
+            this.dgvDatos.TabIndex = 6;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnNuevo);
             this.panel1.Controls.Add(this.btnGuardar);
-            this.panel1.Controls.Add(this.gbDatosPersonales);
+            this.panel1.Controls.Add(this.gbDatos);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 228);
+            this.panel1.Size = new System.Drawing.Size(285, 158);
             this.panel1.TabIndex = 22;
             // 
-            // gbDatosPersonales
+            // btnNuevo
             // 
-            this.gbDatosPersonales.Controls.Add(this.rbtInactivo);
-            this.gbDatosPersonales.Controls.Add(this.rbtActivo);
-            this.gbDatosPersonales.Controls.Add(this.label6);
-            this.gbDatosPersonales.Controls.Add(this.tbNombre);
-            this.gbDatosPersonales.Controls.Add(this.label1);
-            this.gbDatosPersonales.Enabled = false;
-            this.gbDatosPersonales.Location = new System.Drawing.Point(14, 40);
-            this.gbDatosPersonales.Name = "gbDatosPersonales";
-            this.gbDatosPersonales.Size = new System.Drawing.Size(273, 121);
-            this.gbDatosPersonales.TabIndex = 19;
-            this.gbDatosPersonales.TabStop = false;
-            this.gbDatosPersonales.Text = "Datos del Comprobante";
+            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
+            this.btnNuevo.Location = new System.Drawing.Point(180, 109);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
+            this.btnNuevo.TabIndex = 5;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
+            this.btnGuardar.Location = new System.Drawing.Point(78, 109);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
+            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // gbDatos
+            // 
+            this.gbDatos.Controls.Add(this.rbtInactivo);
+            this.gbDatos.Controls.Add(this.rbtActivo);
+            this.gbDatos.Controls.Add(this.label6);
+            this.gbDatos.Controls.Add(this.tbNombre);
+            this.gbDatos.Controls.Add(this.label1);
+            this.gbDatos.Enabled = false;
+            this.gbDatos.Location = new System.Drawing.Point(5, 38);
+            this.gbDatos.Name = "gbDatos";
+            this.gbDatos.Size = new System.Drawing.Size(273, 66);
+            this.gbDatos.TabIndex = 3;
+            this.gbDatos.TabStop = false;
+            this.gbDatos.Text = "Datos del Comprobante";
             // 
             // rbtInactivo
             // 
             this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(171, 66);
+            this.rbtInactivo.Location = new System.Drawing.Point(137, 42);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
-            this.rbtInactivo.TabIndex = 22;
+            this.rbtInactivo.TabIndex = 2;
             this.rbtInactivo.Text = "Inactivo";
             this.rbtInactivo.UseVisualStyleBackColor = true;
             // 
@@ -106,10 +140,10 @@
             // 
             this.rbtActivo.AutoSize = true;
             this.rbtActivo.Checked = true;
-            this.rbtActivo.Location = new System.Drawing.Point(105, 66);
+            this.rbtActivo.Location = new System.Drawing.Point(71, 42);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
-            this.rbtActivo.TabIndex = 21;
+            this.rbtActivo.TabIndex = 1;
             this.rbtActivo.TabStop = true;
             this.rbtActivo.Text = "Activo";
             this.rbtActivo.UseVisualStyleBackColor = true;
@@ -117,7 +151,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 66);
+            this.label6.Location = new System.Drawing.Point(6, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 23;
@@ -126,15 +160,15 @@
             // tbNombre
             // 
             this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Location = new System.Drawing.Point(105, 31);
+            this.tbNombre.Location = new System.Drawing.Point(71, 16);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(134, 20);
-            this.tbNombre.TabIndex = 4;
+            this.tbNombre.Size = new System.Drawing.Size(179, 20);
+            this.tbNombre.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Location = new System.Drawing.Point(6, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 7;
@@ -148,35 +182,10 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(303, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(285, 37);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Tipo de Comprobante";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
-            this.btnNuevo.Location = new System.Drawing.Point(166, 169);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
-            this.btnGuardar.Location = new System.Drawing.Point(34, 169);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -196,31 +205,49 @@
             this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column2.Width = 20;
             // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "id";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
+            // 
             // Column3
             // 
             this.Column3.HeaderText = "Nombre";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Estado";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            // 
+            // epValida
+            // 
+            this.epValida.ContainerControl = this;
             // 
             // frmTipoComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 349);
+            this.ClientSize = new System.Drawing.Size(285, 317);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTipoComprobante";
-            this.Text = "frmTipoComprobante";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Tipos de Comprobante";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.gbDatosPersonales.ResumeLayout(false);
-            this.gbDatosPersonales.PerformLayout();
+            this.gbDatos.ResumeLayout(false);
+            this.gbDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,7 +258,7 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnNuevo;
         public System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.GroupBox gbDatosPersonales;
+        private System.Windows.Forms.GroupBox gbDatos;
         private System.Windows.Forms.RadioButton rbtInactivo;
         private System.Windows.Forms.RadioButton rbtActivo;
         private System.Windows.Forms.Label label6;
@@ -240,7 +267,9 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewImageColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.ErrorProvider epValida;
     }
 }

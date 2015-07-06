@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusca.Designer.cs">
+      <DependentUpon>frmBusca.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCambiarIP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     <Compile Include="frmVentaPorProducto.Designer.cs">
       <DependentUpon>frmVentaPorProducto.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmBusca.resx">
+      <DependentUpon>frmBusca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCambiarIP.resx">
       <DependentUpon>frmCambiarIP.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,6 +357,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\faq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -34,26 +34,33 @@
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.gbDatosPersonales = new System.Windows.Forms.GroupBox();
-            this.tbDimencion = new System.Windows.Forms.TextBox();
-            this.tbPeso = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblNroSerie = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.dtpFechaRegistro = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
+            this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.tbBuscaDescuento = new System.Windows.Forms.Button();
+            this.tbDescuento = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBusca = new System.Windows.Forms.Button();
+            this.cbCriterio = new System.Windows.Forms.ComboBox();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbProducto = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblNroSerie = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
-            this.gbDatosPersonales.SuspendLayout();
+            this.gbDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -66,13 +73,17 @@
             this.Column2,
             this.Column3,
             this.Column4,
+            this.Column5,
+            this.Column7,
+            this.Column8,
             this.Column6});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 202);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 245);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(858, 185);
-            this.dgvDatos.TabIndex = 27;
+            this.dgvDatos.Size = new System.Drawing.Size(395, 162);
+            this.dgvDatos.TabIndex = 10;
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             // 
             // Column1
             // 
@@ -94,113 +105,238 @@
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Nombre";
+            this.Column3.HeaderText = "ID";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "Porcentaje";
+            this.Column4.HeaderText = "Criterio";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Producto/Grupo";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Inicio";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Fin";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Estado";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnNuevo);
             this.panel1.Controls.Add(this.btnGuardar);
-            this.panel1.Controls.Add(this.gbDatosPersonales);
+            this.panel1.Controls.Add(this.gbDatos);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 202);
+            this.panel1.Size = new System.Drawing.Size(395, 245);
             this.panel1.TabIndex = 26;
             // 
             // btnNuevo
             // 
             this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
-            this.btnNuevo.Location = new System.Drawing.Point(740, 148);
+            this.btnNuevo.Location = new System.Drawing.Point(290, 195);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.TabIndex = 9;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Enabled = false;
             this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
-            this.btnGuardar.Location = new System.Drawing.Point(740, 103);
+            this.btnGuardar.Location = new System.Drawing.Point(188, 195);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // gbDatosPersonales
+            // gbDatos
             // 
-            this.gbDatosPersonales.Controls.Add(this.dateTimePicker1);
-            this.gbDatosPersonales.Controls.Add(this.label2);
-            this.gbDatosPersonales.Controls.Add(this.rbtInactivo);
-            this.gbDatosPersonales.Controls.Add(this.rbtActivo);
-            this.gbDatosPersonales.Controls.Add(this.label6);
-            this.gbDatosPersonales.Controls.Add(this.dtpFechaRegistro);
-            this.gbDatosPersonales.Controls.Add(this.label5);
-            this.gbDatosPersonales.Controls.Add(this.tbDimencion);
-            this.gbDatosPersonales.Controls.Add(this.tbPeso);
-            this.gbDatosPersonales.Controls.Add(this.label1);
-            this.gbDatosPersonales.Controls.Add(this.lblNroSerie);
-            this.gbDatosPersonales.Enabled = false;
-            this.gbDatosPersonales.Location = new System.Drawing.Point(3, 40);
-            this.gbDatosPersonales.Name = "gbDatosPersonales";
-            this.gbDatosPersonales.Size = new System.Drawing.Size(521, 150);
-            this.gbDatosPersonales.TabIndex = 19;
-            this.gbDatosPersonales.TabStop = false;
-            this.gbDatosPersonales.Text = "Descuento";
+            this.gbDatos.Controls.Add(this.tbBuscaDescuento);
+            this.gbDatos.Controls.Add(this.tbDescuento);
+            this.gbDatos.Controls.Add(this.label3);
+            this.gbDatos.Controls.Add(this.btnBusca);
+            this.gbDatos.Controls.Add(this.cbCriterio);
+            this.gbDatos.Controls.Add(this.dtpFechaFin);
+            this.gbDatos.Controls.Add(this.label2);
+            this.gbDatos.Controls.Add(this.rbtInactivo);
+            this.gbDatos.Controls.Add(this.rbtActivo);
+            this.gbDatos.Controls.Add(this.label6);
+            this.gbDatos.Controls.Add(this.dtpFechaIni);
+            this.gbDatos.Controls.Add(this.label5);
+            this.gbDatos.Controls.Add(this.tbProducto);
+            this.gbDatos.Controls.Add(this.label1);
+            this.gbDatos.Controls.Add(this.lblNroSerie);
+            this.gbDatos.Enabled = false;
+            this.gbDatos.Location = new System.Drawing.Point(3, 40);
+            this.gbDatos.Name = "gbDatos";
+            this.gbDatos.Size = new System.Drawing.Size(385, 150);
+            this.gbDatos.TabIndex = 7;
+            this.gbDatos.TabStop = false;
             // 
-            // tbDimencion
+            // tbBuscaDescuento
             // 
-            this.tbDimencion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDimencion.Location = new System.Drawing.Point(80, 14);
-            this.tbDimencion.Name = "tbDimencion";
-            this.tbDimencion.Size = new System.Drawing.Size(261, 20);
-            this.tbDimencion.TabIndex = 21;
+            this.tbBuscaDescuento.Location = new System.Drawing.Point(325, 59);
+            this.tbBuscaDescuento.Name = "tbBuscaDescuento";
+            this.tbBuscaDescuento.Size = new System.Drawing.Size(33, 23);
+            this.tbBuscaDescuento.TabIndex = 2;
+            this.tbBuscaDescuento.Text = "...";
+            this.tbBuscaDescuento.UseVisualStyleBackColor = true;
             // 
-            // tbPeso
+            // tbDescuento
             // 
-            this.tbPeso.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbPeso.Location = new System.Drawing.Point(80, 43);
-            this.tbPeso.Name = "tbPeso";
-            this.tbPeso.Size = new System.Drawing.Size(262, 20);
-            this.tbPeso.TabIndex = 20;
+            this.tbDescuento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbDescuento.Enabled = false;
+            this.tbDescuento.Location = new System.Drawing.Point(80, 60);
+            this.tbDescuento.Name = "tbDescuento";
+            this.tbDescuento.Size = new System.Drawing.Size(219, 20);
+            this.tbDescuento.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Descuento:";
+            // 
+            // btnBusca
+            // 
+            this.btnBusca.Location = new System.Drawing.Point(325, 35);
+            this.btnBusca.Name = "btnBusca";
+            this.btnBusca.Size = new System.Drawing.Size(33, 23);
+            this.btnBusca.TabIndex = 1;
+            this.btnBusca.Text = "...";
+            this.btnBusca.UseVisualStyleBackColor = true;
+            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
+            // 
+            // cbCriterio
+            // 
+            this.cbCriterio.FormattingEnabled = true;
+            this.cbCriterio.Location = new System.Drawing.Point(80, 12);
+            this.cbCriterio.Name = "cbCriterio";
+            this.cbCriterio.Size = new System.Drawing.Size(278, 21);
+            this.cbCriterio.TabIndex = 0;
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Location = new System.Drawing.Point(80, 106);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(278, 20);
+            this.dtpFechaFin.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Fecha Fin";
+            // 
+            // rbtInactivo
+            // 
+            this.rbtInactivo.AutoSize = true;
+            this.rbtInactivo.Location = new System.Drawing.Point(142, 129);
+            this.rbtInactivo.Name = "rbtInactivo";
+            this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
+            this.rbtInactivo.TabIndex = 6;
+            this.rbtInactivo.Text = "Inactivo";
+            this.rbtInactivo.UseVisualStyleBackColor = true;
+            // 
+            // rbtActivo
+            // 
+            this.rbtActivo.AutoSize = true;
+            this.rbtActivo.Checked = true;
+            this.rbtActivo.Location = new System.Drawing.Point(80, 128);
+            this.rbtActivo.Name = "rbtActivo";
+            this.rbtActivo.Size = new System.Drawing.Size(55, 17);
+            this.rbtActivo.TabIndex = 5;
+            this.rbtActivo.TabStop = true;
+            this.rbtActivo.Text = "Activo";
+            this.rbtActivo.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Estado:";
+            // 
+            // dtpFechaIni
+            // 
+            this.dtpFechaIni.Location = new System.Drawing.Point(80, 84);
+            this.dtpFechaIni.Name = "dtpFechaIni";
+            this.dtpFechaIni.Size = new System.Drawing.Size(278, 20);
+            this.dtpFechaIni.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 84);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Fecha Inicio:";
+            // 
+            // tbProducto
+            // 
+            this.tbProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbProducto.Enabled = false;
+            this.tbProducto.Location = new System.Drawing.Point(80, 36);
+            this.tbProducto.Name = "tbProducto";
+            this.tbProducto.Size = new System.Drawing.Size(219, 20);
+            this.tbProducto.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 43);
+            this.label1.Location = new System.Drawing.Point(6, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Porcentaje:";
+            this.label1.Text = "Producto:";
             // 
             // lblNroSerie
             // 
             this.lblNroSerie.AutoSize = true;
             this.lblNroSerie.Location = new System.Drawing.Point(6, 18);
             this.lblNroSerie.Name = "lblNroSerie";
-            this.lblNroSerie.Size = new System.Drawing.Size(47, 13);
+            this.lblNroSerie.Size = new System.Drawing.Size(42, 13);
             this.lblNroSerie.TabIndex = 4;
-            this.lblNroSerie.Text = "Nombre:";
+            this.lblNroSerie.Text = "Criterio:";
             // 
             // lblTitulo
             // 
@@ -210,90 +346,28 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(858, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(395, 37);
             this.lblTitulo.TabIndex = 8;
-            this.lblTitulo.Text = "Descuento";
+            this.lblTitulo.Text = "Generación de Descuentos ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtpFechaRegistro
-            // 
-            this.dtpFechaRegistro.Location = new System.Drawing.Point(80, 66);
-            this.dtpFechaRegistro.Name = "dtpFechaRegistro";
-            this.dtpFechaRegistro.Size = new System.Drawing.Size(355, 20);
-            this.dtpFechaRegistro.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Fecha Inicio:";
-            // 
-            // rbtInactivo
-            // 
-            this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(142, 111);
-            this.rbtInactivo.Name = "rbtInactivo";
-            this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
-            this.rbtInactivo.TabIndex = 25;
-            this.rbtInactivo.Text = "Inactivo";
-            this.rbtInactivo.UseVisualStyleBackColor = true;
-            // 
-            // rbtActivo
-            // 
-            this.rbtActivo.AutoSize = true;
-            this.rbtActivo.Checked = true;
-            this.rbtActivo.Location = new System.Drawing.Point(80, 110);
-            this.rbtActivo.Name = "rbtActivo";
-            this.rbtActivo.Size = new System.Drawing.Size(55, 17);
-            this.rbtActivo.TabIndex = 24;
-            this.rbtActivo.TabStop = true;
-            this.rbtActivo.Text = "Activo";
-            this.rbtActivo.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Estado:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(80, 88);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(355, 20);
-            this.dateTimePicker1.TabIndex = 27;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Fecha Fin";
             // 
             // frmDescuento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 387);
+            this.ClientSize = new System.Drawing.Size(395, 407);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDescuento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descuentos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.gbDatosPersonales.ResumeLayout(false);
-            this.gbDatosPersonales.PerformLayout();
+            this.gbDatos.ResumeLayout(false);
+            this.gbDatos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -301,26 +375,33 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewImageColumn Column1;
-        private System.Windows.Forms.DataGridViewImageColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnNuevo;
         public System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.GroupBox gbDatosPersonales;
-        private System.Windows.Forms.TextBox tbDimencion;
-        private System.Windows.Forms.TextBox tbPeso;
+        private System.Windows.Forms.GroupBox gbDatos;
+        private System.Windows.Forms.TextBox tbProducto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNroSerie;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rbtInactivo;
         private System.Windows.Forms.RadioButton rbtActivo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpFechaRegistro;
+        private System.Windows.Forms.DateTimePicker dtpFechaIni;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbCriterio;
+        private System.Windows.Forms.Button btnBusca;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button tbBuscaDescuento;
+        private System.Windows.Forms.TextBox tbDescuento;
+        private System.Windows.Forms.Label label3;
     }
 }
