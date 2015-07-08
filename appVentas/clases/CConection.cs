@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace clases
 {
@@ -200,6 +201,30 @@ namespace clases
             return Resultado;
         }
 
+
+
+
+
+
+
+
+        public List<object> EjecutarProcedimientoReturnList(string NombreProcedimiento, object ParamName, object ParamValue)
+        {
+            DataSet Resultado = new DataSet();
+            List<object> Resultado1= new List<object>();
+            
+            aAdaptador = new MySqlDataAdapter(NombreProcedimiento, aConexionBD);
+            aAdaptador.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            aAdaptador.SelectCommand.Parameters.AddWithValue("?" + ParamName, ParamValue);
+
+            Resultado1.Add(aAdaptador.Fill(Resultado, "ta" + NombreProcedimiento));
+            return Resultado1;
+        }
+
+
+        
+      
         public DataSet EjecutarProcedimientoReturnDataSet(string NombreProcedimiento, object ParamName, object ParamValue)
         {
             DataSet Resultado = new DataSet();

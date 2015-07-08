@@ -18,7 +18,7 @@ namespace app
         object[] DatosUser = new object[12];
         string string_ArchivoConfiguracion;
 
-        DataSet datos;
+        List<object> datos;
         public frmBusca(string ArchivoCOnfig)
         {
              InitializeComponent();
@@ -34,19 +34,10 @@ namespace app
         {
             string criterio = clases.Cfunciones.Globales.criterio;
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-            datos = ConexionBD.EjecutarProcedimientoReturnDataSet("busca_descuento","pCriterio",criterio);
-            if (datos.Tables[0].Rows.Count >= 1)
-            {
-
-                dgvDatos.Rows.Add(datos.Tables[0].Rows.Count);
-
-                for (int i = 0; i < datos.Tables[0].Rows.Count; i++)
-                {
-                    dgvDatos.Rows[i].Cells[0].Value = datos.Tables[0].Rows[i][0];//id
-                    dgvDatos.Rows[i].Cells[1].Value = datos.Tables[0].Rows[i][1];//nombre
-           
-                }
-            }
+            datos = ConexionBD.EjecutarProcedimientoReturnList("busca_descuento","pCriterio",criterio);
+          
+                MessageBox.Show(datos.Count.ToString());
+     
 
 
           
@@ -59,21 +50,10 @@ namespace app
         {
             
            
-           if (datos.Tables[0].Rows.Count >= 1)
-            {
-                DataRow[] rows = datos.Tables[0].Select("nombre LIKE '%" + tbNombre.Text + "%'");
-               
-                dgvDatos.Rows.Add(rows);
-                int i = 0;
-                
-                foreach(DataRow[] row in rows) 
-                {
-                    dgvDatos.Rows[i].Cells[0].Value = row[i][0];//id
-                    dgvDatos.Rows[i].Cells[1].Value = row[i][1];//nombre
-                    i++;
-           
-                }
-            }
+          
         }
+
+
+
     }
 }
