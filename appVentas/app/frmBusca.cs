@@ -18,7 +18,7 @@ namespace app
         object[] DatosUser = new object[12];
         string string_ArchivoConfiguracion;
 
-        List<object> datos;
+        DataSet datos;
         public frmBusca(string ArchivoCOnfig)
         {
              InitializeComponent();
@@ -34,13 +34,11 @@ namespace app
         {
             string criterio = clases.Cfunciones.Globales.criterio;
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-            datos = ConexionBD.EjecutarProcedimientoReturnList("busca_descuento","pCriterio",criterio);
-          
-                MessageBox.Show(datos.Count.ToString());
-     
+            datos = ConexionBD.EjecutarProcedimientoReturnDataSet("busca_descuento","pCriterio",criterio);
 
-
-          
+            
+            List<string> lst = datos.Tables[0].ToList<string>();
+            
             ConexionBD.Desconectar();
 
         }

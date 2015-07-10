@@ -61,6 +61,7 @@
     <Compile Include="CreateExcelFile.cs" />
     <Compile Include="CValidacion.cs" />
     <Compile Include="ExportarDocumentos.cs" />
+    <Compile Include="Listas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidarLlaveUSB.cs" />
   </ItemGroup>

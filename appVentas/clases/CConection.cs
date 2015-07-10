@@ -205,7 +205,7 @@ namespace clases
 
 
 
-
+        
 
 
         public List<object> EjecutarProcedimientoReturnList(string NombreProcedimiento, object ParamName, object ParamValue)
