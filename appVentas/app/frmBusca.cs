@@ -36,9 +36,8 @@ namespace app
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
             datos = ConexionBD.EjecutarProcedimientoReturnDataSet("busca_descuento","pCriterio",criterio);
 
-            
-            List<string> lst = datos.Tables[0].ToList<string>();
-            
+        
+
             ConexionBD.Desconectar();
 
         }

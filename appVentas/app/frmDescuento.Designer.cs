@@ -42,10 +42,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.tbBuscaDescuento = new System.Windows.Forms.Button();
             this.tbDescuento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnBusca = new System.Windows.Forms.Button();
             this.cbCriterio = new System.Windows.Forms.ComboBox();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -181,10 +179,8 @@
             // 
             // gbDatos
             // 
-            this.gbDatos.Controls.Add(this.tbBuscaDescuento);
             this.gbDatos.Controls.Add(this.tbDescuento);
             this.gbDatos.Controls.Add(this.label3);
-            this.gbDatos.Controls.Add(this.btnBusca);
             this.gbDatos.Controls.Add(this.cbCriterio);
             this.gbDatos.Controls.Add(this.dtpFechaFin);
             this.gbDatos.Controls.Add(this.label2);
@@ -203,22 +199,13 @@
             this.gbDatos.TabIndex = 7;
             this.gbDatos.TabStop = false;
             // 
-            // tbBuscaDescuento
-            // 
-            this.tbBuscaDescuento.Location = new System.Drawing.Point(325, 59);
-            this.tbBuscaDescuento.Name = "tbBuscaDescuento";
-            this.tbBuscaDescuento.Size = new System.Drawing.Size(33, 23);
-            this.tbBuscaDescuento.TabIndex = 2;
-            this.tbBuscaDescuento.Text = "...";
-            this.tbBuscaDescuento.UseVisualStyleBackColor = true;
-            // 
             // tbDescuento
             // 
             this.tbDescuento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbDescuento.Enabled = false;
             this.tbDescuento.Location = new System.Drawing.Point(80, 60);
             this.tbDescuento.Name = "tbDescuento";
-            this.tbDescuento.Size = new System.Drawing.Size(219, 20);
+            this.tbDescuento.Size = new System.Drawing.Size(278, 20);
             this.tbDescuento.TabIndex = 2;
             // 
             // label3
@@ -229,16 +216,6 @@
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 31;
             this.label3.Text = "Descuento:";
-            // 
-            // btnBusca
-            // 
-            this.btnBusca.Location = new System.Drawing.Point(325, 35);
-            this.btnBusca.Name = "btnBusca";
-            this.btnBusca.Size = new System.Drawing.Size(33, 23);
-            this.btnBusca.TabIndex = 1;
-            this.btnBusca.Text = "...";
-            this.btnBusca.UseVisualStyleBackColor = true;
-            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
             // cbCriterio
             // 
@@ -313,11 +290,12 @@
             // 
             // tbProducto
             // 
+            this.tbProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbProducto.Enabled = false;
             this.tbProducto.Location = new System.Drawing.Point(80, 36);
             this.tbProducto.Name = "tbProducto";
-            this.tbProducto.Size = new System.Drawing.Size(219, 20);
+            this.tbProducto.Size = new System.Drawing.Size(278, 20);
             this.tbProducto.TabIndex = 1;
             // 
             // label1
@@ -364,6 +342,7 @@
             this.Name = "frmDescuento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descuentos";
+            this.Load += new System.EventHandler(this.frmDescuento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.gbDatos.ResumeLayout(false);
@@ -391,7 +370,6 @@
         private System.Windows.Forms.DateTimePicker dtpFechaIni;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbCriterio;
-        private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -400,7 +378,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button tbBuscaDescuento;
         private System.Windows.Forms.TextBox tbDescuento;
         private System.Windows.Forms.Label label3;
     }
