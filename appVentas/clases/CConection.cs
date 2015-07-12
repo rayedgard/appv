@@ -219,6 +219,7 @@ namespace clases
             aAdaptador.SelectCommand.Parameters.AddWithValue("?" + ParamName, ParamValue);
 
             Resultado1.Add(aAdaptador.Fill(Resultado, "ta" + NombreProcedimiento));
+            
             return Resultado1;
         }
 
