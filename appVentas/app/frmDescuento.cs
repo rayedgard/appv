@@ -113,8 +113,23 @@ namespace app
                 sql = "SELECT documento, razon FROM proveedor";
             if (cbCriterio.Text == "CATEGORIA")
                 sql = "SELECT id, nombre FROM categoria";
+
             ConexionBD.autoCompletar(tbProducto, sql);
             ConexionBD.Desconectar();
+        }
+
+        private void tbProducto_TextChanged(object sender, EventArgs e)
+        {
+            busca();
+        }
+
+        private void btnBuscaProducto_Click(object sender, EventArgs e)
+        {
+            //LimpiarDatos();
+            clases.Cfunciones.Globales.criterio=cbCriterio.Text;
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+            busca.ShowDialog();
+            tbProducto.Text=busca.valor;
         }
         
 

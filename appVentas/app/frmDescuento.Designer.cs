@@ -56,6 +56,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNroSerie = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnBuscaProducto = new System.Windows.Forms.Button();
+            this.btnBuscaDescuento = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
@@ -179,6 +181,8 @@
             // 
             // gbDatos
             // 
+            this.gbDatos.Controls.Add(this.btnBuscaDescuento);
+            this.gbDatos.Controls.Add(this.btnBuscaProducto);
             this.gbDatos.Controls.Add(this.tbDescuento);
             this.gbDatos.Controls.Add(this.label3);
             this.gbDatos.Controls.Add(this.cbCriterio);
@@ -205,7 +209,7 @@
             this.tbDescuento.Enabled = false;
             this.tbDescuento.Location = new System.Drawing.Point(80, 60);
             this.tbDescuento.Name = "tbDescuento";
-            this.tbDescuento.Size = new System.Drawing.Size(278, 20);
+            this.tbDescuento.Size = new System.Drawing.Size(230, 20);
             this.tbDescuento.TabIndex = 2;
             // 
             // label3
@@ -293,10 +297,12 @@
             this.tbProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbProducto.Enabled = false;
             this.tbProducto.Location = new System.Drawing.Point(80, 36);
             this.tbProducto.Name = "tbProducto";
-            this.tbProducto.Size = new System.Drawing.Size(278, 20);
+            this.tbProducto.Size = new System.Drawing.Size(230, 20);
             this.tbProducto.TabIndex = 1;
+            this.tbProducto.TextChanged += new System.EventHandler(this.tbProducto_TextChanged);
             // 
             // label1
             // 
@@ -328,6 +334,25 @@
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Generación de Descuentos ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnBuscaProducto
+            // 
+            this.btnBuscaProducto.Location = new System.Drawing.Point(334, 34);
+            this.btnBuscaProducto.Name = "btnBuscaProducto";
+            this.btnBuscaProducto.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscaProducto.TabIndex = 32;
+            this.btnBuscaProducto.Text = "...";
+            this.btnBuscaProducto.UseVisualStyleBackColor = true;
+            this.btnBuscaProducto.Click += new System.EventHandler(this.btnBuscaProducto_Click);
+            // 
+            // btnBuscaDescuento
+            // 
+            this.btnBuscaDescuento.Location = new System.Drawing.Point(334, 58);
+            this.btnBuscaDescuento.Name = "btnBuscaDescuento";
+            this.btnBuscaDescuento.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscaDescuento.TabIndex = 33;
+            this.btnBuscaDescuento.Text = "...";
+            this.btnBuscaDescuento.UseVisualStyleBackColor = true;
             // 
             // frmDescuento
             // 
@@ -380,5 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.TextBox tbDescuento;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBuscaDescuento;
+        private System.Windows.Forms.Button btnBuscaProducto;
     }
 }
