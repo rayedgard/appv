@@ -97,5 +97,43 @@ namespace app
             habilitaBoton();
             //LimpiarDatos();
         }
+
+        private void frmDescuento_Load(object sender, EventArgs e)
+        {
+            busca();
+        }
+
+        private void busca()
+        {
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            string sql = "";
+            if (cbCriterio.Text == "PRODUCTO")
+                sql = "SELECT id, nombre FROM producto";
+            if (cbCriterio.Text == "PROVEEDOR")
+                sql = "SELECT documento, razon FROM proveedor";
+            if (cbCriterio.Text == "CATEGORIA")
+                sql = "SELECT id, nombre FROM categoria";
+
+            ConexionBD.autoCompletar(tbProducto, sql);
+            ConexionBD.Desconectar();
+        }
+
+        private void tbProducto_TextChanged(object sender, EventArgs e)
+        {
+            busca();
+        }
+
+        private void btnBuscaProducto_Click(object sender, EventArgs e)
+        {
+            //LimpiarDatos();
+            clases.Cfunciones.Globales.criterio=cbCriterio.Text;
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+            busca.ShowDialog();
+            tbProducto.Text=busca.valor;
+        }
+        
+
+
+
     }
 }

@@ -13,44 +13,89 @@ namespace app
 {
     public partial class frmBusca : Form
     {
-        CConection ConexionBD;
-        CValidacion ValidarDatos;
-        object[] DatosUser = new object[12];
+
+        CConection conBD;
+        public string valor = "";
+        public string codigo = "";
         string string_ArchivoConfiguracion;
 
-        List<object> datos;
-        public frmBusca(string ArchivoCOnfig)
-        {
-             InitializeComponent();
-            string_ArchivoConfiguracion = ArchivoCOnfig;
-            ConexionBD = new CConection();
-            ValidarDatos = new CValidacion();
+        object[] datosBusqueda  = new object[2];
+        object[] VariablesBusqueda = {"pCriterio","pFiltro"};
 
-            DatosRecuperados();
+        public frmBusca(string ArchivoConfig)
+        {
+            string_ArchivoConfiguracion = ArchivoConfig;
+            InitializeComponent();
+            conBD = new CConection();
 
         }
 
-        private void DatosRecuperados()
+   
+        public void rotativo()
         {
-            string criterio = clases.Cfunciones.Globales.criterio;
-            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-            datos = ConexionBD.EjecutarProcedimientoReturnList("busca_descuento","pCriterio",criterio);
-          
-                MessageBox.Show(datos.Count.ToString());
-     
+            datosBusqueda[0]=clases.Cfunciones.Globales.criterio;
+            datosBusqueda[1]=tbFiltro.Text;
+            try
+            {
+                conBD.Conectar(false, string_ArchivoConfiguracion);
+                DataSet dsDatosGrid = conBD.EjecutarProcedimientoReturnDataSet("busca_descuento",VariablesBusqueda , datosBusqueda);
+                dgvDatos.Rows.Clear();
+                for (int i = 0; i < dsDatosGrid.Tables[0].Rows.Count; i++)
+                {
+                    dgvDatos.Rows.Add(dsDatosGrid.Tables[0].Rows[i].ItemArray);
+                }
 
-
-          
-            ConexionBD.Desconectar();
-
+                conBD.Desconectar();
+            }
+            catch { }
         }
+
+
+
+
+
+
+
 
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            
-           
-          
+            rotativo();
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+                valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
+                lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                this.Close();
+            }
+            catch
+            {
+            }
+        }
+
+        private void tbFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            rotativo();
+        }
+
+        private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+                valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
+                lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                //this.Close();
+            }
+            catch
+            {
+            }
         }
 
 

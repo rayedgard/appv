@@ -32,12 +32,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.tbFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbSeleccion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -56,7 +57,7 @@
             // gbDatos
             // 
             this.gbDatos.Controls.Add(this.btnBuscar);
-            this.gbDatos.Controls.Add(this.tbNombre);
+            this.gbDatos.Controls.Add(this.tbFiltro);
             this.gbDatos.Controls.Add(this.label1);
             this.gbDatos.Location = new System.Drawing.Point(5, 38);
             this.gbDatos.Name = "gbDatos";
@@ -77,13 +78,14 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // tbNombre
+            // tbFiltro
             // 
-            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Location = new System.Drawing.Point(61, 18);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(386, 20);
-            this.tbNombre.TabIndex = 0;
+            this.tbFiltro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbFiltro.Location = new System.Drawing.Point(61, 18);
+            this.tbFiltro.Name = "tbFiltro";
+            this.tbFiltro.Size = new System.Drawing.Size(386, 20);
+            this.tbFiltro.TabIndex = 0;
+            this.tbFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbFiltro_KeyPress);
             // 
             // label1
             // 
@@ -119,8 +121,11 @@
             this.dgvDatos.Location = new System.Drawing.Point(0, 100);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(588, 161);
+            this.dgvDatos.Size = new System.Drawing.Size(588, 215);
             this.dgvDatos.TabIndex = 4;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
             // 
             // Column4
             // 
@@ -134,13 +139,27 @@
             this.Column3.HeaderText = "Nombre";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 500;
+            this.Column3.Width = 540;
+            // 
+            // lbSeleccion
+            // 
+            this.lbSeleccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbSeleccion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSeleccion.ForeColor = System.Drawing.Color.White;
+            this.lbSeleccion.Location = new System.Drawing.Point(0, 281);
+            this.lbSeleccion.Name = "lbSeleccion";
+            this.lbSeleccion.Size = new System.Drawing.Size(588, 34);
+            this.lbSeleccion.TabIndex = 26;
+            this.lbSeleccion.Text = "Seleccionado";
+            this.lbSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmBusca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 261);
+            this.ClientSize = new System.Drawing.Size(588, 315);
+            this.Controls.Add(this.lbSeleccion);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -160,11 +179,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbDatos;
         public System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox tbNombre;
+        private System.Windows.Forms.TextBox tbFiltro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label lbSeleccion;
     }
 }

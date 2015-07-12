@@ -19,6 +19,7 @@ namespace clases
         public MySqlConnection aConexionBD; // ----- Solo para uso interno
         private MySqlDataAdapter aAdaptador; // ----- Solo para uso interno 192.168.1.10localhost
         private MySqlCommand aComando;
+        private MySqlDataReader aReader;
         private string strCadenaConexion;
         private MySqlTransaction ATransaccion;
 
@@ -206,6 +207,12 @@ namespace clases
 
 
 
+
+
+
+
+
+        
 
 
         public List<object> EjecutarProcedimientoReturnList(string NombreProcedimiento, object ParamName, object ParamValue)
@@ -899,7 +906,54 @@ namespace clases
 
 
 
+        /// <summary>
+        /// metodo para la busqueda
+        /// </summary>
+        /// <param name="NombreProcedimiento"></param>
+        /// <param name="ParamName"></param>
+        /// <param name="ParamValue"></param>
+        /// <returns></returns>
+        public void autoCompletar(TextBox cajaTexto,string sentencia )
+        {
+            try
+            {
+                aComando = new MySqlCommand(sentencia, aConexionBD);
 
+                aReader = aComando.ExecuteReader();
+                while (aReader.Read())
+                {
+                    cajaTexto.AutoCompleteCustomSource.Add(aReader["nombre"].ToString());
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo autocompletar el TextBox: " + ex.ToString());
+            }
+        }
+
+
+
+
+
+        //public void EjecutarProcedimientoReturnVoid(string NombreProcedimiento, ArrayList Parametros)
+        //{
+        //    aComando = new MySqlCommand();
+        //    aComando.CommandText = NombreProcedimiento;
+        //    aComando.CommandType = CommandType.StoredProcedure;
+
+        //    object[] ParametroElem;
+        //    int NroParametros = Parametros.Count;
+
+        //    for (int i = 0; i < NroParametros; i++)
+        //    {
+        //        ParametroElem = (object[])(Parametros[i]);
+        //        aComando.Parameters.AddWithValue("?" + ParametroElem[0], ParametroElem[1]);
+        //    }
+
+        //    aComando.Connection = aConexionBD;
+        //    int N = aComando.ExecuteNonQuery();
+        //}
 
 
 
