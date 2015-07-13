@@ -42,6 +42,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.btnBuscaDescuento = new System.Windows.Forms.Button();
+            this.btnBuscaProducto = new System.Windows.Forms.Button();
             this.tbDescuento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbCriterio = new System.Windows.Forms.ComboBox();
@@ -56,8 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNroSerie = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnBuscaProducto = new System.Windows.Forms.Button();
-            this.btnBuscaDescuento = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
@@ -203,6 +203,26 @@
             this.gbDatos.TabIndex = 7;
             this.gbDatos.TabStop = false;
             // 
+            // btnBuscaDescuento
+            // 
+            this.btnBuscaDescuento.Location = new System.Drawing.Point(334, 58);
+            this.btnBuscaDescuento.Name = "btnBuscaDescuento";
+            this.btnBuscaDescuento.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscaDescuento.TabIndex = 33;
+            this.btnBuscaDescuento.Text = "...";
+            this.btnBuscaDescuento.UseVisualStyleBackColor = true;
+            this.btnBuscaDescuento.Click += new System.EventHandler(this.btnBuscaDescuento_Click);
+            // 
+            // btnBuscaProducto
+            // 
+            this.btnBuscaProducto.Location = new System.Drawing.Point(334, 34);
+            this.btnBuscaProducto.Name = "btnBuscaProducto";
+            this.btnBuscaProducto.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscaProducto.TabIndex = 32;
+            this.btnBuscaProducto.Text = "...";
+            this.btnBuscaProducto.UseVisualStyleBackColor = true;
+            this.btnBuscaProducto.Click += new System.EventHandler(this.btnBuscaProducto_Click);
+            // 
             // tbDescuento
             // 
             this.tbDescuento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -294,8 +314,6 @@
             // 
             // tbProducto
             // 
-            this.tbProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tbProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbProducto.Enabled = false;
             this.tbProducto.Location = new System.Drawing.Point(80, 36);
@@ -334,25 +352,6 @@
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Generación de Descuentos ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnBuscaProducto
-            // 
-            this.btnBuscaProducto.Location = new System.Drawing.Point(334, 34);
-            this.btnBuscaProducto.Name = "btnBuscaProducto";
-            this.btnBuscaProducto.Size = new System.Drawing.Size(24, 23);
-            this.btnBuscaProducto.TabIndex = 32;
-            this.btnBuscaProducto.Text = "...";
-            this.btnBuscaProducto.UseVisualStyleBackColor = true;
-            this.btnBuscaProducto.Click += new System.EventHandler(this.btnBuscaProducto_Click);
-            // 
-            // btnBuscaDescuento
-            // 
-            this.btnBuscaDescuento.Location = new System.Drawing.Point(334, 58);
-            this.btnBuscaDescuento.Name = "btnBuscaDescuento";
-            this.btnBuscaDescuento.Size = new System.Drawing.Size(24, 23);
-            this.btnBuscaDescuento.TabIndex = 33;
-            this.btnBuscaDescuento.Text = "...";
-            this.btnBuscaDescuento.UseVisualStyleBackColor = true;
             // 
             // frmDescuento
             // 

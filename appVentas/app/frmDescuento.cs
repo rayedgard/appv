@@ -131,6 +131,15 @@ namespace app
             busca.ShowDialog();
             tbProducto.Text=busca.valor;
         }
+
+        private void btnBuscaDescuento_Click(object sender, EventArgs e)
+        {
+            //LimpiarDatos();
+            clases.Cfunciones.Globales.criterio = "TIPODESCUENTO";
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+            busca.ShowDialog();
+            tbDescuento.Text = busca.valor;
+        }
         
 
 
