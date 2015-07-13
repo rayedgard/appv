@@ -28,6 +28,9 @@ namespace app
             InitializeComponent();
             conBD = new CConection();
 
+            lblTitulo.Text="Busqueda  de: "+clases.Cfunciones.Globales.criterio;
+            tbFiltro.Focus();
+            tbFiltro.Select();
         }
 
    

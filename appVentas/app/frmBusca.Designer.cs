@@ -106,7 +106,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(588, 37);
             this.lblTitulo.TabIndex = 3;
-            this.lblTitulo.Text = "Administración de formas de pago";
+            this.lblTitulo.Text = "Busqueda  de: ";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvDatos
@@ -163,6 +163,8 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBusca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FORMULARIO DE BUSQUEDA";
