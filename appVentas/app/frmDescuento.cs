@@ -15,6 +15,9 @@ namespace app
 
         CConection ConexionBD;
         CValidacion ValidarDatos;
+        //VARIABLES PARA ALMACENAR LOS IDS DE GRUPOS Y DESCUENTOS
+        string idGrupo = "";
+        string idDescuento = "";
         object[] DatosDes = new object[7];
         string string_ArchivoConfiguracion;
         public frmDescuento(string ArchivoCOnfig)
@@ -100,7 +103,7 @@ namespace app
                     dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//tipodescuento
                     dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//fecha inicio
                     dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//fecha fin
-                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][6];//estado
+                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//estado
 
                     if (Convert.ToInt32(datos.Tables[0].Rows[i][6]) == 1)
                     {
@@ -151,6 +154,7 @@ namespace app
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
             tbProducto.Text=busca.valor;
+            idGrupo = busca.codigo;
         }
 
         private void btnBuscaDescuento_Click(object sender, EventArgs e)
@@ -160,6 +164,7 @@ namespace app
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
             tbDescuento.Text = busca.valor;
+            idDescuento = busca.codigo;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -201,6 +206,8 @@ namespace app
 
         private void GuardarDatos()
         {
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+
             if (DatosDes == null || DatosDes[0] == null)
             {
                 DatosDes = new object[7];
@@ -208,8 +215,8 @@ namespace app
             }
             DatosDes[0] = DatosDes[0].ToString().Trim();
             DatosDes[1] = cbCriterio.Text;
-            DatosDes[2] = tbProducto.Text;
-            DatosDes[3] = tbDescuento.Text;
+            DatosDes[2] = idGrupo;
+            DatosDes[3] = idDescuento;
             DatosDes[4] = ConexionBD.FechaFormatoMySQL(dtpFechaIni.Value, 0);
             DatosDes[5] = ConexionBD.FechaFormatoMySQL(dtpFechaFin.Value, 0); 
             if (rbtActivo.Checked)
