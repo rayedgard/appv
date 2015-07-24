@@ -18,7 +18,7 @@ namespace app
         //VARIABLES PARA ALMACENAR LOS IDS DE GRUPOS Y DESCUENTOS
         string idGrupo = "";
         string idDescuento = "";
-        object[] DatosDes = new object[7];
+        object[] DatosDes = new object[9];
         string string_ArchivoConfiguracion;
         public frmDescuento(string ArchivoCOnfig)
         {
@@ -100,12 +100,14 @@ namespace app
                     dgvDatos.Rows[i].Cells[2].Value = datos.Tables[0].Rows[i][0];//id
                     dgvDatos.Rows[i].Cells[3].Value = datos.Tables[0].Rows[i][1];//criterio
                     dgvDatos.Rows[i].Cells[4].Value = datos.Tables[0].Rows[i][2];//grupo
-                    dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//tipodescuento
-                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//fecha inicio
-                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//fecha fin
-                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//estado
+                    dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//nombre grupo
+                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//tipodescuento
+                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//nombre descuento
+                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//fecha inicio
+                    dgvDatos.Rows[i].Cells[9].Value = datos.Tables[0].Rows[i][7];//fecha fin
+                    dgvDatos.Rows[i].Cells[10].Value = datos.Tables[0].Rows[i][8];//estado
 
-                    if (Convert.ToInt32(datos.Tables[0].Rows[i][6]) == 1)
+                    if (Convert.ToInt32(datos.Tables[0].Rows[i][8]) == 1)
                     {
                         dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
@@ -135,7 +137,7 @@ namespace app
         /// </summary>
         private void LimpiarDatos()
         {
-            DatosDes = new object[7];
+            DatosDes = new object[9];
 
             cbCriterio.SelectedIndex = 0;
             tbProducto.Text = "";
@@ -210,21 +212,23 @@ namespace app
 
             if (DatosDes == null || DatosDes[0] == null)
             {
-                DatosDes = new object[7];
+                DatosDes = new object[9];
                 DatosDes[0] = "0";
             }
             DatosDes[0] = DatosDes[0].ToString().Trim();
             DatosDes[1] = cbCriterio.Text;
             DatosDes[2] = idGrupo;
-            DatosDes[3] = idDescuento;
-            DatosDes[4] = ConexionBD.FechaFormatoMySQL(dtpFechaIni.Value, 0);
-            DatosDes[5] = ConexionBD.FechaFormatoMySQL(dtpFechaFin.Value, 0); 
+            DatosDes[3] = tbProducto.Text;
+            DatosDes[4] = idDescuento;
+            DatosDes[5] = tbDescuento.Text;
+            DatosDes[6] = ConexionBD.FechaFormatoMySQL(dtpFechaIni.Value, 0);
+            DatosDes[7] = ConexionBD.FechaFormatoMySQL(dtpFechaFin.Value, 0); 
             if (rbtActivo.Checked)
-                DatosDes[6] = 0;
+                DatosDes[8] = 0;
             else
-                DatosDes[6] = 1;
+                DatosDes[8] = 1;
 
-            object[] NombresDes = { "pId","pCriterio","pIdProducto", "pIdTipoDescuento","pFechaIni","pFechaFin", "pEstado" };
+            object[] NombresDes = { "pId","pCriterio","pIdProducto","pNomProducto", "pIdTipoDescuento","pNomDescuento","pFechaIni","pFechaFin", "pEstado" };
 
             ConexionBD.Conectar(true, string_ArchivoConfiguracion);
             bool SeGuardo = false;
@@ -258,6 +262,80 @@ namespace app
 
 
             LimpiarDatos();
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 1)))
+            {
+                if (e.ColumnIndex == 0)
+                {// EDITAR
+
+                    cbCriterio.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    idGrupo = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    tbProducto.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    idDescuento = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    tbDescuento.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    dtpFechaIni.Value=Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[8].Value);
+                    dtpFechaFin.Value = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[9].Value);
+                    
+                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[10].Value) == 0)
+                    {
+                        rbtActivo.Checked = true;
+                    }
+                    else
+                    {
+                        rbtInactivo.Checked = true;
+                    }
+
+
+                    /****AQUI ALMACENAMOS LOS DATOS EN EL ARREGLO --- PARA MODIFICACION---***/
+                    DatosDes = new object[9];
+                    DatosDes[0] = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    //DatosTipoDes[1] = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    //DatosTipoDes[2] = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    //DatosTipoDes[3] = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                    tipo = Tipo.modificar;
+                    habilitaBoton();
+                }
+                else
+                {//ELIMINAR
+                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE DESCUENTO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        //LimpiarDatosHorario();
+                        ConexionBD.Conectar(true, string_ArchivoConfiguracion);
+                        bool SeElimino = false;
+                        try
+                        {
+                            ConexionBD.EjecutarProcedimientoReturnVoid("descuento_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.COMMIT();
+                            SeElimino = true;
+                            listar();
+                            tipo = Tipo.eliminar;
+                            habilitaBoton();
+
+                        }
+                        catch
+                        {
+                            ConexionBD.ROLLBACK();
+                            SeElimino = false;
+                        }
+                        finally
+                        {
+                            ConexionBD.Desconectar();
+                        }
+
+                        if (SeElimino)
+                            MessageBox.Show("DATOS ELIMINADOS CON EXITO", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR LA UNIDAD, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        LimpiarDatos();
+                    }
+
+                }
+            }
         }
 
 
