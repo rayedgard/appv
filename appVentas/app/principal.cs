@@ -49,7 +49,7 @@ namespace app
 
         private void ribobProducto_Click(object sender, EventArgs e)
         {
-            frmProducto user = new frmProducto();
+            frmProducto user = new frmProducto(string_ArchivoConfiguracion);
             user.MdiParent = this;
             user.Show();
         }

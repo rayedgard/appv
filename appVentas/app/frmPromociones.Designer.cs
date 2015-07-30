@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPromociones));
             this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.tbNombre = new System.Windows.Forms.TextBox();
             this.rbtInactivo = new System.Windows.Forms.RadioButton();
             this.rbtActivo = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,16 +46,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbDatos
             // 
+            this.gbDatos.Controls.Add(this.radioButton3);
+            this.gbDatos.Controls.Add(this.radioButton1);
+            this.gbDatos.Controls.Add(this.radioButton2);
+            this.gbDatos.Controls.Add(this.label1);
             this.gbDatos.Controls.Add(this.tbNombre);
             this.gbDatos.Controls.Add(this.rbtInactivo);
             this.gbDatos.Controls.Add(this.rbtActivo);
@@ -63,15 +69,23 @@
             this.gbDatos.Enabled = false;
             this.gbDatos.Location = new System.Drawing.Point(3, 40);
             this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Size = new System.Drawing.Size(656, 98);
+            this.gbDatos.Size = new System.Drawing.Size(400, 98);
             this.gbDatos.TabIndex = 3;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos del Producto";
             // 
+            // tbNombre
+            // 
+            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbNombre.Location = new System.Drawing.Point(66, 19);
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.Size = new System.Drawing.Size(306, 20);
+            this.tbNombre.TabIndex = 0;
+            // 
             // rbtInactivo
             // 
             this.rbtInactivo.AutoSize = true;
-            this.rbtInactivo.Location = new System.Drawing.Point(128, 53);
+            this.rbtInactivo.Location = new System.Drawing.Point(128, 72);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
             this.rbtInactivo.TabIndex = 2;
@@ -82,7 +96,7 @@
             // 
             this.rbtActivo.AutoSize = true;
             this.rbtActivo.Checked = true;
-            this.rbtActivo.Location = new System.Drawing.Point(66, 52);
+            this.rbtActivo.Location = new System.Drawing.Point(66, 71);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
             this.rbtActivo.TabIndex = 1;
@@ -93,7 +107,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 52);
+            this.label6.Location = new System.Drawing.Point(6, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 19;
@@ -102,7 +116,7 @@
             // lblNroSerie
             // 
             this.lblNroSerie.AutoSize = true;
-            this.lblNroSerie.Location = new System.Drawing.Point(6, 27);
+            this.lblNroSerie.Location = new System.Drawing.Point(6, 22);
             this.lblNroSerie.Name = "lblNroSerie";
             this.lblNroSerie.Size = new System.Drawing.Size(47, 13);
             this.lblNroSerie.TabIndex = 4;
@@ -116,7 +130,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(671, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(409, 37);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "Administración de Categoría";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,7 +151,7 @@
             this.dgvDatos.Location = new System.Drawing.Point(0, 194);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(671, 112);
+            this.dgvDatos.Size = new System.Drawing.Size(409, 112);
             this.dgvDatos.TabIndex = 23;
             // 
             // Column1
@@ -188,7 +202,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.btnNuevo);
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.gbDatos);
@@ -196,7 +209,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(671, 194);
+            this.panel1.Size = new System.Drawing.Size(409, 194);
             this.panel1.TabIndex = 24;
             // 
             // btnNuevo
@@ -224,27 +237,52 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // radioButton1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(328, 50);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(325, 82);
-            this.dataGridView1.TabIndex = 20;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(128, 45);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(42, 17);
+            this.radioButton1.TabIndex = 21;
+            this.radioButton1.Text = "3x2";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // tbNombre
+            // radioButton2
             // 
-            this.tbNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNombre.Location = new System.Drawing.Point(66, 24);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(218, 20);
-            this.tbNombre.TabIndex = 0;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(66, 44);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(42, 17);
+            this.radioButton2.TabIndex = 20;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "2x1";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Estado:";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(188, 45);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(42, 17);
+            this.radioButton3.TabIndex = 23;
+            this.radioButton3.Text = "4x3";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // frmPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 306);
+            this.ClientSize = new System.Drawing.Size(409, 306);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Name = "frmPromociones";
@@ -253,7 +291,6 @@
             this.gbDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,8 +312,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Button btnNuevo;
         public System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label1;
     }
 }

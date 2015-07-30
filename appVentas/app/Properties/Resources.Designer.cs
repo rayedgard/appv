@@ -361,5 +361,7 @@ namespace app.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        public static System.Drawing.Image descarga { get; set; }
     }
 }
