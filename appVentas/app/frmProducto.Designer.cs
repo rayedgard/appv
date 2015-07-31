@@ -69,8 +69,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ofd_CargarImagen = new System.Windows.Forms.OpenFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +84,8 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ofd_CargarImagen = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.gbDatos2.SuspendLayout();
             this.gbDatos1.SuspendLayout();
@@ -127,6 +127,7 @@
             this.tbBurcar.Name = "tbBurcar";
             this.tbBurcar.Size = new System.Drawing.Size(737, 20);
             this.tbBurcar.TabIndex = 17;
+            this.tbBurcar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBurcar_KeyPress);
             // 
             // gbDatos2
             // 
@@ -529,10 +530,6 @@
             this.dgvDatos.TabIndex = 17;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
-            // epValida
-            // 
-            this.epValida.ContainerControl = this;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "M";
@@ -634,6 +631,10 @@
             this.Column18.HeaderText = "Promoción";
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
+            // 
+            // epValida
+            // 
+            this.epValida.ContainerControl = this;
             // 
             // frmProducto
             // 

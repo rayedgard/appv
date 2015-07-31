@@ -148,7 +148,7 @@ namespace app
             tbPrecio.Text = "0";
             tbStock.Text = "0";
             tbStockMin.Text = "5";
-            tbCarFisicas.Text = "";
+            tbCategoria.Text = "";
             tbUnidades.Text = "";
             tbCarFisicas.Text = "";
 
@@ -251,6 +251,13 @@ namespace app
             DatosProducto[4] = tbPrecio.Text;
             DatosProducto[5] = tbStock.Text;
             DatosProducto[6] = tbStockMin.Text;
+            /*-----previa consiocion para cargar los datos o IDs de categoria, unidades y caracteristicas fisicas----------*/
+            if (tbCategoria.Text == "")
+                idcategoria = "1";
+            if (tbUnidades.Text == "")
+                idunidades = "1";
+            if (tbCarFisicas.Text == "")
+                idfisicas = "1";
             DatosProducto[7] = idcategoria;
             DatosProducto[8] = idunidades;
             DatosProducto[9] = idfisicas;
@@ -267,7 +274,7 @@ namespace app
             if (rbtUno.Checked)
                 DatosProducto[12] = 1;//promocion de 2x1
             if (rbtDos.Checked)
-                DatosProducto[12] = 2;//promocion de 2x1
+                DatosProducto[12] = 2;//promocion de 3x2
 
             object[] NombresProducto = { "pId", "pNombre", "pDetalle", "pImagen", "pPrecio", "pStock", "pStockMin", "pIdCategoria", "pIdUnidades","pIdCaractFisicas","pEstado","pSerie","pPromocion" };
 
@@ -324,6 +331,9 @@ namespace app
                     }
 
                      tbPrecio.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    idcategoria = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    idunidades = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    idfisicas = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
 
                     object[] datosNombres = new object[2];
                     object[] Nombres = { "pId", "pCriterio" };
@@ -377,20 +387,19 @@ namespace app
                 }
                 else
                 {//ELIMINAR
-                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE DESCUENTO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE PRODUCTO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         //LimpiarDatosHorario();
                         ConexionBD.Conectar(true, string_ArchivoConfiguracion);
                         bool SeElimino = false;
                         try
                         {
-                            ConexionBD.EjecutarProcedimientoReturnVoid("descuento_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.EjecutarProcedimientoReturnVoid("producto_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
                             ConexionBD.COMMIT();
                             SeElimino = true;
                             listar();
                             tipo = Tipo.eliminar;
                             habilitaBoton();
-
                         }
                         catch
                         {
@@ -405,7 +414,7 @@ namespace app
                         if (SeElimino)
                             MessageBox.Show("DATOS ELIMINADOS CON EXITO", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR LA UNIDAD, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR EL PRODUCTO, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         LimpiarDatos();
                     }
@@ -455,6 +464,70 @@ namespace app
 
             }
         }
+
+        private void tbBurcar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 13)
+            {
+                Buscar();
+                              
+            }
+            else
+                Buscar();
+        }
+
+        object[] datosBusqueda = new object[2];
+        object[] VariablesBusqueda = { "pCriterio", "pFiltro" };
+        public void Buscar()
+        {
+            datosBusqueda[0] = "PRODUCTOS";
+            datosBusqueda[1] = tbBurcar.Text;
+            try
+            {
+                ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+                DataSet dsDatosGrid = ConexionBD.EjecutarProcedimientoReturnDataSet("busca_descuento", VariablesBusqueda, datosBusqueda);
+                dgvDatos.Rows.Clear();
+                //for (int i = 0; i < dsDatosGrid.Tables[0].Rows.Count; i++)
+                //{
+                //    dgvDatos.Rows.Add(dsDatosGrid.Tables[0].Rows[i].ItemArray);
+                //}
+
+
+
+                dgvDatos.Rows.Add(dsDatosGrid.Tables[0].Rows.Count);
+
+                for (int i = 0; i < dsDatosGrid.Tables[0].Rows.Count; i++)
+                {
+                    dgvDatos.Rows[i].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.edit_button);
+                    dgvDatos.Rows[i].Cells[1].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+                    dgvDatos.Rows[i].Cells[2].Value = dsDatosGrid.Tables[0].Rows[i][0];//id
+                    dgvDatos.Rows[i].Cells[3].Value = dsDatosGrid.Tables[0].Rows[i][1];//nombre
+                    dgvDatos.Rows[i].Cells[4].Value = dsDatosGrid.Tables[0].Rows[i][2];//detalle
+                    dgvDatos.Rows[i].Cells[5].Value = dsDatosGrid.Tables[0].Rows[i][3];//imagen
+                    dgvDatos.Rows[i].Cells[6].Value = dsDatosGrid.Tables[0].Rows[i][4];//precio
+                    dgvDatos.Rows[i].Cells[7].Value = dsDatosGrid.Tables[0].Rows[i][5];//id categorioa
+                    dgvDatos.Rows[i].Cells[8].Value = dsDatosGrid.Tables[0].Rows[i][6];//stock
+                    dgvDatos.Rows[i].Cells[9].Value = dsDatosGrid.Tables[0].Rows[i][7];//stock minimo
+                    dgvDatos.Rows[i].Cells[10].Value = dsDatosGrid.Tables[0].Rows[i][8];//id unidades
+                    dgvDatos.Rows[i].Cells[11].Value = dsDatosGrid.Tables[0].Rows[i][9];//nro de serie
+                    dgvDatos.Rows[i].Cells[12].Value = dsDatosGrid.Tables[0].Rows[i][10];//id caracteristicas
+                    dgvDatos.Rows[i].Cells[13].Value = dsDatosGrid.Tables[0].Rows[i][11];//estado
+                    dgvDatos.Rows[i].Cells[14].Value = dsDatosGrid.Tables[0].Rows[i][12];//promocion
+
+                    if (Convert.ToInt32(dsDatosGrid.Tables[0].Rows[i][11]) == 1)
+                    {
+                        dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                        dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
+                    }
+
+                }
+
+                ConexionBD.Desconectar();
+            }
+            catch { }
+        }
+
+
 
 
 
