@@ -104,5 +104,11 @@ namespace app
             desc.MdiParent = this;
             desc.Show();
         }
+
+        private void ribbonButton11_Click(object sender, EventArgs e)
+        {
+            frmVenta vent = new frmVenta(string_ArchivoConfiguracion);
+            vent.Show();
+        }
     }
 }

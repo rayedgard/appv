@@ -76,12 +76,13 @@
             this.ribbonButton14 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
             this.ribbonButton16 = new System.Windows.Forms.RibbonButton();
-            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
             this.REPORTES = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel13 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel19 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel20 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
+            this.ribbonPanel21 = new System.Windows.Forms.RibbonPanel();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -342,6 +343,7 @@
             this.ribbonTab4.Panels.Add(this.ribbonPanel16);
             this.ribbonTab4.Panels.Add(this.ribbonPanel17);
             this.ribbonTab4.Panels.Add(this.ribbonPanel18);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel21);
             this.ribbonTab4.Text = "VENTAS";
             // 
             // ribbonPanel14
@@ -354,6 +356,7 @@
             this.ribbonButton11.Image = global::app.Properties.Resources.ventas;
             this.ribbonButton11.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton11.SmallImage")));
             this.ribbonButton11.Text = "";
+            this.ribbonButton11.Click += new System.EventHandler(this.ribbonButton11_Click);
             // 
             // ribbonPanel15
             // 
@@ -401,10 +404,6 @@
             this.ribbonButton16.Text = "";
             this.ribbonButton16.Click += new System.EventHandler(this.ribbonButton16_Click);
             // 
-            // ribbonLabel2
-            // 
-            this.ribbonLabel2.Text = "ribbonLabel2";
-            // 
             // REPORTES
             // 
             this.REPORTES.Panels.Add(this.ribbonPanel6);
@@ -428,6 +427,14 @@
             // ribbonPanel20
             // 
             this.ribbonPanel20.Text = "ribbonPanel20";
+            // 
+            // ribbonLabel2
+            // 
+            this.ribbonLabel2.Text = "ribbonLabel2";
+            // 
+            // ribbonPanel21
+            // 
+            this.ribbonPanel21.Text = "ribbonPanel21";
             // 
             // Principal
             // 
@@ -500,5 +507,6 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel13;
         private System.Windows.Forms.RibbonPanel ribbonPanel19;
         private System.Windows.Forms.RibbonPanel ribbonPanel20;
+        private System.Windows.Forms.RibbonPanel ribbonPanel21;
     }
 }
