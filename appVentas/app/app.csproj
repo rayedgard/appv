@@ -162,6 +162,12 @@
     <Compile Include="frmTipoDescuento.Designer.cs">
       <DependentUpon>frmTipoDescuento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTipoTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoTarjeta.Designer.cs">
+      <DependentUpon>frmTipoTarjeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUnidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="frmVentaPorProducto.Designer.cs">
       <DependentUpon>frmVentaPorProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prueba.Designer.cs">
+      <DependentUpon>prueba.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmBusca.resx">
       <DependentUpon>frmBusca.cs</DependentUpon>
@@ -251,6 +263,9 @@
     <EmbeddedResource Include="frmTipoDescuento.resx">
       <DependentUpon>frmTipoDescuento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoTarjeta.resx">
+      <DependentUpon>frmTipoTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUnidad.resx">
       <DependentUpon>frmUnidad.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +290,9 @@
     </Compile>
     <EmbeddedResource Include="frmVentaPorProducto.resx">
       <DependentUpon>frmVentaPorProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prueba.resx">
+      <DependentUpon>prueba.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -383,6 +401,9 @@
     <None Include="Resources\descarga.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pagossol.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

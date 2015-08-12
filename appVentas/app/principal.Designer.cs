@@ -30,59 +30,66 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbMenuItem3 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbRecentItem1 = new System.Windows.Forms.RibbonOrbRecentItem();
-            this.ribbonOrbRecentItem2 = new System.Windows.Forms.RibbonOrbRecentItem();
-            this.ribbonOrbRecentItem3 = new System.Windows.Forms.RibbonOrbRecentItem();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
-            this.ribbonLabel1 = new System.Windows.Forms.RibbonLabel();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribobClientes = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
-            this.ribobProveedor = new System.Windows.Forms.RibbonButton();
             this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
-            this.ribobProducto = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton17 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton18 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton19 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel8 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel9 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
             this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel10 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel11 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel12 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
             this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel14 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton11 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel15 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton12 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel16 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton13 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel17 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton14 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel18 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton16 = new System.Windows.Forms.RibbonButton();
             this.REPORTES = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel13 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel19 = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel20 = new System.Windows.Forms.RibbonPanel();
             this.ribbonLabel2 = new System.Windows.Forms.RibbonLabel();
+            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.ribbonPanel21 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.ribbonOrbMenuItem3 = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.ribbonOrbRecentItem1 = new System.Windows.Forms.RibbonOrbRecentItem();
+            this.ribbonOrbRecentItem2 = new System.Windows.Forms.RibbonOrbRecentItem();
+            this.ribbonOrbRecentItem3 = new System.Windows.Forms.RibbonOrbRecentItem();
+            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbonLabel1 = new System.Windows.Forms.RibbonLabel();
+            this.ribobClientes = new System.Windows.Forms.RibbonButton();
+            this.ribobProveedor = new System.Windows.Forms.RibbonButton();
+            this.ribobProducto = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton17 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton18 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton19 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton11 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton12 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton13 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton10 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton14 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton15 = new System.Windows.Forms.RibbonButton();
+            this.ribbonItemGroup1 = new System.Windows.Forms.RibbonItemGroup();
+            this.ribbonButton20 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton16 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton21 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -117,6 +124,155 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
             this.ribbon1.Text = "ribbon1";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            // 
+            // ribbonTab1
+            // 
+            this.ribbonTab1.Panels.Add(this.ribbonPanel1);
+            this.ribbonTab1.Panels.Add(this.ribbonPanel2);
+            this.ribbonTab1.Panels.Add(this.ribbonPanel3);
+            this.ribbonTab1.Text = "PERSONAS";
+            // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.Items.Add(this.ribbonButton1);
+            this.ribbonPanel1.Text = "Usuarios del sistema";
+            // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.Items.Add(this.ribobClientes);
+            this.ribbonPanel2.Text = "Clientes";
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.Items.Add(this.ribobProveedor);
+            this.ribbonPanel3.Text = "Proveedores";
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Panels.Add(this.ribbonPanel4);
+            this.ribbonTab2.Panels.Add(this.ribbonPanel5);
+            this.ribbonTab2.Panels.Add(this.ribbonPanel7);
+            this.ribbonTab2.Panels.Add(this.ribbonPanel8);
+            this.ribbonTab2.Panels.Add(this.ribbonPanel9);
+            this.ribbonTab2.Text = "PRODUCTOS";
+            // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.Items.Add(this.ribobProducto);
+            this.ribbonPanel4.Text = "Productos";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.Items.Add(this.ribbonButton2);
+            this.ribbonPanel5.Items.Add(this.ribbonButton19);
+            this.ribbonPanel5.Text = "Descuentos";
+            // 
+            // ribbonPanel7
+            // 
+            this.ribbonPanel7.Items.Add(this.ribbonButton4);
+            this.ribbonPanel7.Text = "Unidades";
+            // 
+            // ribbonPanel8
+            // 
+            this.ribbonPanel8.Items.Add(this.ribbonButton5);
+            this.ribbonPanel8.Text = "Categorias";
+            // 
+            // ribbonPanel9
+            // 
+            this.ribbonPanel9.Items.Add(this.ribbonButton6);
+            this.ribbonPanel9.Text = "Caracteristicas";
+            // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Panels.Add(this.ribbonPanel10);
+            this.ribbonTab3.Panels.Add(this.ribbonPanel11);
+            this.ribbonTab3.Panels.Add(this.ribbonPanel12);
+            this.ribbonTab3.Text = "COMPRAS";
+            // 
+            // ribbonPanel10
+            // 
+            this.ribbonPanel10.Items.Add(this.ribbonButton7);
+            this.ribbonPanel10.Text = "Compras";
+            // 
+            // ribbonPanel11
+            // 
+            this.ribbonPanel11.Items.Add(this.ribbonButton8);
+            this.ribbonPanel11.Text = "Detalle Compra";
+            // 
+            // ribbonPanel12
+            // 
+            this.ribbonPanel12.Items.Add(this.ribbonButton9);
+            this.ribbonPanel12.Text = "Cuentas por pagar";
+            // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.Panels.Add(this.ribbonPanel14);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel15);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel16);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel17);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel18);
+            this.ribbonTab4.Panels.Add(this.ribbonPanel21);
+            this.ribbonTab4.Text = "VENTAS";
+            // 
+            // ribbonPanel14
+            // 
+            this.ribbonPanel14.Items.Add(this.ribbonButton11);
+            this.ribbonPanel14.Text = "Ventas";
+            // 
+            // ribbonPanel15
+            // 
+            this.ribbonPanel15.Items.Add(this.ribbonButton12);
+            this.ribbonPanel15.Text = "Detalle venta";
+            // 
+            // ribbonPanel16
+            // 
+            this.ribbonPanel16.Items.Add(this.ribbonButton13);
+            this.ribbonPanel16.Text = "Cuentas por cobrar";
+            // 
+            // ribbonPanel17
+            // 
+            this.ribbonPanel17.Items.Add(this.ribbonButton3);
+            this.ribbonPanel17.Items.Add(this.ribbonSeparator1);
+            this.ribbonPanel17.Items.Add(this.ribbonButton20);
+            this.ribbonPanel17.Text = "Formas de pago";
+            // 
+            // ribbonPanel18
+            // 
+            this.ribbonPanel18.Items.Add(this.ribbonButton16);
+            this.ribbonPanel18.Text = "Comprobante de pago";
+            // 
+            // REPORTES
+            // 
+            this.REPORTES.Panels.Add(this.ribbonPanel6);
+            this.REPORTES.Panels.Add(this.ribbonPanel13);
+            this.REPORTES.Panels.Add(this.ribbonPanel19);
+            this.REPORTES.Panels.Add(this.ribbonPanel20);
+            this.REPORTES.Text = "REPORTES";
+            // 
+            // ribbonPanel6
+            // 
+            this.ribbonPanel6.Text = "ribbonPanel6";
+            // 
+            // ribbonPanel13
+            // 
+            this.ribbonPanel13.Text = "ribbonPanel13";
+            // 
+            // ribbonPanel19
+            // 
+            this.ribbonPanel19.Text = "ribbonPanel19";
+            // 
+            // ribbonPanel20
+            // 
+            this.ribbonPanel20.Text = "ribbonPanel20";
+            // 
+            // ribbonLabel2
+            // 
+            this.ribbonLabel2.Text = "ribbonLabel2";
+            // 
+            // ribbonPanel21
+            // 
+            this.ribbonPanel21.Items.Add(this.ribbonButton21);
+            this.ribbonPanel21.Text = "ribbonPanel21";
             // 
             // ribbonOrbMenuItem1
             // 
@@ -157,18 +313,6 @@
             this.ribbonOrbRecentItem3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbRecentItem3.SmallImage")));
             this.ribbonOrbRecentItem3.Text = "ribbonOrbRecentItem3";
             // 
-            // ribbonTab1
-            // 
-            this.ribbonTab1.Panels.Add(this.ribbonPanel1);
-            this.ribbonTab1.Panels.Add(this.ribbonPanel2);
-            this.ribbonTab1.Panels.Add(this.ribbonPanel3);
-            this.ribbonTab1.Text = "PERSONAS";
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.Items.Add(this.ribbonButton1);
-            this.ribbonPanel1.Text = "Usuarios del sistema";
-            // 
             // ribbonButton1
             // 
             this.ribbonButton1.DropDownItems.Add(this.ribbonLabel1);
@@ -181,22 +325,12 @@
             // 
             this.ribbonLabel1.Text = "ribbonLabel1";
             // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.Items.Add(this.ribobClientes);
-            this.ribbonPanel2.Text = "Clientes";
-            // 
             // ribobClientes
             // 
             this.ribobClientes.Image = global::app.Properties.Resources.cliente;
             this.ribobClientes.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribobClientes.SmallImage")));
             this.ribobClientes.Text = "";
             this.ribobClientes.Click += new System.EventHandler(this.ribobClientes_Click);
-            // 
-            // ribbonPanel3
-            // 
-            this.ribbonPanel3.Items.Add(this.ribobProveedor);
-            this.ribbonPanel3.Text = "Proveedores";
             // 
             // ribobProveedor
             // 
@@ -205,32 +339,12 @@
             this.ribobProveedor.Text = "";
             this.ribobProveedor.Click += new System.EventHandler(this.ribobProveedor_Click);
             // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Panels.Add(this.ribbonPanel4);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel5);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel7);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel8);
-            this.ribbonTab2.Panels.Add(this.ribbonPanel9);
-            this.ribbonTab2.Text = "PRODUCTOS";
-            // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.Items.Add(this.ribobProducto);
-            this.ribbonPanel4.Text = "Productos";
-            // 
             // ribobProducto
             // 
             this.ribobProducto.Image = global::app.Properties.Resources.producto;
             this.ribobProducto.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribobProducto.SmallImage")));
             this.ribobProducto.Text = "";
             this.ribobProducto.Click += new System.EventHandler(this.ribobProducto_Click);
-            // 
-            // ribbonPanel5
-            // 
-            this.ribbonPanel5.Items.Add(this.ribbonButton2);
-            this.ribbonPanel5.Items.Add(this.ribbonButton19);
-            this.ribbonPanel5.Text = "Descuentos";
             // 
             // ribbonButton2
             // 
@@ -260,22 +374,12 @@
             this.ribbonButton19.Text = "";
             this.ribbonButton19.Click += new System.EventHandler(this.ribbonButton19_Click);
             // 
-            // ribbonPanel7
-            // 
-            this.ribbonPanel7.Items.Add(this.ribbonButton4);
-            this.ribbonPanel7.Text = "Unidades";
-            // 
             // ribbonButton4
             // 
             this.ribbonButton4.Image = global::app.Properties.Resources.unidades;
             this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
             this.ribbonButton4.Text = "";
             this.ribbonButton4.Click += new System.EventHandler(this.ribbonButton4_Click);
-            // 
-            // ribbonPanel8
-            // 
-            this.ribbonPanel8.Items.Add(this.ribbonButton5);
-            this.ribbonPanel8.Text = "Categorias";
             // 
             // ribbonButton5
             // 
@@ -284,11 +388,6 @@
             this.ribbonButton5.Text = "";
             this.ribbonButton5.Click += new System.EventHandler(this.ribbonButton5_Click);
             // 
-            // ribbonPanel9
-            // 
-            this.ribbonPanel9.Items.Add(this.ribbonButton6);
-            this.ribbonPanel9.Text = "Caracteristicas";
-            // 
             // ribbonButton6
             // 
             this.ribbonButton6.Image = global::app.Properties.Resources.caract;
@@ -296,28 +395,11 @@
             this.ribbonButton6.Text = "";
             this.ribbonButton6.Click += new System.EventHandler(this.ribbonButton6_Click);
             // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Panels.Add(this.ribbonPanel10);
-            this.ribbonTab3.Panels.Add(this.ribbonPanel11);
-            this.ribbonTab3.Panels.Add(this.ribbonPanel12);
-            this.ribbonTab3.Text = "COMPRAS";
-            // 
-            // ribbonPanel10
-            // 
-            this.ribbonPanel10.Items.Add(this.ribbonButton7);
-            this.ribbonPanel10.Text = "Compras";
-            // 
             // ribbonButton7
             // 
             this.ribbonButton7.Image = global::app.Properties.Resources.compras;
             this.ribbonButton7.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton7.SmallImage")));
             this.ribbonButton7.Text = "";
-            // 
-            // ribbonPanel11
-            // 
-            this.ribbonPanel11.Items.Add(this.ribbonButton8);
-            this.ribbonPanel11.Text = "Detalle Compra";
             // 
             // ribbonButton8
             // 
@@ -325,31 +407,11 @@
             this.ribbonButton8.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton8.SmallImage")));
             this.ribbonButton8.Text = "";
             // 
-            // ribbonPanel12
-            // 
-            this.ribbonPanel12.Items.Add(this.ribbonButton9);
-            this.ribbonPanel12.Text = "Cuentas por pagar";
-            // 
             // ribbonButton9
             // 
             this.ribbonButton9.Image = global::app.Properties.Resources.cuentaPago;
             this.ribbonButton9.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton9.SmallImage")));
             this.ribbonButton9.Text = "";
-            // 
-            // ribbonTab4
-            // 
-            this.ribbonTab4.Panels.Add(this.ribbonPanel14);
-            this.ribbonTab4.Panels.Add(this.ribbonPanel15);
-            this.ribbonTab4.Panels.Add(this.ribbonPanel16);
-            this.ribbonTab4.Panels.Add(this.ribbonPanel17);
-            this.ribbonTab4.Panels.Add(this.ribbonPanel18);
-            this.ribbonTab4.Panels.Add(this.ribbonPanel21);
-            this.ribbonTab4.Text = "VENTAS";
-            // 
-            // ribbonPanel14
-            // 
-            this.ribbonPanel14.Items.Add(this.ribbonButton11);
-            this.ribbonPanel14.Text = "Ventas";
             // 
             // ribbonButton11
             // 
@@ -358,21 +420,11 @@
             this.ribbonButton11.Text = "";
             this.ribbonButton11.Click += new System.EventHandler(this.ribbonButton11_Click);
             // 
-            // ribbonPanel15
-            // 
-            this.ribbonPanel15.Items.Add(this.ribbonButton12);
-            this.ribbonPanel15.Text = "Detalle venta";
-            // 
             // ribbonButton12
             // 
             this.ribbonButton12.Image = global::app.Properties.Resources.detalleVenta;
             this.ribbonButton12.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton12.SmallImage")));
             this.ribbonButton12.Text = "";
-            // 
-            // ribbonPanel16
-            // 
-            this.ribbonPanel16.Items.Add(this.ribbonButton13);
-            this.ribbonPanel16.Text = "Cuentas por cobrar";
             // 
             // ribbonButton13
             // 
@@ -380,22 +432,45 @@
             this.ribbonButton13.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton13.SmallImage")));
             this.ribbonButton13.Text = "";
             // 
-            // ribbonPanel17
+            // ribbonButton3
             // 
-            this.ribbonPanel17.Items.Add(this.ribbonButton14);
-            this.ribbonPanel17.Text = "Formas de pago";
+            this.ribbonButton3.DropDownItems.Add(this.ribbonButton10);
+            this.ribbonButton3.DropDownItems.Add(this.ribbonButton14);
+            this.ribbonButton3.DropDownItems.Add(this.ribbonButton15);
+            this.ribbonButton3.DropDownItems.Add(this.ribbonItemGroup1);
+            this.ribbonButton3.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.Image")));
+            this.ribbonButton3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.SmallImage")));
+            this.ribbonButton3.Text = "";
+            this.ribbonButton3.Click += new System.EventHandler(this.ribbonButton3_Click);
+            // 
+            // ribbonButton10
+            // 
+            this.ribbonButton10.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.ribbonButton10.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.Image")));
+            this.ribbonButton10.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.SmallImage")));
             // 
             // ribbonButton14
             // 
-            this.ribbonButton14.Image = global::app.Properties.Resources.fpago;
+            this.ribbonButton14.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.ribbonButton14.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton14.Image")));
             this.ribbonButton14.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton14.SmallImage")));
-            this.ribbonButton14.Text = "";
-            this.ribbonButton14.Click += new System.EventHandler(this.ribbonButton14_Click);
             // 
-            // ribbonPanel18
+            // ribbonButton15
             // 
-            this.ribbonPanel18.Items.Add(this.ribbonButton16);
-            this.ribbonPanel18.Text = "Comprobante de pago";
+            this.ribbonButton15.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.ribbonButton15.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton15.Image")));
+            this.ribbonButton15.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton15.SmallImage")));
+            // 
+            // ribbonItemGroup1
+            // 
+            this.ribbonItemGroup1.Text = "ribbonItemGroup1";
+            // 
+            // ribbonButton20
+            // 
+            this.ribbonButton20.Image = global::app.Properties.Resources.fpago1;
+            this.ribbonButton20.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton20.SmallImage")));
+            this.ribbonButton20.Text = "";
+            this.ribbonButton20.Click += new System.EventHandler(this.ribbonButton20_Click);
             // 
             // ribbonButton16
             // 
@@ -404,37 +479,12 @@
             this.ribbonButton16.Text = "";
             this.ribbonButton16.Click += new System.EventHandler(this.ribbonButton16_Click);
             // 
-            // REPORTES
+            // ribbonButton21
             // 
-            this.REPORTES.Panels.Add(this.ribbonPanel6);
-            this.REPORTES.Panels.Add(this.ribbonPanel13);
-            this.REPORTES.Panels.Add(this.ribbonPanel19);
-            this.REPORTES.Panels.Add(this.ribbonPanel20);
-            this.REPORTES.Text = "REPORTES";
-            // 
-            // ribbonPanel6
-            // 
-            this.ribbonPanel6.Text = "ribbonPanel6";
-            // 
-            // ribbonPanel13
-            // 
-            this.ribbonPanel13.Text = "ribbonPanel13";
-            // 
-            // ribbonPanel19
-            // 
-            this.ribbonPanel19.Text = "ribbonPanel19";
-            // 
-            // ribbonPanel20
-            // 
-            this.ribbonPanel20.Text = "ribbonPanel20";
-            // 
-            // ribbonLabel2
-            // 
-            this.ribbonLabel2.Text = "ribbonLabel2";
-            // 
-            // ribbonPanel21
-            // 
-            this.ribbonPanel21.Text = "ribbonPanel21";
+            this.ribbonButton21.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton21.Image")));
+            this.ribbonButton21.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton21.SmallImage")));
+            this.ribbonButton21.Text = "ribbonButton21";
+            this.ribbonButton21.Click += new System.EventHandler(this.ribbonButton21_Click);
             // 
             // Principal
             // 
@@ -497,7 +547,6 @@
         private System.Windows.Forms.RibbonButton ribbonButton11;
         private System.Windows.Forms.RibbonButton ribbonButton12;
         private System.Windows.Forms.RibbonButton ribbonButton13;
-        private System.Windows.Forms.RibbonButton ribbonButton14;
         private System.Windows.Forms.RibbonButton ribbonButton16;
         private System.Windows.Forms.RibbonButton ribbonButton17;
         private System.Windows.Forms.RibbonButton ribbonButton18;
@@ -507,6 +556,14 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel13;
         private System.Windows.Forms.RibbonPanel ribbonPanel19;
         private System.Windows.Forms.RibbonPanel ribbonPanel20;
+        private System.Windows.Forms.RibbonButton ribbonButton3;
+        private System.Windows.Forms.RibbonButton ribbonButton10;
+        private System.Windows.Forms.RibbonButton ribbonButton14;
+        private System.Windows.Forms.RibbonButton ribbonButton15;
+        private System.Windows.Forms.RibbonItemGroup ribbonItemGroup1;
+        private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
+        private System.Windows.Forms.RibbonButton ribbonButton20;
         private System.Windows.Forms.RibbonPanel ribbonPanel21;
+        private System.Windows.Forms.RibbonButton ribbonButton21;
     }
 }

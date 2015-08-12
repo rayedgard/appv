@@ -93,9 +93,7 @@ namespace app
 
         private void ribbonButton14_Click(object sender, EventArgs e)
         {
-            frmFormaPago fpago = new frmFormaPago(string_ArchivoConfiguracion);
-            fpago.MdiParent = this;
-            fpago.Show();
+            
         }
 
         private void ribbonButton2_Click(object sender, EventArgs e)
@@ -109,6 +107,27 @@ namespace app
         {
             frmVenta vent = new frmVenta(string_ArchivoConfiguracion);
             vent.Show();
+        }
+
+        private void ribbonButton3_Click(object sender, EventArgs e)
+        {
+            frmFormaPago fpago = new frmFormaPago(string_ArchivoConfiguracion);
+            fpago.MdiParent = this;
+            fpago.Show();
+        }
+
+        private void ribbonButton20_Click(object sender, EventArgs e)
+        {
+            frmTipoTarjeta ttarjeta = new frmTipoTarjeta(string_ArchivoConfiguracion);
+            ttarjeta.MdiParent = this;
+            ttarjeta.Show();
+        }
+
+        private void ribbonButton21_Click(object sender, EventArgs e)
+        {
+            prueba p = new prueba();
+            p.MdiParent = this;
+            p.Show();
         }
     }
 }
