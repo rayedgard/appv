@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.gbTiposTarjeta = new System.Windows.Forms.GroupBox();
             this.gbTipoComprobante = new System.Windows.Forms.GroupBox();
             this.gbFormasPago = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.gbTiposTarjeta = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -52,6 +52,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(224, 510);
             this.panel2.TabIndex = 1;
+            // 
+            // gbTiposTarjeta
+            // 
+            this.gbTiposTarjeta.Location = new System.Drawing.Point(6, 291);
+            this.gbTiposTarjeta.Name = "gbTiposTarjeta";
+            this.gbTiposTarjeta.Size = new System.Drawing.Size(212, 145);
+            this.gbTiposTarjeta.TabIndex = 2;
+            this.gbTiposTarjeta.TabStop = false;
+            this.gbTiposTarjeta.Text = "Tipos de tarjeta";
             // 
             // gbTipoComprobante
             // 
@@ -113,15 +122,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(773, 321);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // gbTiposTarjeta
-            // 
-            this.gbTiposTarjeta.Location = new System.Drawing.Point(6, 291);
-            this.gbTiposTarjeta.Name = "gbTiposTarjeta";
-            this.gbTiposTarjeta.Size = new System.Drawing.Size(212, 94);
-            this.gbTiposTarjeta.TabIndex = 2;
-            this.gbTiposTarjeta.TabStop = false;
-            this.gbTiposTarjeta.Text = "Tipos de tarjeta";
             // 
             // frmVenta
             // 

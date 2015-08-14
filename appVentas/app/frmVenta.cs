@@ -24,6 +24,12 @@ namespace app
         List<object> arreglo3= new List<object>();
 
 
+
+
+      
+
+
+
         public frmVenta(string ArchivoCOnfig)
         {
             InitializeComponent();
@@ -42,7 +48,7 @@ namespace app
             DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_formas_pago");
             DataSet datos1 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_comprobante");
             DataSet datos2 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_tarjeta");
-            int conta=0;
+            
             int y = 0;
             foreach (DataRow row in datos.Tables[0].Rows)
             {
@@ -55,14 +61,13 @@ namespace app
 
                 gbFormasPago.Controls.Add(radio);
 
-                if (radio.Checked)
+                if (Convert.ToInt32(radio.Tag) == 1)
                 {
                     radio.Checked = true;
-                    radio.Click += new EventHandler(mimetodo);
                 }
 
                 radio.Click += new EventHandler(mimetodo);
-                conta++;
+               
             }
 
 
@@ -97,7 +102,7 @@ namespace app
 
                 gbTiposTarjeta.Controls.Add(radio2);
 
-                if (radio2.Text == "1")
+                if (Convert.ToInt32(radio2.Tag) == 1)
                 {
                     radio2.Checked = true;
                 }
@@ -115,8 +120,12 @@ namespace app
 
         private void mimetodo(object sender, EventArgs e)
         {
-            MessageBox.Show("ff"+sender);
+            var nombre = (RadioButton)sender;
+            MessageBox.Show(nombre.Text);
         }
+
+
+
 
     }
 }
