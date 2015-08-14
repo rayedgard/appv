@@ -18,15 +18,7 @@ namespace app
         object[] DatosCategoria = new object[4];
         string string_ArchivoConfiguracion;
 
-        //listas para almacenar los datos de los radiobutons 
-        List<object> arreglo1= new List<object>();
-        List<object> arreglo2= new List<object>();
-        List<object> arreglo3= new List<object>();
-
-
-
-
-      
+        List<string> lista = new List<string>();
 
 
 
@@ -55,7 +47,7 @@ namespace app
                 RadioButton radio = new RadioButton();
                 radio.Text = Convert.ToString(row["nombre"]);
                 radio.Tag = Convert.ToString(row["id"]);
-                arreglo1.Add(row["nombre"]);
+    
                 y += 20;
                 radio.Location = new Point(20, y);
 
@@ -64,9 +56,10 @@ namespace app
                 if (Convert.ToInt32(radio.Tag) == 1)
                 {
                     radio.Checked = true;
+                    lista.Add(Convert.ToString(row["nombre"]));
                 }
 
-                radio.Click += new EventHandler(mimetodo);
+                radio.Click += new EventHandler(radiobuton);
                
             }
 
@@ -86,7 +79,9 @@ namespace app
                 if (Convert.ToInt32(radio1.Tag) == 1)
                 {
                     radio1.Checked = true;
+                    lista.Add(Convert.ToString(row1["nombre"]));
                 }
+                radio1.Click += new EventHandler(radiobuton);
             }
 
             /*------PARA GENERAR RADIO BUTUNS------*/
@@ -105,7 +100,9 @@ namespace app
                 if (Convert.ToInt32(radio2.Tag) == 1)
                 {
                     radio2.Checked = true;
+                    lista.Add(Convert.ToString(row2["nombre"]));
                 }
+                radio2.Click += new EventHandler(radiobuton);
             }
 
             ConexionBD.Desconectar();
@@ -118,12 +115,20 @@ namespace app
 
 
 
-        private void mimetodo(object sender, EventArgs e)
+        private void radiobuton(object sender, EventArgs e)
         {
             var nombre = (RadioButton)sender;
-            MessageBox.Show(nombre.Text);
-        }
+           // MessageBox.Show(nombre.Text);
+            if(nombre.Text == "TARJETA")
+            {
+                gbTiposTarjeta.Enabled = true;
+              
+            }
 
+            if(nombre.Checked)
+                MessageBox.Show(nombre.Text);
+        }
+        
 
 
 

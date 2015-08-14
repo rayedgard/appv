@@ -55,9 +55,10 @@
             // 
             // gbTiposTarjeta
             // 
+            this.gbTiposTarjeta.Enabled = false;
             this.gbTiposTarjeta.Location = new System.Drawing.Point(6, 291);
             this.gbTiposTarjeta.Name = "gbTiposTarjeta";
-            this.gbTiposTarjeta.Size = new System.Drawing.Size(212, 145);
+            this.gbTiposTarjeta.Size = new System.Drawing.Size(212, 127);
             this.gbTiposTarjeta.TabIndex = 2;
             this.gbTiposTarjeta.TabStop = false;
             this.gbTiposTarjeta.Text = "Tipos de tarjeta";
