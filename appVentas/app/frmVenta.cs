@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -198,25 +199,47 @@ namespace app
 
         }
         #endregion
+        //variables para guardar los valores de compra
+        int contador=0;
+        //variables para la facturacion
+        double subtotal = 0;
+        double igv = 0;
+        double total = 0;
+        double igvValor = 0.18;
 
-        int contador;
+        //variables para los importes y totales
+        double importe = 0;
+        double pagocon = 0;
+        double cambio = 0;
+        
+        //variables para las promociones y descuentos
+        double descuentoMonto = 0;
+        double descuentoPorcentaje = 0;
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
             DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", tbBusca.Text);
 
 
-            dgvDatos.Rows.Add(contador);
+            dgvDatos.Rows.Add();
             dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
-            dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[contador][0];//id
+            dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[0][0];//id
             dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
-            dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[contador][1];//nombre
+            dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[0][1];//nombre
             dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-            dgvDatos.Rows[contador].Cells[5].Value = product.Tables[0].Rows[contador][2];//precio
-            dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[contador][3];//stock
-            dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[contador][4];//stocminimo
+            double precio=Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
+            dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
+            dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[0][3];//stock
+            dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[0][4];//stocminimo
             contador++;
             ConexionBD.Desconectar();
+
+
+            //calculos
+            importe+=precio;
+            tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
+
 
             tbBusca.Text = "";
         }

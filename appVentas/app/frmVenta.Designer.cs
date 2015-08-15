@@ -29,7 +29,14 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.gbResumen = new System.Windows.Forms.GroupBox();
+            this.gbCostos = new System.Windows.Forms.GroupBox();
+            this.tbCambio = new System.Windows.Forms.TextBox();
+            this.tbPagoCon = new System.Windows.Forms.TextBox();
+            this.tbImporte = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.gbFactura = new System.Windows.Forms.GroupBox();
             this.tbTotal = new System.Windows.Forms.TextBox();
             this.tbIGV = new System.Windows.Forms.TextBox();
             this.tbSubtotal = new System.Windows.Forms.TextBox();
@@ -57,49 +64,152 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
-            this.gbResumen.SuspendLayout();
+            this.gbCostos.SuspendLayout();
+            this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.gbResumen);
+            this.panel2.Controls.Add(this.gbCostos);
+            this.panel2.Controls.Add(this.gbFactura);
             this.panel2.Controls.Add(this.gbTiposTarjeta);
             this.panel2.Controls.Add(this.gbTipoComprobante);
             this.panel2.Controls.Add(this.gbFormasPago);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(984, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(251, 622);
+            this.panel2.Size = new System.Drawing.Size(251, 694);
             this.panel2.TabIndex = 1;
             // 
-            // gbResumen
+            // gbCostos
             // 
-            this.gbResumen.Controls.Add(this.tbTotal);
-            this.gbResumen.Controls.Add(this.tbIGV);
-            this.gbResumen.Controls.Add(this.tbSubtotal);
-            this.gbResumen.Controls.Add(this.label5);
-            this.gbResumen.Controls.Add(this.label4);
-            this.gbResumen.Controls.Add(this.label3);
-            this.gbResumen.Location = new System.Drawing.Point(6, 431);
-            this.gbResumen.Name = "gbResumen";
-            this.gbResumen.Size = new System.Drawing.Size(233, 179);
-            this.gbResumen.TabIndex = 3;
-            this.gbResumen.TabStop = false;
-            this.gbResumen.Text = "Resumen";
+            this.gbCostos.Controls.Add(this.tbCambio);
+            this.gbCostos.Controls.Add(this.tbPagoCon);
+            this.gbCostos.Controls.Add(this.tbImporte);
+            this.gbCostos.Controls.Add(this.label7);
+            this.gbCostos.Controls.Add(this.label8);
+            this.gbCostos.Controls.Add(this.label9);
+            this.gbCostos.Location = new System.Drawing.Point(6, 528);
+            this.gbCostos.Name = "gbCostos";
+            this.gbCostos.Size = new System.Drawing.Size(233, 138);
+            this.gbCostos.TabIndex = 9;
+            this.gbCostos.TabStop = false;
+            this.gbCostos.Text = "Resumen ";
+            // 
+            // tbCambio
+            // 
+            this.tbCambio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbCambio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbCambio.BackColor = System.Drawing.SystemColors.Menu;
+            this.tbCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCambio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbCambio.Location = new System.Drawing.Point(103, 93);
+            this.tbCambio.Name = "tbCambio";
+            this.tbCambio.ReadOnly = true;
+            this.tbCambio.Size = new System.Drawing.Size(124, 35);
+            this.tbCambio.TabIndex = 8;
+            this.tbCambio.Text = "0";
+            this.tbCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbPagoCon
+            // 
+            this.tbPagoCon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbPagoCon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbPagoCon.BackColor = System.Drawing.SystemColors.Menu;
+            this.tbPagoCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPagoCon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbPagoCon.Location = new System.Drawing.Point(103, 52);
+            this.tbPagoCon.Name = "tbPagoCon";
+            this.tbPagoCon.ReadOnly = true;
+            this.tbPagoCon.Size = new System.Drawing.Size(124, 35);
+            this.tbPagoCon.TabIndex = 7;
+            this.tbPagoCon.Text = "0";
+            this.tbPagoCon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbImporte
+            // 
+            this.tbImporte.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbImporte.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbImporte.BackColor = System.Drawing.SystemColors.Menu;
+            this.tbImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbImporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbImporte.Location = new System.Drawing.Point(103, 12);
+            this.tbImporte.Name = "tbImporte";
+            this.tbImporte.ReadOnly = true;
+            this.tbImporte.Size = new System.Drawing.Size(124, 35);
+            this.tbImporte.TabIndex = 6;
+            this.tbImporte.Text = "0";
+            this.tbImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 20);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "CAMBIO";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 20);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "IMPORTE";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(4, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "PAGO CON";
+            // 
+            // gbFactura
+            // 
+            this.gbFactura.Controls.Add(this.tbTotal);
+            this.gbFactura.Controls.Add(this.tbIGV);
+            this.gbFactura.Controls.Add(this.tbSubtotal);
+            this.gbFactura.Controls.Add(this.label5);
+            this.gbFactura.Controls.Add(this.label4);
+            this.gbFactura.Controls.Add(this.label3);
+            this.gbFactura.Enabled = false;
+            this.gbFactura.Location = new System.Drawing.Point(6, 388);
+            this.gbFactura.Name = "gbFactura";
+            this.gbFactura.Size = new System.Drawing.Size(233, 138);
+            this.gbFactura.TabIndex = 3;
+            this.gbFactura.TabStop = false;
+            this.gbFactura.Text = "Datos de Facturación";
             // 
             // tbTotal
             // 
             this.tbTotal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbTotal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbTotal.BackColor = System.Drawing.SystemColors.Menu;
-            this.tbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbTotal.Location = new System.Drawing.Point(103, 114);
+            this.tbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotal.ForeColor = System.Drawing.Color.Blue;
+            this.tbTotal.Location = new System.Drawing.Point(103, 93);
             this.tbTotal.Name = "tbTotal";
-            this.tbTotal.Size = new System.Drawing.Size(124, 45);
+            this.tbTotal.ReadOnly = true;
+            this.tbTotal.Size = new System.Drawing.Size(124, 35);
             this.tbTotal.TabIndex = 8;
             this.tbTotal.Text = "0";
             this.tbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -109,11 +219,12 @@
             this.tbIGV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbIGV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbIGV.BackColor = System.Drawing.SystemColors.Menu;
-            this.tbIGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIGV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbIGV.Location = new System.Drawing.Point(103, 63);
+            this.tbIGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIGV.ForeColor = System.Drawing.Color.Blue;
+            this.tbIGV.Location = new System.Drawing.Point(103, 52);
             this.tbIGV.Name = "tbIGV";
-            this.tbIGV.Size = new System.Drawing.Size(124, 45);
+            this.tbIGV.ReadOnly = true;
+            this.tbIGV.Size = new System.Drawing.Size(124, 35);
             this.tbIGV.TabIndex = 7;
             this.tbIGV.Text = "0";
             this.tbIGV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -123,11 +234,12 @@
             this.tbSubtotal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbSubtotal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbSubtotal.BackColor = System.Drawing.SystemColors.Menu;
-            this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubtotal.ForeColor = System.Drawing.Color.Blue;
             this.tbSubtotal.Location = new System.Drawing.Point(103, 12);
             this.tbSubtotal.Name = "tbSubtotal";
-            this.tbSubtotal.Size = new System.Drawing.Size(124, 45);
+            this.tbSubtotal.ReadOnly = true;
+            this.tbSubtotal.Size = new System.Drawing.Size(124, 35);
             this.tbSubtotal.TabIndex = 6;
             this.tbSubtotal.Text = "0";
             this.tbSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -136,7 +248,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 127);
+            this.label5.Location = new System.Drawing.Point(3, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 5;
@@ -146,7 +258,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 29);
+            this.label4.Location = new System.Drawing.Point(3, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 20);
             this.label4.TabIndex = 4;
@@ -156,7 +268,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 80);
+            this.label3.Location = new System.Drawing.Point(4, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 3;
@@ -165,9 +277,9 @@
             // gbTiposTarjeta
             // 
             this.gbTiposTarjeta.Enabled = false;
-            this.gbTiposTarjeta.Location = new System.Drawing.Point(6, 291);
+            this.gbTiposTarjeta.Location = new System.Drawing.Point(6, 266);
             this.gbTiposTarjeta.Name = "gbTiposTarjeta";
-            this.gbTiposTarjeta.Size = new System.Drawing.Size(233, 127);
+            this.gbTiposTarjeta.Size = new System.Drawing.Size(233, 119);
             this.gbTiposTarjeta.TabIndex = 2;
             this.gbTiposTarjeta.TabStop = false;
             this.gbTiposTarjeta.Text = "Tipos de tarjeta";
@@ -176,14 +288,14 @@
             // 
             this.gbTipoComprobante.Location = new System.Drawing.Point(6, 12);
             this.gbTipoComprobante.Name = "gbTipoComprobante";
-            this.gbTipoComprobante.Size = new System.Drawing.Size(233, 129);
+            this.gbTipoComprobante.Size = new System.Drawing.Size(233, 113);
             this.gbTipoComprobante.TabIndex = 1;
             this.gbTipoComprobante.TabStop = false;
             this.gbTipoComprobante.Text = "Tipo de comprobante";
             // 
             // gbFormasPago
             // 
-            this.gbFormasPago.Location = new System.Drawing.Point(6, 147);
+            this.gbFormasPago.Location = new System.Drawing.Point(6, 127);
             this.gbFormasPago.Name = "gbFormasPago";
             this.gbFormasPago.Size = new System.Drawing.Size(233, 136);
             this.gbFormasPago.TabIndex = 0;
@@ -192,6 +304,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.tbDescuento);
             this.panel1.Controls.Add(this.label6);
@@ -224,7 +340,8 @@
             this.tbDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.tbDescuento.Location = new System.Drawing.Point(123, 12);
             this.tbDescuento.Name = "tbDescuento";
-            this.tbDescuento.Size = new System.Drawing.Size(124, 45);
+            this.tbDescuento.ReadOnly = true;
+            this.tbDescuento.Size = new System.Drawing.Size(246, 45);
             this.tbDescuento.TabIndex = 10;
             this.tbDescuento.Text = "0";
             this.tbDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -278,15 +395,20 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 558);
+            this.panel3.Location = new System.Drawing.Point(0, 630);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(984, 64);
             this.panel3.TabIndex = 3;
             // 
             // dgvDatos
             // 
-            this.dgvDatos.AllowUserToOrderColumns = true;
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -300,13 +422,15 @@
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 125);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(984, 433);
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.Size = new System.Drawing.Size(984, 505);
             this.dgvDatos.TabIndex = 4;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "X";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column4.Width = 20;
@@ -315,47 +439,154 @@
             // 
             this.Column8.HeaderText = "Id";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             this.Column8.Visible = false;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Item";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Producto";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 800;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Cant";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Precio";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Stock";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "StockMinimo";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(388, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 20);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "N° Venta";
+            // 
+            // textBox1
+            // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.BackColor = System.Drawing.SystemColors.Menu;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Red;
+            this.textBox1.Location = new System.Drawing.Point(466, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(124, 35);
+            this.textBox1.TabIndex = 12;
+            this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox2
+            // 
+            this.textBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox2.BackColor = System.Drawing.SystemColors.Menu;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Red;
+            this.textBox2.Location = new System.Drawing.Point(760, 15);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(124, 35);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.Text = "0";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(645, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 20);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "DESCUENTO";
+            // 
+            // textBox3
+            // 
+            this.textBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox3.BackColor = System.Drawing.SystemColors.Menu;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.Blue;
+            this.textBox3.Location = new System.Drawing.Point(332, 17);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(422, 35);
+            this.textBox3.TabIndex = 14;
+            this.textBox3.Text = "0";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(258, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 20);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Cajero/a";
+            // 
+            // textBox4
+            // 
+            this.textBox4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox4.BackColor = System.Drawing.SystemColors.Menu;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Blue;
+            this.textBox4.Location = new System.Drawing.Point(857, 17);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(124, 35);
+            this.textBox4.TabIndex = 16;
+            this.textBox4.Text = "0";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(784, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 20);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "N° Caja";
             // 
             // frmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1235, 622);
+            this.ClientSize = new System.Drawing.Size(1235, 694);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -365,10 +596,14 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmVenta_Load);
             this.panel2.ResumeLayout(false);
-            this.gbResumen.ResumeLayout(false);
-            this.gbResumen.PerformLayout();
+            this.gbCostos.ResumeLayout(false);
+            this.gbCostos.PerformLayout();
+            this.gbFactura.ResumeLayout(false);
+            this.gbFactura.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 
@@ -387,7 +622,7 @@
         private System.Windows.Forms.GroupBox gbTiposTarjeta;
         private System.Windows.Forms.TextBox tbCantidad;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox gbResumen;
+        private System.Windows.Forms.GroupBox gbFactura;
         private System.Windows.Forms.TextBox tbTotal;
         private System.Windows.Forms.TextBox tbIGV;
         private System.Windows.Forms.TextBox tbSubtotal;
@@ -405,5 +640,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.GroupBox gbCostos;
+        private System.Windows.Forms.TextBox tbCambio;
+        private System.Windows.Forms.TextBox tbPagoCon;
+        private System.Windows.Forms.TextBox tbImporte;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label12;
     }
 }
