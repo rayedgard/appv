@@ -19,7 +19,7 @@ namespace app
         string string_ArchivoConfiguracion;
 
 
-        //lista para capturar los datos
+        //lista para capturar los datos9
         List<string> lista = new List<string>();
 
 
@@ -198,6 +198,28 @@ namespace app
 
         }
         #endregion
+
+        int contador;
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", tbBusca.Text);
+
+
+            dgvDatos.Rows.Add(contador);
+            dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+            dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[contador][0];//id
+            dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
+            dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[contador][1];//nombre
+            dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
+            dgvDatos.Rows[contador].Cells[5].Value = product.Tables[0].Rows[contador][2];//precio
+            dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[contador][3];//stock
+            dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[contador][4];//stocminimo
+            contador++;
+            ConexionBD.Desconectar();
+
+            tbBusca.Text = "";
+        }
 
 
 
