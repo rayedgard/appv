@@ -64,6 +64,7 @@ namespace app
                 if (Mensaje == "true")
                 {
                     DataTable tabla = ConexionBD.EjecutarProcedimientoReturnDataSet("usuario_privilegios", Paramentros, Variables).Tables[0];
+                    clases.Cfunciones.Globales.privilegio = Convert.ToInt32(tabla.Rows[0][0]); //para el usuario 
                     privilegio = tabla.Rows[0][0]; //obteniendo el tipo de privilegio
                     usuario = tabla.Rows[0][1];// obteniendo el usuario de acceso
                  

@@ -37,6 +37,13 @@ namespace app
             tbdatabase.Text = configXml_ArchivoConfiguracion.GetValue("principal", "database", "hospital");
             tbuser.Text = configXml_ArchivoConfiguracion.GetValue("principal", "usuario", "root");
             tbpassword.Text = configXml_ArchivoConfiguracion.GetValue("principal", "contrasenia", "mysql");
+            //---para las configuraciones iniciales --------------imprime en panatalla
+            tbNumeroCaja.Text= configXml_ArchivoConfiguracion.GetValue("principal", "numerocaja", "");//---> numero de caja 
+            tbSerieFactura.Text = configXml_ArchivoConfiguracion.GetValue("principal", "seriefactura", "");//---> Serie de factura
+            tbNumeroFactura.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerofactura", "");//---> numero de factura
+            tbSerieBoleta.Text = configXml_ArchivoConfiguracion.GetValue("principal", "serieboleta", "");//---> Serie de boleta
+            tbNumeroBoleta.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numeroboleta", "");//---> numero de boleta
+            //--------fiun configuraciones iniciales -----------
             System.Environment.SpecialFolder folderProgramas = System.Environment.SpecialFolder.ProgramFiles;
             System.Environment.SpecialFolder folderUsuarios = System.Environment.SpecialFolder.CommonApplicationData;
             string ProgramMySQL = Environment.GetFolderPath(folderProgramas) + @"\MySQL\MySQL Server 5.5";
@@ -117,6 +124,13 @@ namespace app
             configXml_ArchivoConfiguracion.SetValue("principal", "database", "asistencia");
             configXml_ArchivoConfiguracion.SetValue("principal", "usuario", "root");
             configXml_ArchivoConfiguracion.SetValue("principal", "contrasenia", "mysql");
+            //---- agregamos estas lineas para la configuracion inicial ---------------
+            configXml_ArchivoConfiguracion.SetValue("principal", "numerocaja", "");//---> numero de caja 
+            configXml_ArchivoConfiguracion.SetValue("principal", "seriefactura", "");//---> Serie de factura
+            configXml_ArchivoConfiguracion.SetValue("principal", "numerofactura", "");//---> numero de factura
+            configXml_ArchivoConfiguracion.SetValue("principal", "serieboleta", "");//---> Serie de boleta
+            configXml_ArchivoConfiguracion.SetValue("principal", "numeroboleta", "");//---> numero de boleta
+            //----------fin codigo aumentado
             configXml_ArchivoConfiguracion.SetValue("principal", "mysqldump", string.Format(@"{0}\bin\mysqldump.exe", ProgramMySQL));
             configXml_ArchivoConfiguracion.SetValue("principal", "mysql", string.Format(@"{0}\bin\mysql.exe", ProgramMySQL));
             configXml_ArchivoConfiguracion.SetValue("principal", "instaloMySQL", 1);
@@ -142,6 +156,13 @@ namespace app
                 configXml_ArchivoConfiguracion.SetValue("principal", "database", tbdatabase.Text.Trim());
                 configXml_ArchivoConfiguracion.SetValue("principal", "usuario", tbuser.Text.Trim());
                 configXml_ArchivoConfiguracion.SetValue("principal", "contrasenia", tbpassword.Text);
+                //----configuracion inicial------------
+                configXml_ArchivoConfiguracion.SetValue("principal", "numerocaja", tbNumeroCaja.Text);
+                configXml_ArchivoConfiguracion.SetValue("principal", "seriefactura", tbSerieFactura.Text);
+                configXml_ArchivoConfiguracion.SetValue("principal", "numerofactura", tbNumeroFactura.Text);
+                configXml_ArchivoConfiguracion.SetValue("principal", "serieboleta", tbSerieBoleta.Text);
+                configXml_ArchivoConfiguracion.SetValue("principal", "numeroboleta", tbNumeroBoleta.Text);
+                //----fin configuracion inicial---------
                 configXml_ArchivoConfiguracion.SetValue("principal", "mysqldump", tbrutamysqldump.Text);
                 configXml_ArchivoConfiguracion.SetValue("principal", "mysql", tbmysql.Text);
                 CargarConfiguracionEquipo();

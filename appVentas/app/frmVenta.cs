@@ -20,8 +20,8 @@ namespace app
         string string_ArchivoConfiguracion;
 
 
-        //lista para capturar los datos9
-        List<string> lista = new List<string>();
+        //lista para COMPROBANTES DE PAGO
+        List<string> comprobante = new List<string>();
 
 
 
@@ -39,13 +39,22 @@ namespace app
 
         private void listaDatos()
         {
+            //adquirimos los datos del usuario
+            tbUsuario.Text = clases.Cfunciones.Globales.nameUser;
+            //obteniendo el numero de caja
+
+            CConfigXML configXml_ArchivoConfiguracion = new CConfigXML(string_ArchivoConfiguracion);
+            tbCaja.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerocaja", "");//---> numero de caja 
+
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            //consultas
             DataSet datos1 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_comprobante");
             DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_formas_pago");
             DataSet datos2 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_tarjeta");
             
 
-            // para generar los radiobutons de FORMAS DE PAGO
+            // para generar los radiobutons de COMPORBANTE DE PAGO-----> FACTURA--- BOLETA ---TICKET 
+
             int y = 0;
             foreach (DataRow row in datos1.Tables[0].Rows)
             {
@@ -58,17 +67,20 @@ namespace app
 
                 gbTipoComprobante.Controls.Add(radio);
 
+
+                
+
                 if (Convert.ToInt32(radio.Tag) == 1)
                 {
                     radio.Checked = true;
-                    lista.Add(Convert.ToString(row["nombre"]));
+                    serieNumero(radio.Text);
                 }
 
-                radio.Click += new EventHandler(radiobuton);
+               radio.Click += new EventHandler(radiobutonComprobante);
                
             }
 
-            // para generar los radiobutons de COMPROBANTES DE PAGO
+            // para generar los radiobutons de FORMAS DE PAGO--> TARJETA ---EFECTIVO--ETC
             int z = 0;
             foreach (DataRow row1 in datos.Tables[0].Rows)
             {
@@ -84,9 +96,9 @@ namespace app
                 if (Convert.ToInt32(radio1.Tag) == 1)
                 {
                     radio1.Checked = true;
-                    lista.Add(Convert.ToString(row1["nombre"]));
+                    //lista.Add(Convert.ToString(row1["id"]));
                 }
-                radio1.Click += new EventHandler(radiobutonTipoTarjeta);
+                radio1.Click += new EventHandler(radiobutonFormasPago);
             }
 
             // para generar los radiobutons de TIPOS DE TARJETA
@@ -105,9 +117,9 @@ namespace app
                 if (Convert.ToInt32(radio2.Tag) == 1)
                 {
                     radio2.Checked = true;
-                    lista.Add(Convert.ToString(row2["nombre"]));
+                    //lista.Add(Convert.ToString(row2["id"]));
                 }
-                radio2.Click += new EventHandler(radiobuton);
+                radio2.Click += new EventHandler(radiobutonTipoTarjeta);
             }
 
             ConexionBD.Desconectar();
@@ -121,30 +133,66 @@ namespace app
             
         }
 
+        /// <summary>
+        /// Metodo para determinar el numero de factura o boleta
+        /// </summary>
+        private void serieNumero(string comprobanteDePago)
+        {
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            //consultas para obtener la serie y el numero
+            DataSet serieNumero = ConexionBD.EjecutarProcedimientoReturnDataSet("venta_serienumero","pNombreComprobante",comprobanteDePago);
+            //PARA OBTENER LOS DATOS DEL TEXTO PLANO
+            CConfigXML configXml_ArchivoConfiguracion = new CConfigXML(string_ArchivoConfiguracion);
+            if (Convert.ToInt32(serieNumero.Tables[0].Rows[0][0]) == 0 && Convert.ToInt32(serieNumero.Tables[0].Rows[0][1]) == 0)
+            {
+                if (comprobanteDePago == "FACTURA")
+                {
+                    tbSerie.Text = configXml_ArchivoConfiguracion.GetValue("principal", "seriefactura", "");//---> Serie de factura
+                    tbNumero.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerofactura", "");//---> numero de factura
+                }
+                else
+                {
+
+                    tbSerie.Text = configXml_ArchivoConfiguracion.GetValue("principal", "serieboleta", "");//---> Serie de boleta
+                    tbNumero.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numeroboleta", "");//---> numero de boleta
+                }
+            }
+            else
+            {
+                tbSerie.Text = serieNumero.Tables[0].Rows[0][0].ToString();//---> Serie de boleta
+                tbNumero.Text = serieNumero.Tables[0].Rows[0][0].ToString();//---> numero de boleta
+            }
+            ConexionBD.Desconectar();
+        }
+
 
         /// <summary>
-        /// METODO PARA CAPTURAR EL EVENTO CLICK
+        /// METODO PARA CAPTURAR EL EVENTO CLICK  para el comprobantre de pago
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radiobuton(object sender, EventArgs e)
+        private void radiobutonComprobante(object sender, EventArgs e)
         {
             var nombre = (RadioButton)sender;
-           // MessageBox.Show(nombre.Text);
-            if (nombre.Text == "TARJETA")
-            {
-                tipo = Tipo.radio;
-            }
-            
-
+         
             if (nombre.Checked)
             {
-                MessageBox.Show(nombre.Text);
-                
+               serieNumero(nombre.Text);
+               if (nombre.Text == "FACTURA")
+               {
+                   tipo = Tipo.comprobantePago;
+                   frmCliente cliente = new frmCliente();
+                   cliente.ShowDialog();
+               }
+               else
+               {
+                   tipo = Tipo.inicio;
+               }
             }
 
             habilitaBoton();
         }
+
 
 
 
@@ -153,12 +201,12 @@ namespace app
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radiobutonTipoTarjeta(object sender, EventArgs e)
+        private void radiobutonFormasPago(object sender, EventArgs e)
         {
             var nombre = (RadioButton)sender;
             if (nombre.Text == "TARJETA")
             {
-                tipo = Tipo.radio;
+                tipo = Tipo.tipoTarjeta;
             }
             else
             {
@@ -169,8 +217,23 @@ namespace app
         }
 
 
-        
 
+        /// <summary>
+        /// METODO PARA CAPTURAR EL EVENTO CLICK para tipos tarjeta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radiobutonTipoTarjeta(object sender, EventArgs e)
+        {
+            var nombre = (RadioButton)sender;
+
+            if (nombre.Checked)
+            {
+                MessageBox.Show(nombre.Text);
+            }
+
+            habilitaBoton();
+        }
 
 
 
@@ -181,7 +244,7 @@ namespace app
         #region ------para las logica de botoners-------------
         private enum Tipo
         {
-            guardar, modificar, eliminar, grid, radio,inicio
+            guardar, modificar, eliminar, grid, tipoTarjeta,inicio, comprobantePago
         }
         private Tipo tipo;
 
@@ -195,7 +258,8 @@ namespace app
             //gbDatosContacto.Enabled = tipo == Tipo.guardar || tipo == Tipo.modificar;
             //dgvDatos.Enabled = dgvDatos.Rows.Count > 0;
 
-            gbTiposTarjeta.Enabled = tipo == Tipo.radio;
+            gbTiposTarjeta.Enabled = tipo == Tipo.tipoTarjeta;
+            gbFactura.Enabled = tipo == Tipo.comprobantePago;
 
         }
         #endregion
