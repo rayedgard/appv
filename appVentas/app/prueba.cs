@@ -7,29 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace app
 {
     public partial class prueba : Form
     {
+
+     
+
         public prueba()
         {
             InitializeComponent();
+            InitializeTimer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        // This variable will be the loop counter.
+        private int counter;
+
+        private void InitializeTimer()
         {
-            MessageBox.Show("hola mundo");
+            // Run this procedure in an appropriate event.
+            counter = 0;
+            Timer1.Interval = 100;
+            Timer1.Enabled = true;
+            // Hook up timer's tick event handler.
+            this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick);
         }
 
-        private void prueba_Load(object sender, EventArgs e)
+
+        private void Timer1_Tick(object sender, System.EventArgs e)
         {
-            this.button1.Click += MiMetodo; 
+            if (counter >= 100)
+            {
+                // Exit loop code.
+                Timer1.Enabled = false;
+                counter = 0;
+            }
+            else
+            {
+                // Run your procedure here.
+                // Increment counter.
+                counter = counter + 1;
+                label1.Text = "Procedures Run: " + counter.ToString();
+            }
         }
-
-        private void MiMetodo(object sender, EventArgs e) 
-        { 
-            MessageBox.Show("Evento generado por " + sender.ToString()); 
-        }
-
+    
     }
 }
