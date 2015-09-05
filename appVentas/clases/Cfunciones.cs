@@ -22,7 +22,10 @@ namespace clases
 
             public static int privilegio;///2 PARA LOS PRIVILEGIOS DE NOMBRADOS Y CAS// 1 PARA LOS PRIVILEGIOS DE INVERSION // 0 PARA LOS PRIVILEGIOS TOTALES
 
-            
+            //valores para la facrurarion
+            public static string ruc;
+            public static string razon;
+            public static string direccion;
             
             //public static void Inicializar()
             //{

@@ -126,10 +126,10 @@ namespace app
         }
         private void frmVenta_Load(object sender, EventArgs e)
         {
-            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            //ConexionBD.Conectar(false, string_ArchivoConfiguracion);
 
-            ConexionBD.autoCompletar(tbBusca, "SELECT nombre,nroserie FROM `producto`");
-            ConexionBD.Desconectar();
+            //ConexionBD.autoCompletar(tbBusca, "SELECT nombre,nroserie FROM `producto`");
+            //ConexionBD.Desconectar();
             
         }
 
@@ -181,8 +181,24 @@ namespace app
                if (nombre.Text == "FACTURA")
                {
                    tipo = Tipo.comprobantePago;
-                   frmCliente cliente = new frmCliente();
+                   frmCliente cliente = new frmCliente(string_ArchivoConfiguracion);
                    cliente.ShowDialog();
+
+                   //Asignamos los valores de facturacion 
+                   lbRuc.Text= Cfunciones.Globales.ruc;
+                   lbRazon.Text = Cfunciones.Globales.razon;
+                   lbDireccion.Text = Cfunciones.Globales.direccion;
+
+                   //calculamos los costos, impuestos y demas
+                   //calculos
+                   subtotal= importe/1.18;
+                   total = importe;
+                   igv = total - subtotal;
+
+                   // asignamos los valores en soles para los texbox
+                   tbTotal.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
+                   tbSubtotal.Text = subtotal.ToString("C2", CultureInfo.CurrentCulture);
+                   tbIGV.Text = igv.ToString("C2", CultureInfo.CurrentCulture);
                }
                else
                {
@@ -282,8 +298,22 @@ namespace app
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            //LimpiarDatos();
+            clases.Cfunciones.Globales.criterio = "PRODUCTOS";
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+            busca.ShowDialog();
+            buscaProducto(busca.valor);
+            
+        }
+        /// <summary>
+        /// METODO DE BUSQUEDA DE PRODUCTO POR MEDIO DE LECTOS DE BARRAS
+        /// </summary>
+        private void buscaProducto(string filtro)
+        {
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-            DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", tbBusca.Text);
+
+
+            DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", filtro);
 
 
             dgvDatos.Rows.Add();
@@ -292,7 +322,7 @@ namespace app
             dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
             dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[0][1];//nombre
             dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-            double precio=Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
+            double precio = Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
             dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
             dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[0][3];//stock
             dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[0][4];//stocminimo
@@ -301,7 +331,7 @@ namespace app
 
 
             //calculos
-            importe+=precio;
+            importe += precio;
             tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
 
 
@@ -309,7 +339,19 @@ namespace app
         }
 
 
+    
 
+        private void tbBusca_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscaProducto(tbBusca.Text);
+
+            }
+        }
+
+
+      
 
 
 

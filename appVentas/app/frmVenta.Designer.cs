@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVenta));
             this.panel2 = new System.Windows.Forms.Panel();
             this.gbCostos = new System.Windows.Forms.GroupBox();
             this.tbCambio = new System.Windows.Forms.TextBox();
@@ -73,12 +74,17 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbRuc = new System.Windows.Forms.Label();
+            this.lbRazon = new System.Windows.Forms.Label();
+            this.lbDireccion = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.gbCostos.SuspendLayout();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -305,6 +311,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.tbNumero);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.tbSerie);
@@ -373,7 +380,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(929, 95);
+            this.btnAgregar.Location = new System.Drawing.Point(675, 94);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 3;
@@ -388,7 +395,7 @@
             this.tbDescuento.BackColor = System.Drawing.SystemColors.Menu;
             this.tbDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbDescuento.Location = new System.Drawing.Point(123, 12);
+            this.tbDescuento.Location = new System.Drawing.Point(470, 8);
             this.tbDescuento.Name = "tbDescuento";
             this.tbDescuento.ReadOnly = true;
             this.tbDescuento.Size = new System.Drawing.Size(246, 45);
@@ -400,7 +407,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 25);
+            this.label6.Location = new System.Drawing.Point(355, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 20);
             this.label6.TabIndex = 9;
@@ -410,7 +417,7 @@
             // 
             this.tbCantidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbCantidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbCantidad.Location = new System.Drawing.Point(849, 97);
+            this.tbCantidad.Location = new System.Drawing.Point(595, 96);
             this.tbCantidad.Name = "tbCantidad";
             this.tbCantidad.Size = new System.Drawing.Size(74, 20);
             this.tbCantidad.TabIndex = 2;
@@ -419,7 +426,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(788, 100);
+            this.label2.Location = new System.Drawing.Point(534, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 2;
@@ -431,8 +438,9 @@
             this.tbBusca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbBusca.Location = new System.Drawing.Point(67, 97);
             this.tbBusca.Name = "tbBusca";
-            this.tbBusca.Size = new System.Drawing.Size(701, 20);
+            this.tbBusca.Size = new System.Drawing.Size(445, 20);
             this.tbBusca.TabIndex = 0;
+            this.tbBusca.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbBusca_KeyUp);
             // 
             // label1
             // 
@@ -590,6 +598,48 @@
             this.Column7.ReadOnly = true;
             this.Column7.Visible = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbDireccion);
+            this.groupBox1.Controls.Add(this.lbRazon);
+            this.groupBox1.Controls.Add(this.lbRuc);
+            this.groupBox1.Location = new System.Drawing.Point(3, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 67);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos de Facturación";
+            // 
+            // lbRuc
+            // 
+            this.lbRuc.AutoSize = true;
+            this.lbRuc.ForeColor = System.Drawing.Color.Blue;
+            this.lbRuc.Location = new System.Drawing.Point(4, 15);
+            this.lbRuc.Name = "lbRuc";
+            this.lbRuc.Size = new System.Drawing.Size(30, 13);
+            this.lbRuc.TabIndex = 1;
+            this.lbRuc.Text = "RUC";
+            // 
+            // lbRazon
+            // 
+            this.lbRazon.AutoSize = true;
+            this.lbRazon.ForeColor = System.Drawing.Color.Blue;
+            this.lbRazon.Location = new System.Drawing.Point(4, 32);
+            this.lbRazon.Name = "lbRazon";
+            this.lbRazon.Size = new System.Drawing.Size(86, 13);
+            this.lbRazon.TabIndex = 2;
+            this.lbRazon.Text = "RAZON SOCIAL";
+            // 
+            // lbDireccion
+            // 
+            this.lbDireccion.AutoSize = true;
+            this.lbDireccion.ForeColor = System.Drawing.Color.Blue;
+            this.lbDireccion.Location = new System.Drawing.Point(4, 49);
+            this.lbDireccion.Name = "lbDireccion";
+            this.lbDireccion.Size = new System.Drawing.Size(66, 13);
+            this.lbDireccion.TabIndex = 3;
+            this.lbDireccion.Text = "DIRECCIÓN";
+            // 
             // frmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,6 +649,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVenta";
             this.Text = "frmVenta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -613,6 +664,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -664,5 +717,9 @@
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbDireccion;
+        private System.Windows.Forms.Label lbRazon;
+        private System.Windows.Forms.Label lbRuc;
     }
 }

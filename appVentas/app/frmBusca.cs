@@ -86,7 +86,16 @@ namespace app
             rotativo();
         }
 
-        private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+     
+        private void dgvDatos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.Close();
+            }
+        }
+
+        private void dgvDatos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -94,13 +103,13 @@ namespace app
                 valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
                 lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                //this.Close();
             }
             catch
             {
             }
         }
 
+    
 
 
     }
