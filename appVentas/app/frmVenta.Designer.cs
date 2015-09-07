@@ -48,6 +48,10 @@
             this.gbTipoComprobante = new System.Windows.Forms.GroupBox();
             this.gbFormasPago = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbDireccion = new System.Windows.Forms.Label();
+            this.lbRazon = new System.Windows.Forms.Label();
+            this.lbRuc = new System.Windows.Forms.Label();
             this.tbNumero = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbSerie = new System.Windows.Forms.TextBox();
@@ -74,17 +78,13 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbRuc = new System.Windows.Forms.Label();
-            this.lbRazon = new System.Windows.Forms.Label();
-            this.lbDireccion = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.gbCostos.SuspendLayout();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -330,6 +330,48 @@
             this.panel1.Size = new System.Drawing.Size(984, 125);
             this.panel1.TabIndex = 2;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbDireccion);
+            this.groupBox1.Controls.Add(this.lbRazon);
+            this.groupBox1.Controls.Add(this.lbRuc);
+            this.groupBox1.Location = new System.Drawing.Point(3, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 67);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos de Facturación";
+            // 
+            // lbDireccion
+            // 
+            this.lbDireccion.AutoSize = true;
+            this.lbDireccion.ForeColor = System.Drawing.Color.Blue;
+            this.lbDireccion.Location = new System.Drawing.Point(4, 49);
+            this.lbDireccion.Name = "lbDireccion";
+            this.lbDireccion.Size = new System.Drawing.Size(66, 13);
+            this.lbDireccion.TabIndex = 3;
+            this.lbDireccion.Text = "DIRECCIÓN";
+            // 
+            // lbRazon
+            // 
+            this.lbRazon.AutoSize = true;
+            this.lbRazon.ForeColor = System.Drawing.Color.Blue;
+            this.lbRazon.Location = new System.Drawing.Point(4, 32);
+            this.lbRazon.Name = "lbRazon";
+            this.lbRazon.Size = new System.Drawing.Size(86, 13);
+            this.lbRazon.TabIndex = 2;
+            this.lbRazon.Text = "RAZON SOCIAL";
+            // 
+            // lbRuc
+            // 
+            this.lbRuc.AutoSize = true;
+            this.lbRuc.ForeColor = System.Drawing.Color.Blue;
+            this.lbRuc.Location = new System.Drawing.Point(4, 15);
+            this.lbRuc.Name = "lbRuc";
+            this.lbRuc.Size = new System.Drawing.Size(30, 13);
+            this.lbRuc.TabIndex = 1;
+            this.lbRuc.Text = "RUC";
+            // 
             // tbNumero
             // 
             this.tbNumero.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -538,15 +580,14 @@
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 125);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.ReadOnly = true;
             this.dgvDatos.Size = new System.Drawing.Size(984, 505);
             this.dgvDatos.TabIndex = 4;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // Column4
             // 
             this.Column4.HeaderText = "X";
             this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column4.Width = 20;
@@ -555,90 +596,41 @@
             // 
             this.Column8.HeaderText = "Id";
             this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
             this.Column8.Visible = false;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Item";
             this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Producto";
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             this.Column2.Width = 800;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Cant";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Precio";
             this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Stock";
             this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "StockMinimo";
             this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
             this.Column7.Visible = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lbDireccion);
-            this.groupBox1.Controls.Add(this.lbRazon);
-            this.groupBox1.Controls.Add(this.lbRuc);
-            this.groupBox1.Location = new System.Drawing.Point(3, 8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 67);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de Facturación";
-            // 
-            // lbRuc
-            // 
-            this.lbRuc.AutoSize = true;
-            this.lbRuc.ForeColor = System.Drawing.Color.Blue;
-            this.lbRuc.Location = new System.Drawing.Point(4, 15);
-            this.lbRuc.Name = "lbRuc";
-            this.lbRuc.Size = new System.Drawing.Size(30, 13);
-            this.lbRuc.TabIndex = 1;
-            this.lbRuc.Text = "RUC";
-            // 
-            // lbRazon
-            // 
-            this.lbRazon.AutoSize = true;
-            this.lbRazon.ForeColor = System.Drawing.Color.Blue;
-            this.lbRazon.Location = new System.Drawing.Point(4, 32);
-            this.lbRazon.Name = "lbRazon";
-            this.lbRazon.Size = new System.Drawing.Size(86, 13);
-            this.lbRazon.TabIndex = 2;
-            this.lbRazon.Text = "RAZON SOCIAL";
-            // 
-            // lbDireccion
-            // 
-            this.lbDireccion.AutoSize = true;
-            this.lbDireccion.ForeColor = System.Drawing.Color.Blue;
-            this.lbDireccion.Location = new System.Drawing.Point(4, 49);
-            this.lbDireccion.Name = "lbDireccion";
-            this.lbDireccion.Size = new System.Drawing.Size(66, 13);
-            this.lbDireccion.TabIndex = 3;
-            this.lbDireccion.Text = "DIRECCIÓN";
             // 
             // frmVenta
             // 
@@ -661,11 +653,11 @@
             this.gbFactura.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

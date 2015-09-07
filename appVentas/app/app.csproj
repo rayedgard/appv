@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuadroMensaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CuadroMensaje.Designer.cs">
+      <DependentUpon>CuadroMensaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBusca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,12 @@
     <Compile Include="frmVenta.Designer.cs">
       <DependentUpon>frmVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="mensaje.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="mensaje.Designer.cs">
+      <DependentUpon>mensaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +224,9 @@
     <Compile Include="prueba.Designer.cs">
       <DependentUpon>prueba.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CuadroMensaje.resx">
+      <DependentUpon>CuadroMensaje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBusca.resx">
       <DependentUpon>frmBusca.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVenta.resx">
       <DependentUpon>frmVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mensaje.resx">
+      <DependentUpon>mensaje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
