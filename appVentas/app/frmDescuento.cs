@@ -155,8 +155,8 @@ namespace app
             clases.Cfunciones.Globales.criterio=cbCriterio.Text;
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            tbProducto.Text=busca.valor;
-            idGrupo = busca.codigo;
+            tbProducto.Text=Cfunciones.Globales.valor;
+            idGrupo = Cfunciones.Globales.codigo;
         }
 
         private void btnBuscaDescuento_Click(object sender, EventArgs e)
@@ -165,8 +165,8 @@ namespace app
             clases.Cfunciones.Globales.criterio = "TIPODESCUENTO";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            tbDescuento.Text = busca.valor;
-            idDescuento = busca.codigo;
+            tbDescuento.Text = Cfunciones.Globales.valor;
+            idDescuento = Cfunciones.Globales.codigo;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

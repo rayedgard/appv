@@ -132,6 +132,12 @@
     <Compile Include="frmFormaPago.Designer.cs">
       <DependentUpon>frmFormaPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItems.Designer.cs">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLoguin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,12 +204,6 @@
     <Compile Include="frmVenta.Designer.cs">
       <DependentUpon>frmVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="mensaje.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="mensaje.Designer.cs">
-      <DependentUpon>mensaje.cs</DependentUpon>
-    </Compile>
     <Compile Include="principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +266,9 @@
     <EmbeddedResource Include="frmFormaPago.resx">
       <DependentUpon>frmFormaPago.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmItems.resx">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLoguin.resx">
       <DependentUpon>frmLoguin.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,9 +301,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVenta.resx">
       <DependentUpon>frmVenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mensaje.resx">
-      <DependentUpon>mensaje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="principal.resx">
       <DependentUpon>principal.cs</DependentUpon>

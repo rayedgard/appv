@@ -15,8 +15,7 @@ namespace app
     {
 
         CConection conBD;
-        public string valor = "";
-        public string codigo = "";
+   
         string string_ArchivoConfiguracion;
 
         object[] datosBusqueda  = new object[2];
@@ -70,11 +69,12 @@ namespace app
         {
             try
             {
-                codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
-                valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
+                Cfunciones.Globales.codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+                Cfunciones.Globales.valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
                 lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
 
                 this.Close();
+              
             }
             catch
             {
@@ -91,7 +91,8 @@ namespace app
         {
             if (e.KeyChar == 13)
             {
-                this.Close();
+               this.Close();
+       
             }
         }
 
@@ -99,8 +100,8 @@ namespace app
         {
             try
             {
-                codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
-                valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
+                Cfunciones.Globales.codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+                Cfunciones.Globales.valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
                 lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
 
             }

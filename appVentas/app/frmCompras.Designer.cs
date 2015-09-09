@@ -28,28 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.gbDatosPersonales = new System.Windows.Forms.GroupBox();
-            this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.rbtFemenino = new System.Windows.Forms.RadioButton();
-            this.rbtMasculino = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbObservacion = new System.Windows.Forms.TextBox();
-            this.tbNroFactura = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCriterio = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.tbSubTotal = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbImpuesto = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tbTotal = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,10 +40,48 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbProveedor = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBuscaProducto = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.gbDatos = new System.Windows.Forms.GroupBox();
+            this.tbToalCompras = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbIGVCompras = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbSubtoralCompras = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscaProveedor = new System.Windows.Forms.Button();
+            this.tbProveedor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
+            this.rbtInactivo = new System.Windows.Forms.RadioButton();
+            this.rbtActivo = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbObservacion = new System.Windows.Forms.TextBox();
+            this.tbNroFactura = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCriterio = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
-            this.gbDatosPersonales.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.gbDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -85,232 +103,11 @@
             this.Column13,
             this.Column12});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 263);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 323);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(789, 258);
-            this.dgvDatos.TabIndex = 19;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnNuevo);
-            this.panel1.Controls.Add(this.btnGuardar);
-            this.panel1.Controls.Add(this.gbDatosPersonales);
-            this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(789, 263);
-            this.panel1.TabIndex = 18;
-            // 
-            // gbDatosPersonales
-            // 
-            this.gbDatosPersonales.Controls.Add(this.cbProveedor);
-            this.gbDatosPersonales.Controls.Add(this.tbTotal);
-            this.gbDatosPersonales.Controls.Add(this.label13);
-            this.gbDatosPersonales.Controls.Add(this.tbImpuesto);
-            this.gbDatosPersonales.Controls.Add(this.label12);
-            this.gbDatosPersonales.Controls.Add(this.tbSubTotal);
-            this.gbDatosPersonales.Controls.Add(this.label1);
-            this.gbDatosPersonales.Controls.Add(this.dtpFechaCompra);
-            this.gbDatosPersonales.Controls.Add(this.label5);
-            this.gbDatosPersonales.Controls.Add(this.rbtFemenino);
-            this.gbDatosPersonales.Controls.Add(this.rbtMasculino);
-            this.gbDatosPersonales.Controls.Add(this.label4);
-            this.gbDatosPersonales.Controls.Add(this.tbObservacion);
-            this.gbDatosPersonales.Controls.Add(this.tbNroFactura);
-            this.gbDatosPersonales.Controls.Add(this.label3);
-            this.gbDatosPersonales.Controls.Add(this.label2);
-            this.gbDatosPersonales.Controls.Add(this.lblCriterio);
-            this.gbDatosPersonales.Enabled = false;
-            this.gbDatosPersonales.Location = new System.Drawing.Point(3, 40);
-            this.gbDatosPersonales.Name = "gbDatosPersonales";
-            this.gbDatosPersonales.Size = new System.Drawing.Size(388, 216);
-            this.gbDatosPersonales.TabIndex = 19;
-            this.gbDatosPersonales.TabStop = false;
-            this.gbDatosPersonales.Text = "Datos Compras";
-            // 
-            // dtpFechaCompra
-            // 
-            this.dtpFechaCompra.Location = new System.Drawing.Point(118, 43);
-            this.dtpFechaCompra.Name = "dtpFechaCompra";
-            this.dtpFechaCompra.Size = new System.Drawing.Size(240, 20);
-            this.dtpFechaCompra.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-3, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Fecha de Compra:";
-            // 
-            // rbtFemenino
-            // 
-            this.rbtFemenino.AutoSize = true;
-            this.rbtFemenino.Location = new System.Drawing.Point(214, 190);
-            this.rbtFemenino.Name = "rbtFemenino";
-            this.rbtFemenino.Size = new System.Drawing.Size(63, 17);
-            this.rbtFemenino.TabIndex = 6;
-            this.rbtFemenino.Text = "Inactivo";
-            this.rbtFemenino.UseVisualStyleBackColor = true;
-            // 
-            // rbtMasculino
-            // 
-            this.rbtMasculino.AutoSize = true;
-            this.rbtMasculino.Checked = true;
-            this.rbtMasculino.Location = new System.Drawing.Point(123, 190);
-            this.rbtMasculino.Name = "rbtMasculino";
-            this.rbtMasculino.Size = new System.Drawing.Size(55, 17);
-            this.rbtMasculino.TabIndex = 5;
-            this.rbtMasculino.TabStop = true;
-            this.rbtMasculino.Text = "Activo";
-            this.rbtMasculino.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Estado";
-            // 
-            // tbObservacion
-            // 
-            this.tbObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbObservacion.Location = new System.Drawing.Point(118, 91);
-            this.tbObservacion.Name = "tbObservacion";
-            this.tbObservacion.Size = new System.Drawing.Size(240, 20);
-            this.tbObservacion.TabIndex = 4;
-            // 
-            // tbNroFactura
-            // 
-            this.tbNroFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNroFactura.Location = new System.Drawing.Point(118, 68);
-            this.tbNroFactura.Name = "tbNroFactura";
-            this.tbNroFactura.Size = new System.Drawing.Size(240, 20);
-            this.tbNroFactura.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Observaciones";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Nro de Factura";
-            // 
-            // lblCriterio
-            // 
-            this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(6, 27);
-            this.lblCriterio.Name = "lblCriterio";
-            this.lblCriterio.Size = new System.Drawing.Size(56, 13);
-            this.lblCriterio.TabIndex = 4;
-            this.lblCriterio.Text = "Proveedor";
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(789, 37);
-            this.lblTitulo.TabIndex = 8;
-            this.lblTitulo.Text = "Compras";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
-            this.btnNuevo.Location = new System.Drawing.Point(396, 96);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
-            this.btnGuardar.Location = new System.Drawing.Point(396, 50);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // tbSubTotal
-            // 
-            this.tbSubTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbSubTotal.Location = new System.Drawing.Point(118, 113);
-            this.tbSubTotal.Name = "tbSubTotal";
-            this.tbSubTotal.Size = new System.Drawing.Size(240, 20);
-            this.tbSubTotal.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Sub Total";
-            // 
-            // tbImpuesto
-            // 
-            this.tbImpuesto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbImpuesto.Location = new System.Drawing.Point(118, 139);
-            this.tbImpuesto.Name = "tbImpuesto";
-            this.tbImpuesto.Size = new System.Drawing.Size(240, 20);
-            this.tbImpuesto.TabIndex = 16;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 144);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 13);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Impuesto:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // tbTotal
-            // 
-            this.tbTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbTotal.Location = new System.Drawing.Point(117, 163);
-            this.tbTotal.Name = "tbTotal";
-            this.tbTotal.Size = new System.Drawing.Size(240, 20);
-            this.tbTotal.TabIndex = 18;
-            this.tbTotal.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(5, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 13);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Observaciones";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.dgvDatos.Size = new System.Drawing.Size(1039, 159);
+            this.dgvDatos.TabIndex = 16;
             // 
             // Column1
             // 
@@ -379,27 +176,379 @@
             this.Column12.ReadOnly = true;
             this.Column12.Visible = false;
             // 
-            // cbProveedor
+            // panel1
             // 
-            this.cbProveedor.FormattingEnabled = true;
-            this.cbProveedor.Location = new System.Drawing.Point(121, 19);
-            this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(121, 21);
-            this.cbProveedor.TabIndex = 20;
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.btnNuevo);
+            this.panel1.Controls.Add(this.btnGuardar);
+            this.panel1.Controls.Add(this.gbDatos);
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1039, 323);
+            this.panel1.TabIndex = 18;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvProductos);
+            this.groupBox1.Controls.Add(this.btnBuscaProducto);
+            this.groupBox1.Location = new System.Drawing.Point(440, 47);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(596, 222);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Items de Compra";
+            // 
+            // dgvProductos
+            // 
+            this.dgvProductos.AllowUserToAddRows = false;
+            this.dgvProductos.AllowUserToDeleteRows = false;
+            this.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewImageColumn2,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.Column9,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dgvProductos.Enabled = false;
+            this.dgvProductos.Location = new System.Drawing.Point(6, 40);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
+            this.dgvProductos.Size = new System.Drawing.Size(564, 179);
+            this.dgvProductos.TabIndex = 13;
+            this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "E";
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn2.Width = 20;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "IdProducto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "IdCompra";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Producto";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Precio compra";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Sub total";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "IGV";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // btnBuscaProducto
+            // 
+            this.btnBuscaProducto.Enabled = false;
+            this.btnBuscaProducto.Location = new System.Drawing.Point(6, 13);
+            this.btnBuscaProducto.Name = "btnBuscaProducto";
+            this.btnBuscaProducto.Size = new System.Drawing.Size(121, 23);
+            this.btnBuscaProducto.TabIndex = 12;
+            this.btnBuscaProducto.Text = "Busca Producto";
+            this.btnBuscaProducto.UseVisualStyleBackColor = true;
+            this.btnBuscaProducto.Click += new System.EventHandler(this.btnBuscaProducrto_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::app.Properties.Resources.aceptar;
+            this.btnNuevo.Location = new System.Drawing.Point(796, 274);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(98, 42);
+            this.btnNuevo.TabIndex = 15;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Image = global::app.Properties.Resources.agregar32;
+            this.btnGuardar.Location = new System.Drawing.Point(923, 274);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(98, 42);
+            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // gbDatos
+            // 
+            this.gbDatos.Controls.Add(this.tbToalCompras);
+            this.gbDatos.Controls.Add(this.label7);
+            this.gbDatos.Controls.Add(this.tbIGVCompras);
+            this.gbDatos.Controls.Add(this.label6);
+            this.gbDatos.Controls.Add(this.tbSubtoralCompras);
+            this.gbDatos.Controls.Add(this.label1);
+            this.gbDatos.Controls.Add(this.btnBuscaProveedor);
+            this.gbDatos.Controls.Add(this.tbProveedor);
+            this.gbDatos.Controls.Add(this.label5);
+            this.gbDatos.Controls.Add(this.dtpFechaCompra);
+            this.gbDatos.Controls.Add(this.rbtInactivo);
+            this.gbDatos.Controls.Add(this.rbtActivo);
+            this.gbDatos.Controls.Add(this.label4);
+            this.gbDatos.Controls.Add(this.tbObservacion);
+            this.gbDatos.Controls.Add(this.tbNroFactura);
+            this.gbDatos.Controls.Add(this.label3);
+            this.gbDatos.Controls.Add(this.label2);
+            this.gbDatos.Controls.Add(this.lblCriterio);
+            this.gbDatos.Enabled = false;
+            this.gbDatos.Location = new System.Drawing.Point(3, 41);
+            this.gbDatos.Name = "gbDatos";
+            this.gbDatos.Size = new System.Drawing.Size(431, 228);
+            this.gbDatos.TabIndex = 0;
+            this.gbDatos.TabStop = false;
+            this.gbDatos.Text = "Datos de Compras";
+            // 
+            // tbToalCompras
+            // 
+            this.tbToalCompras.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbToalCompras.Location = new System.Drawing.Point(119, 188);
+            this.tbToalCompras.Name = "tbToalCompras";
+            this.tbToalCompras.ReadOnly = true;
+            this.tbToalCompras.Size = new System.Drawing.Size(129, 20);
+            this.tbToalCompras.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "Total";
+            // 
+            // tbIGVCompras
+            // 
+            this.tbIGVCompras.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbIGVCompras.Location = new System.Drawing.Point(119, 162);
+            this.tbIGVCompras.Name = "tbIGVCompras";
+            this.tbIGVCompras.ReadOnly = true;
+            this.tbIGVCompras.Size = new System.Drawing.Size(129, 20);
+            this.tbIGVCompras.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(25, 13);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "IGV";
+            // 
+            // tbSubtoralCompras
+            // 
+            this.tbSubtoralCompras.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSubtoralCompras.Location = new System.Drawing.Point(119, 137);
+            this.tbSubtoralCompras.Name = "tbSubtoralCompras";
+            this.tbSubtoralCompras.ReadOnly = true;
+            this.tbSubtoralCompras.Size = new System.Drawing.Size(129, 20);
+            this.tbSubtoralCompras.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Subtotal";
+            // 
+            // btnBuscaProveedor
+            // 
+            this.btnBuscaProveedor.Location = new System.Drawing.Point(374, 12);
+            this.btnBuscaProveedor.Name = "btnBuscaProveedor";
+            this.btnBuscaProveedor.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscaProveedor.TabIndex = 2;
+            this.btnBuscaProveedor.Text = "...";
+            this.btnBuscaProveedor.UseVisualStyleBackColor = true;
+            this.btnBuscaProveedor.Click += new System.EventHandler(this.btnBuscaProducto_Click);
+            // 
+            // tbProveedor
+            // 
+            this.tbProveedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbProveedor.Enabled = false;
+            this.tbProveedor.Location = new System.Drawing.Point(119, 14);
+            this.tbProveedor.Name = "tbProveedor";
+            this.tbProveedor.Size = new System.Drawing.Size(230, 20);
+            this.tbProveedor.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Fecha de Compra:";
+            // 
+            // dtpFechaCompra
+            // 
+            this.dtpFechaCompra.Location = new System.Drawing.Point(119, 38);
+            this.dtpFechaCompra.Name = "dtpFechaCompra";
+            this.dtpFechaCompra.Size = new System.Drawing.Size(278, 20);
+            this.dtpFechaCompra.TabIndex = 3;
+            // 
+            // rbtInactivo
+            // 
+            this.rbtInactivo.AutoSize = true;
+            this.rbtInactivo.Location = new System.Drawing.Point(210, 116);
+            this.rbtInactivo.Name = "rbtInactivo";
+            this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
+            this.rbtInactivo.TabIndex = 7;
+            this.rbtInactivo.Text = "Inactivo";
+            this.rbtInactivo.UseVisualStyleBackColor = true;
+            // 
+            // rbtActivo
+            // 
+            this.rbtActivo.AutoSize = true;
+            this.rbtActivo.Checked = true;
+            this.rbtActivo.Location = new System.Drawing.Point(119, 115);
+            this.rbtActivo.Name = "rbtActivo";
+            this.rbtActivo.Size = new System.Drawing.Size(55, 17);
+            this.rbtActivo.TabIndex = 6;
+            this.rbtActivo.TabStop = true;
+            this.rbtActivo.Text = "Activo";
+            this.rbtActivo.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Estado";
+            // 
+            // tbObservacion
+            // 
+            this.tbObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbObservacion.Location = new System.Drawing.Point(119, 86);
+            this.tbObservacion.Name = "tbObservacion";
+            this.tbObservacion.Size = new System.Drawing.Size(279, 20);
+            this.tbObservacion.TabIndex = 5;
+            // 
+            // tbNroFactura
+            // 
+            this.tbNroFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbNroFactura.Location = new System.Drawing.Point(119, 62);
+            this.tbNroFactura.Name = "tbNroFactura";
+            this.tbNroFactura.Size = new System.Drawing.Size(279, 20);
+            this.tbNroFactura.TabIndex = 4;
+            this.tbNroFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNroFactura_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Observaciones";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Nro de Factura";
+            // 
+            // lblCriterio
+            // 
+            this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Location = new System.Drawing.Point(9, 19);
+            this.lblCriterio.Name = "lblCriterio";
+            this.lblCriterio.Size = new System.Drawing.Size(56, 13);
+            this.lblCriterio.TabIndex = 4;
+            this.lblCriterio.Text = "Proveedor";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(1039, 37);
+            this.lblTitulo.TabIndex = 8;
+            this.lblTitulo.Text = "Compras";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // epValida
+            // 
+            this.epValida.ContainerControl = this;
             // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 521);
+            this.ClientSize = new System.Drawing.Size(1039, 482);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.panel1);
             this.Name = "frmCompras";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCompras";
+            this.Load += new System.EventHandler(this.frmCompras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.gbDatosPersonales.ResumeLayout(false);
-            this.gbDatosPersonales.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.gbDatos.ResumeLayout(false);
+            this.gbDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epValida)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,11 +559,11 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnNuevo;
         public System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.GroupBox gbDatosPersonales;
+        private System.Windows.Forms.GroupBox gbDatos;
         private System.Windows.Forms.DateTimePicker dtpFechaCompra;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton rbtFemenino;
-        private System.Windows.Forms.RadioButton rbtMasculino;
+        private System.Windows.Forms.RadioButton rbtInactivo;
+        private System.Windows.Forms.RadioButton rbtActivo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbObservacion;
         private System.Windows.Forms.TextBox tbNroFactura;
@@ -422,12 +571,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCriterio;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox tbImpuesto;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbSubTotal;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbTotal;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -438,6 +581,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.ComboBox cbProveedor;
+        private System.Windows.Forms.Button btnBuscaProveedor;
+        private System.Windows.Forms.TextBox tbProveedor;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Button btnBuscaProducto;
+        private System.Windows.Forms.TextBox tbToalCompras;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbIGVCompras;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbSubtoralCompras;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.ErrorProvider epValida;
     }
 }

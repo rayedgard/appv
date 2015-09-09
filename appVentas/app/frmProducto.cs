@@ -165,8 +165,8 @@ namespace app
             clases.Cfunciones.Globales.criterio = "CATEGORIA";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            tbCategoria.Text = busca.valor;
-            idcategoria = busca.codigo;
+            tbCategoria.Text = Cfunciones.Globales.valor;
+            idcategoria = Cfunciones.Globales.codigo;
         }
 
         private void btnBuscaUni_Click(object sender, EventArgs e)
@@ -175,8 +175,8 @@ namespace app
             clases.Cfunciones.Globales.criterio = "UNIDADES";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            tbUnidades.Text = busca.valor;
-            idunidades = busca.codigo;
+            tbUnidades.Text = Cfunciones.Globales.valor;
+            idunidades = Cfunciones.Globales.codigo;
         }
 
         private void btnBuscaFisicas_Click(object sender, EventArgs e)
@@ -185,8 +185,8 @@ namespace app
             clases.Cfunciones.Globales.criterio = "FISICAS";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            tbCarFisicas.Text = busca.valor;
-            idfisicas = busca.codigo;
+            tbCarFisicas.Text = Cfunciones.Globales.valor;
+            idfisicas = Cfunciones.Globales.codigo;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

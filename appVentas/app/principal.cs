@@ -129,5 +129,12 @@ namespace app
             p.MdiParent = this;
             p.Show();
         }
+
+        private void ribbonButton7_Click(object sender, EventArgs e)
+        {
+            frmCompras compra = new frmCompras(string_ArchivoConfiguracion);
+            compra.MdiParent = this;
+            compra.Show();
+        }
     }
 }

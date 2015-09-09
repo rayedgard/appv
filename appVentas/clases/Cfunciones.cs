@@ -26,7 +26,18 @@ namespace clases
             public static string ruc;
             public static string razon;
             public static string direccion;
-            
+
+            //para almnacenar 
+            public static string valor = "";
+            public static string codigo = "";
+
+
+            //para almacenar temporalmente los valores de cantidad y precio de compra del producto 
+            public static double precioCompra=0;
+            public static double cantidadCompra =0;
+
+
+
             //public static void Inicializar()
             //{
             //    gbUsuario = "";

@@ -62,8 +62,13 @@
             this.tbSerieBoleta = new System.Windows.Forms.TextBox();
             this.tbNumeroFactura = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbIGV = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.gbInicial.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label13
@@ -180,7 +185,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Firebrick;
-            this.label6.Location = new System.Drawing.Point(114, 211);
+            this.label6.Location = new System.Drawing.Point(241, 261);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(465, 19);
             this.label6.TabIndex = 6;
@@ -239,7 +244,7 @@
             // 
             this.tbmysql.Location = new System.Drawing.Point(182, 157);
             this.tbmysql.Name = "tbmysql";
-            this.tbmysql.Size = new System.Drawing.Size(495, 20);
+            this.tbmysql.Size = new System.Drawing.Size(379, 20);
             this.tbmysql.TabIndex = 2;
             this.tbmysql.Text = "C:\\Archivos de programa\\MySQL\\MySQL Server 5.1\\5.1\\bin\\mysql.exe";
             // 
@@ -247,7 +252,7 @@
             // 
             this.tbrutamysqldump.Location = new System.Drawing.Point(182, 130);
             this.tbrutamysqldump.Name = "tbrutamysqldump";
-            this.tbrutamysqldump.Size = new System.Drawing.Size(495, 20);
+            this.tbrutamysqldump.Size = new System.Drawing.Size(379, 20);
             this.tbrutamysqldump.TabIndex = 2;
             this.tbrutamysqldump.Text = "C:\\Archivos de programa\\MySQL\\MySQL Server 5.1\\5.1\\bin\\mysqldump.exe";
             // 
@@ -262,7 +267,7 @@
             // 
             // btnCambiaDatos
             // 
-            this.btnCambiaDatos.Location = new System.Drawing.Point(201, 186);
+            this.btnCambiaDatos.Location = new System.Drawing.Point(328, 236);
             this.btnCambiaDatos.Name = "btnCambiaDatos";
             this.btnCambiaDatos.Size = new System.Drawing.Size(264, 23);
             this.btnCambiaDatos.TabIndex = 3;
@@ -273,8 +278,6 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.gbInicial);
-            this.groupBox2.Controls.Add(this.btnCambiaDatos);
             this.groupBox2.Controls.Add(this.tbuser);
             this.groupBox2.Controls.Add(this.tbrutamysqldump);
             this.groupBox2.Controls.Add(this.tbmysql);
@@ -283,7 +286,6 @@
             this.groupBox2.Controls.Add(this.tbpassword);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label19);
@@ -296,25 +298,24 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Location = new System.Drawing.Point(2, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(689, 241);
+            this.groupBox2.Size = new System.Drawing.Size(568, 192);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // gbInicial
             // 
+            this.gbInicial.BackColor = System.Drawing.Color.White;
             this.gbInicial.Controls.Add(this.label5);
             this.gbInicial.Controls.Add(this.tbSerieFactura);
             this.gbInicial.Controls.Add(this.label4);
-            this.gbInicial.Controls.Add(this.label1);
-            this.gbInicial.Controls.Add(this.tbNumeroCaja);
             this.gbInicial.Controls.Add(this.label2);
             this.gbInicial.Controls.Add(this.tbNumeroBoleta);
             this.gbInicial.Controls.Add(this.label3);
             this.gbInicial.Controls.Add(this.tbSerieBoleta);
             this.gbInicial.Controls.Add(this.tbNumeroFactura);
-            this.gbInicial.Location = new System.Drawing.Point(307, 11);
+            this.gbInicial.Location = new System.Drawing.Point(576, 40);
             this.gbInicial.Name = "gbInicial";
-            this.gbInicial.Size = new System.Drawing.Size(367, 109);
+            this.gbInicial.Size = new System.Drawing.Size(362, 109);
             this.gbInicial.TabIndex = 10;
             this.gbInicial.TabStop = false;
             this.gbInicial.Text = "Configuración Inicial";
@@ -324,7 +325,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(6, 67);
+            this.label5.Location = new System.Drawing.Point(6, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 16);
             this.label5.TabIndex = 16;
@@ -335,7 +336,7 @@
             this.tbSerieFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbSerieFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSerieFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbSerieFactura.Location = new System.Drawing.Point(126, 38);
+            this.tbSerieFactura.Location = new System.Drawing.Point(115, 20);
             this.tbSerieFactura.Name = "tbSerieFactura";
             this.tbSerieFactura.Size = new System.Drawing.Size(105, 23);
             this.tbSerieFactura.TabIndex = 10;
@@ -346,7 +347,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(6, 41);
+            this.label4.Location = new System.Drawing.Point(6, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 16);
             this.label4.TabIndex = 15;
@@ -356,8 +357,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.Location = new System.Drawing.Point(174, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 7;
@@ -368,18 +369,19 @@
             this.tbNumeroCaja.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNumeroCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNumeroCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbNumeroCaja.Location = new System.Drawing.Point(126, 12);
+            this.tbNumeroCaja.Location = new System.Drawing.Point(281, 18);
             this.tbNumeroCaja.Name = "tbNumeroCaja";
-            this.tbNumeroCaja.Size = new System.Drawing.Size(105, 23);
+            this.tbNumeroCaja.Size = new System.Drawing.Size(70, 23);
             this.tbNumeroCaja.TabIndex = 14;
             this.tbNumeroCaja.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbNumeroCaja.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(159, 90);
+            this.label2.Location = new System.Drawing.Point(148, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 8;
@@ -390,18 +392,19 @@
             this.tbNumeroBoleta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNumeroBoleta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNumeroBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbNumeroBoleta.Location = new System.Drawing.Point(239, 64);
+            this.tbNumeroBoleta.Location = new System.Drawing.Point(228, 46);
             this.tbNumeroBoleta.Name = "tbNumeroBoleta";
             this.tbNumeroBoleta.Size = new System.Drawing.Size(123, 23);
             this.tbNumeroBoleta.TabIndex = 13;
             this.tbNumeroBoleta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbNumeroBoleta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(270, 90);
+            this.label3.Location = new System.Drawing.Point(259, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 16);
             this.label3.TabIndex = 9;
@@ -412,7 +415,7 @@
             this.tbSerieBoleta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbSerieBoleta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSerieBoleta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbSerieBoleta.Location = new System.Drawing.Point(126, 64);
+            this.tbSerieBoleta.Location = new System.Drawing.Point(115, 46);
             this.tbSerieBoleta.Name = "tbSerieBoleta";
             this.tbSerieBoleta.Size = new System.Drawing.Size(105, 23);
             this.tbSerieBoleta.TabIndex = 12;
@@ -423,11 +426,12 @@
             this.tbNumeroFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNumeroFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbNumeroFactura.Location = new System.Drawing.Point(239, 38);
+            this.tbNumeroFactura.Location = new System.Drawing.Point(228, 20);
             this.tbNumeroFactura.Name = "tbNumeroFactura";
             this.tbNumeroFactura.Size = new System.Drawing.Size(123, 23);
             this.tbNumeroFactura.TabIndex = 11;
             this.tbNumeroFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbNumeroFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
             // 
             // lblTitulo
             // 
@@ -437,18 +441,71 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(694, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(942, 37);
             this.lblTitulo.TabIndex = 9;
             this.lblTitulo.Text = "Administración de RED";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.tbIGV);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tbNumeroCaja);
+            this.groupBox1.Location = new System.Drawing.Point(576, 155);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(362, 75);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Configuración permanente";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Green;
+            this.label21.Location = new System.Drawing.Point(7, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(33, 16);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "IGV";
+            // 
+            // tbIGV
+            // 
+            this.tbIGV.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbIGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIGV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbIGV.Location = new System.Drawing.Point(48, 18);
+            this.tbIGV.Name = "tbIGV";
+            this.tbIGV.Size = new System.Drawing.Size(59, 23);
+            this.tbIGV.TabIndex = 14;
+            this.tbIGV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbIGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaNumeros);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(110, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 16);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "%";
             // 
             // frmCambiarIP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 284);
+            this.ClientSize = new System.Drawing.Size(942, 287);
+            this.Controls.Add(this.btnCambiaDatos);
+            this.Controls.Add(this.gbInicial);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.label6);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -460,6 +517,8 @@
             this.groupBox2.PerformLayout();
             this.gbInicial.ResumeLayout(false);
             this.gbInicial.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -499,6 +558,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbInicial;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox tbIGV;
+        private System.Windows.Forms.Label label10;
 
     }
 }

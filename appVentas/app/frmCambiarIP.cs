@@ -43,6 +43,8 @@ namespace app
             tbNumeroFactura.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerofactura", "");//---> numero de factura
             tbSerieBoleta.Text = configXml_ArchivoConfiguracion.GetValue("principal", "serieboleta", "");//---> Serie de boleta
             tbNumeroBoleta.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numeroboleta", "");//---> numero de boleta
+            //----cinfiguraciones estaticas------------------
+            tbIGV.Text = configXml_ArchivoConfiguracion.GetValue("principal", "igv", "");//---> IGV
             //--------fiun configuraciones iniciales -----------
             System.Environment.SpecialFolder folderProgramas = System.Environment.SpecialFolder.ProgramFiles;
             System.Environment.SpecialFolder folderUsuarios = System.Environment.SpecialFolder.CommonApplicationData;
@@ -130,6 +132,8 @@ namespace app
             configXml_ArchivoConfiguracion.SetValue("principal", "numerofactura", "");//---> numero de factura
             configXml_ArchivoConfiguracion.SetValue("principal", "serieboleta", "");//---> Serie de boleta
             configXml_ArchivoConfiguracion.SetValue("principal", "numeroboleta", "");//---> numero de boleta
+            //---------configuracion estatica
+            configXml_ArchivoConfiguracion.SetValue("principal", "igv", "");//---> IGV
             //----------fin codigo aumentado
             configXml_ArchivoConfiguracion.SetValue("principal", "mysqldump", string.Format(@"{0}\bin\mysqldump.exe", ProgramMySQL));
             configXml_ArchivoConfiguracion.SetValue("principal", "mysql", string.Format(@"{0}\bin\mysql.exe", ProgramMySQL));
@@ -162,6 +166,8 @@ namespace app
                 configXml_ArchivoConfiguracion.SetValue("principal", "numerofactura", tbNumeroFactura.Text);
                 configXml_ArchivoConfiguracion.SetValue("principal", "serieboleta", tbSerieBoleta.Text);
                 configXml_ArchivoConfiguracion.SetValue("principal", "numeroboleta", tbNumeroBoleta.Text);
+                //------configuracion estatica---------
+                configXml_ArchivoConfiguracion.SetValue("principal", "igv", tbIGV.Text);
                 //----fin configuracion inicial---------
                 configXml_ArchivoConfiguracion.SetValue("principal", "mysqldump", tbrutamysqldump.Text);
                 configXml_ArchivoConfiguracion.SetValue("principal", "mysql", tbmysql.Text);
@@ -170,7 +176,20 @@ namespace app
                 this.Close();
             }
         }
-
+        /// <summary>
+        /// Metodo para validad numeros enteros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void validaNumeros(object sender, KeyPressEventArgs e)
+        {
+            ValidarDatos.texto_KeyPress(((TextBox)sender).Text, "Numeros", sender, e);
+            if (e.KeyChar == '\r')
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
       
     }
 }

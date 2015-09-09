@@ -18,6 +18,7 @@ namespace app
         CValidacion ValidarDatos;
         object[] DatosCategoria = new object[4];
         string string_ArchivoConfiguracion;
+        double IGV;//igv definido como impuesto
 
 
         //lista para COMPROBANTES DE PAGO
@@ -42,10 +43,11 @@ namespace app
         {
             //adquirimos los datos del usuario
             tbUsuario.Text = clases.Cfunciones.Globales.nameUser;
-            //obteniendo el numero de caja
-
+           
+            //obteniendo el numero de caja e IGV
             CConfigXML configXml_ArchivoConfiguracion = new CConfigXML(string_ArchivoConfiguracion);
             tbCaja.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerocaja", "");//---> numero de caja 
+            IGV = Convert.ToDouble(configXml_ArchivoConfiguracion.GetValue("principal", "igv", ""));//---> igv 
 
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
             //consultas
@@ -192,7 +194,7 @@ namespace app
 
                    //calculamos los costos, impuestos y demas
                    //calculos
-                   subtotal= importe/1.18;
+                   subtotal= importe/((IGV/100)+1);//calculo del subtotal
                    total = importe;
                    igv = total - subtotal;
 
@@ -284,7 +286,7 @@ namespace app
         int contador=0;
         //variables para la facturacion
         double subtotal = 0;
-        double igv = 0;
+        double igv = 0;//igv calculado
         double total = 0;
         double igvValor = 0.18;
 
@@ -303,8 +305,9 @@ namespace app
             clases.Cfunciones.Globales.criterio = "PRODUCTOS";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
-            busca.Dispose();
-            buscaProducto(busca.valor);
+
+            buscaProducto(Cfunciones.Globales.valor);
+
             
         }
         /// <summary>
@@ -314,77 +317,81 @@ namespace app
         {
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
 
-
-
-
-
-
-
-
-
-            DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", filtro);
-
-            try
+            if (filtro.Length > 2)
             {
-                if (product.Tables[0].Rows.Count > 0)
+                DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", filtro);
+
+                //eliminamos datos de busqueta VALOR Y CODIGO para no generar error
+                Cfunciones.Globales.valor = "";
+                Cfunciones.Globales.codigo = "";
+
+                try
                 {
-
-                    if (Convert.ToInt32(product.Tables[0].Rows[0][3])>0)
+                    if (product.Tables[0].Rows.Count > 0)
                     {
-                        dgvDatos.Rows.Add();
 
-                        dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
-                        dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[0][0];//id
-                        dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
-                        dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[0][1];//nombre
-                        dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-                        double precio = Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
-                        dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
-                        dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[0][3];//stock
-                        dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[0][4];//stocminimo
-                        contador++;
-
-                        if (Convert.ToInt32(product.Tables[0].Rows[0][4]) >= Convert.ToInt32(product.Tables[0].Rows[0][3]))
+                        if (Convert.ToInt32(product.Tables[0].Rows[0][3]) > 0)
                         {
-                            CuadroMensaje men = new CuadroMensaje();
-                            men.mensaje = "PRECAUCIÓN, ESTOCK MINIMO EN ALERTA";
-                            men.stock = product.Tables[0].Rows[0][3].ToString();
+                            dgvDatos.Rows.Add();
 
-                            men.ShowDialog();
-                           
-                           
+                            dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+                            dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[0][0];//id
+                            dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
+                            dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[0][1];//nombred
+                            dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
+                            double precio = Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
+                            dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
+                            dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[0][3];//stock
+                            dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[0][4];//stocminimo
+                            contador++;
+
+                            if (Convert.ToInt32(product.Tables[0].Rows[0][4]) >= Convert.ToInt32(product.Tables[0].Rows[0][3]))
+                            {
+
+                                CuadroMensaje men = new CuadroMensaje();
+                                men.mensaje = "PRECAUCIÓN, STOCK MINIMO DEL PRODUCTO";
+                                men.stock = product.Tables[0].Rows[0][3].ToString();
+                                men.ShowDialog();
+
+                            }
+                            //calculos
+                            importe += precio;
+                            tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
+
                         }
-                       //calculos
-                        importe += precio;
-                        tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
+                        else
+                        {
 
+                            CuadroMensaje men = new CuadroMensaje();
+                            men.mensaje = "PRECAUCIÓN, NO TEANEMOS STOCK DE ESTE PRODUCTO POR EL MOMENTO";
+                            men.stock = product.Tables[0].Rows[0][3].ToString();
+                            men.ShowDialog();
+
+                        }
+                            
+
+                        tbBusca.Text = "";
+                        tbBusca.Focus();
+                        tbBusca.Select();
                     }
                     else
-                        MessageBox.Show("PRECAUCIÓN, NO TEANEMOS STOCK DE ESTE PRODUCTO POR EL MOMENTO\r" + product.Tables[0].Rows[0][3].ToString(), "PRECAUCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    
-                    
-                    
-                    tbBusca.Text = "";
-                    tbBusca.Focus();
-                    tbBusca.Select();
-                }
-                else
-                {
-                    CuadroMensaje men = new CuadroMensaje();
-                    men.mensaje = "ESTE PRODUCTO ESTA DESCONTINUADO O DESHABILITADO";
-                    
-                    men.ShowDialog();
+                    {
+                        CuadroMensaje men = new CuadroMensaje();
+                        men.mensaje = "ESTE PRODUCTO ESTA DESCONTINUADO O DESHABILITADO";
+                        men.stock = "DESHABILITADO";
+                        men.ShowDialog();
+
+                    }
+
 
                 }
-                    
-                
-            }
-            catch//(Exception ex)
-            {
-                
+                catch//(Exception ex)
+                {
+
+                }
             }
              ConexionBD.Desconectar();
-
+    
         }
 
 
