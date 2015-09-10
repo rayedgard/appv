@@ -17,7 +17,8 @@ namespace app
 
         CConection ConexionBD;
         CValidacion ValidarDatos;
-        object[] DatosCategoria = new object[4];
+        object[] DatosCompra = new object[9];
+        object[] DatosProducto = new object[7];
         string string_ArchivoConfiguracion;
         string idProveedor;
         double IGV; //igv definido coo impuesto
@@ -31,7 +32,7 @@ namespace app
             ConexionBD = new CConection();
             ValidarDatos = new CValidacion();
 
-            //listar();
+            listarCompras();
             listaDatos();
         }
 
@@ -51,6 +52,60 @@ namespace app
             ConexionBD.Desconectar();
 
         }
+
+
+        /// <summary>
+        /// metodo que lista las compras realizadas
+        /// </summary>
+        private void listarCompras()
+        {
+
+            //Cargar areas
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            dgvDatos.Rows.Clear();
+
+
+            DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("compras_lista");
+
+            
+            if (datos.Tables[0].Rows.Count >= 1)
+            {
+
+                dgvDatos.Rows.Add(datos.Tables[0].Rows.Count);
+
+                for (int i = 0; i < datos.Tables[0].Rows.Count; i++)
+                {
+                    dgvDatos.Rows[i].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.edit_button);
+                    dgvDatos.Rows[i].Cells[1].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+                    dgvDatos.Rows[i].Cells[2].Value = datos.Tables[0].Rows[i][0];//id
+                    dgvDatos.Rows[i].Cells[3].Value = datos.Tables[0].Rows[i][1];//id Proveedor
+                    dgvDatos.Rows[i].Cells[4].Value = datos.Tables[0].Rows[i][2];//proveedor nombre
+                    dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//fecha compra
+                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//numero factura
+                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//observacion
+                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//subtotal
+                    dgvDatos.Rows[i].Cells[9].Value = datos.Tables[0].Rows[i][7];//impuesto
+                    dgvDatos.Rows[i].Cells[10].Value = datos.Tables[0].Rows[i][8];//total
+                    dgvDatos.Rows[i].Cells[11].Value = datos.Tables[0].Rows[i][9];//estado
+                    if (Convert.ToInt32(datos.Tables[0].Rows[i][9]) == 1)
+                    {
+                        dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                        dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
+                    }
+
+                }
+            }
+            ConexionBD.Desconectar();
+        }
+
+
+
+
+
+
+
+
+
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -114,9 +169,9 @@ namespace app
                             double subTotal = precioTotal / 1.18;//calculo momentaneo hasta la configuracion de igv 
                             double igv = precioTotal - subTotal; //impuesto disgregado por producto
 
-                            dgvProductos.Rows[contador].Cells[6].Value = subTotal.ToString("C2", CultureInfo.CurrentCulture);//subtoral
-                            dgvProductos.Rows[contador].Cells[7].Value = igv.ToString("C2", CultureInfo.CurrentCulture);//subtoral
-                            dgvProductos.Rows[contador].Cells[8].Value = precioTotal.ToString("C2", CultureInfo.CurrentCulture);//subtoral
+                            dgvProductos.Rows[contador].Cells[6].Value = subTotal;//subtoral
+                            dgvProductos.Rows[contador].Cells[7].Value = igv;//subtoral
+                            dgvProductos.Rows[contador].Cells[8].Value = precioTotal;//subtoral
                             contador++;
 
                             
@@ -186,8 +241,7 @@ namespace app
         {
             if (validaError(tbProveedor, "Seleccione un Proveedor") && validaError(tbNroFactura , "Ingrese el número de factura de compra") && validaErrorDGV(dgvProductos, "Debe agregar al menos un producto"))
             {
-                //GuardarDatos();
-                MessageBox.Show("entro para agregar","mesaje");
+                GuardarDatos();
             }
         }
 
@@ -240,9 +294,102 @@ namespace app
         #endregion
 
 
+        private void GuardarDatos()
+        {
+
+            if (DatosCompra == null || DatosCompra[0] == null)
+            {
+                DatosCompra = new object[9];
+                DatosCompra[0] = "0";
+            }
+            DatosCompra[0] = DatosCompra[0].ToString().Trim();
+            DatosCompra[1] = idProveedor;
+            DatosCompra[2] = ConexionBD.FechaFormatoMySQL(dtpFechaCompra.Value, 0);
+            DatosCompra[3] = tbNroFactura.Text;
+            DatosCompra[4] = tbObservacion.Text;
+            DatosCompra[5] = subtoralCompra;
+            DatosCompra[6] = igvCompra;
+            DatosCompra[7] = totalCompra;
+            if (rbtActivo.Checked)
+                DatosCompra[8] = 0;
+            else
+                DatosCompra[8] = 1;
+            /*-----PROCESO DE AGREGAR DATOS A TABLA PORDUCTOPORCOMPRAS---------*/
+           
+           
+            object[] NombresCompras = { "pId", "pIdProveedor", "pFechaCompra", "pNroFactura", "pObservacion", "pSubtotal", "pImpuesto", "pTotal", "pEstado"};
+
+            ConexionBD.Conectar(true, string_ArchivoConfiguracion);
+            bool SeGuardo = false;
+            try
+            {
+                //CODIGO PARA ALMACENAR LA LISTA DE PRODUCTOS ADJUNTOS DE DATAGRIDVIEW 
+                for (int i = 0; i < dgvProductos.Rows.Count; i++)
+                {
+
+                    DatosProducto[0] = dgvProductos.Rows[i].Cells[1].Value.ToString();
+                    DatosProducto[1] = dgvProductos.Rows[i].Cells[2].Value.ToString();
+                    DatosProducto[2] = dgvProductos.Rows[i].Cells[4].Value.ToString();
+                    DatosProducto[3] = dgvProductos.Rows[i].Cells[5].Value.ToString();
+                    DatosProducto[4] = dgvProductos.Rows[i].Cells[6].Value.ToString();
+                    DatosProducto[5] = dgvProductos.Rows[i].Cells[7].Value.ToString();
+                    DatosProducto[6] = dgvProductos.Rows[i].Cells[8].Value.ToString();
+                     object[] NombresProducto = { "pIdProducto", "pIdCompra", "pCantidad", "pPrecioCompra", "pSubtotal", "pIgv", "pPrecioTotal"};
+
+
+                     ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_guarda", DatosProducto, NombresProducto);
+                    
+                }
+                ConexionBD.EjecutarProcedimientoReturnVoid("compras_guarda", NombresCompras, DatosCompra);
+                ConexionBD.COMMIT();
+                SeGuardo = true;
+                listarCompras();
+                tipo = Tipo.guardar;
+                habilitaBoton();
+            }
+            catch//(Exception ex)
+            {
+                ConexionBD.ROLLBACK();
+                SeGuardo = false;
+                //MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionBD.Desconectar();
+            }
+
+            if (SeGuardo)
+            {
+                MessageBox.Show("LOS DATOS SE GUARDARON EXITOSAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarDatos();
+                
+            }
+            else
+                MessageBox.Show("ERROR AL GUARDAR LOS DATOS, INTENTE NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            LimpiarDatos();
+        }
 
 
 
+        /// <summary>
+        /// METODO PARA LIMPIAR FORM
+        /// </summary>
+        private void LimpiarDatos()
+        {
+           
+            tbProveedor.Text = "";
+            dtpFechaCompra.Value = DateTime.Now;
+            tbNroFactura.Text = "";
+            rbtActivo.Checked = true;
+
+            tbSubtoralCompras.Text = "0";
+            tbIGVCompras.Text = "0";
+            tbToalCompras.Text = "0";
+
+            dgvProductos.Rows.Clear();
+        }
 
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -250,14 +397,7 @@ namespace app
             gbDatos.Enabled = true; 
         }
 
-        private void btnBuscaProducto_Click(object sender, EventArgs e)
-        {
-            clases.Cfunciones.Globales.criterio = "PROVEEDOR";
-            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
-            busca.ShowDialog();
-            tbProveedor.Text = Cfunciones.Globales.valor;//nombre del proveedor
-            idProveedor = Cfunciones.Globales.codigo;//codigo id del proveedor
-        }
+    
 
         private void frmCompras_Load(object sender, EventArgs e)
         {
@@ -295,6 +435,15 @@ namespace app
 
                 }
             }
+        }
+
+        private void btnBuscaProveedor_Click(object sender, EventArgs e)
+        {
+            clases.Cfunciones.Globales.criterio = "PROVEEDOR";
+            frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
+            busca.ShowDialog();
+            tbProveedor.Text = Cfunciones.Globales.valor;//nombre del proveedor
+            idProveedor = Cfunciones.Globales.codigo;//codigo id del proveedor
         }
     }
 }
