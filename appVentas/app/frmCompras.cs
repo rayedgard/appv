@@ -98,29 +98,42 @@ namespace app
             ConexionBD.Desconectar();
         }
 
-
-
-
-
-
-
-
-
-
-        private void label12_Click(object sender, EventArgs e)
+        /// <summary>
+        /// metodo que lista los productos comprados en una compra determinada
+        /// </summary>
+        private void listaProducto(string idCompras)
         {
+            //Cargar areas
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            dgvProductos.Rows.Clear();
 
+            DataSet datosProductos = ConexionBD.EjecutarProcedimientoReturnDataSet("compraxproducto_lista", "pIdCompra", idCompras);
+
+            if (datosProductos.Tables[0].Rows.Count >= 1)
+            {
+
+                dgvProductos.Rows.Add(datosProductos.Tables[0].Rows.Count);
+
+                for (int i = 0; i < datosProductos.Tables[0].Rows.Count; i++)
+                {
+                    dgvProductos.Rows[i].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+                    dgvProductos.Rows[i].Cells[1].Value = datosProductos.Tables[0].Rows[i][0];//id producto
+                    dgvProductos.Rows[i].Cells[2].Value = datosProductos.Tables[0].Rows[i][1];//id compra
+                    dgvProductos.Rows[i].Cells[3].Value = datosProductos.Tables[0].Rows[i][2];//producto
+                    dgvProductos.Rows[i].Cells[4].Value = datosProductos.Tables[0].Rows[i][3];//cantidad
+                    dgvProductos.Rows[i].Cells[5].Value = datosProductos.Tables[0].Rows[i][4];//precio compra
+                    dgvProductos.Rows[i].Cells[6].Value = datosProductos.Tables[0].Rows[i][5];//subtoral
+                    dgvProductos.Rows[i].Cells[7].Value = datosProductos.Tables[0].Rows[i][6];//igv
+                    dgvProductos.Rows[i].Cells[8].Value = datosProductos.Tables[0].Rows[i][7];//total
+                 
+                }
+            }
+            ConexionBD.Desconectar();
         }
 
-        private void label13_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnBuscaProducrto_Click(object sender, EventArgs e)
         {
@@ -133,6 +146,12 @@ namespace app
             items.ShowDialog();
 
             buscaProducto(Cfunciones.Globales.valor, Cfunciones.Globales.codigo, Cfunciones.Globales.precioCompra, Cfunciones.Globales.cantidadCompra);
+            //eliminamos los valores para nogenerar duplicidad
+            Cfunciones.Globales.valor="";
+            Cfunciones.Globales.codigo="";
+            Cfunciones.Globales.precioCompra=0;
+            Cfunciones.Globales.cantidadCompra = 0;
+
             tipo = Tipo.guardar;
             habilitaBoton();
         }
@@ -323,25 +342,10 @@ namespace app
             bool SeGuardo = false;
             try
             {
-                //CODIGO PARA ALMACENAR LA LISTA DE PRODUCTOS ADJUNTOS DE DATAGRIDVIEW 
-                for (int i = 0; i < dgvProductos.Rows.Count; i++)
-                {
-
-                    DatosProducto[0] = dgvProductos.Rows[i].Cells[1].Value.ToString();
-                    DatosProducto[1] = dgvProductos.Rows[i].Cells[2].Value.ToString();
-                    DatosProducto[2] = dgvProductos.Rows[i].Cells[4].Value.ToString();
-                    DatosProducto[3] = dgvProductos.Rows[i].Cells[5].Value.ToString();
-                    DatosProducto[4] = dgvProductos.Rows[i].Cells[6].Value.ToString();
-                    DatosProducto[5] = dgvProductos.Rows[i].Cells[7].Value.ToString();
-                    DatosProducto[6] = dgvProductos.Rows[i].Cells[8].Value.ToString();
-                     object[] NombresProducto = { "pIdProducto", "pIdCompra", "pCantidad", "pPrecioCompra", "pSubtotal", "pIgv", "pPrecioTotal"};
-
-
-                     ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_guarda", DatosProducto, NombresProducto);
-                    
-                }
+               
                 ConexionBD.EjecutarProcedimientoReturnVoid("compras_guarda", NombresCompras, DatosCompra);
                 ConexionBD.COMMIT();
+              
                 SeGuardo = true;
                 listarCompras();
                 tipo = Tipo.guardar;
@@ -356,12 +360,15 @@ namespace app
             finally
             {
                 ConexionBD.Desconectar();
+                
             }
 
             if (SeGuardo)
             {
+                GuardaProductos();
                 MessageBox.Show("LOS DATOS SE GUARDARON EXITOSAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
+
                 
             }
             else
@@ -369,6 +376,36 @@ namespace app
 
 
             LimpiarDatos();
+        }
+
+
+        private void GuardaProductos()
+        {
+            ConexionBD.Conectar(true, string_ArchivoConfiguracion);
+            //CODIGO PARA ALMACENAR LA LISTA DE PRODUCTOS ADJUNTOS DE DATAGRIDVIEW 
+            try
+            {
+                for (int i = 0; i < dgvProductos.Rows.Count; i++)
+                {
+
+                    DatosProducto[0] = dgvProductos.Rows[i].Cells[1].Value.ToString();
+                    DatosProducto[1] = dgvProductos.Rows[i].Cells[2].Value.ToString();
+                    DatosProducto[2] = dgvProductos.Rows[i].Cells[4].Value.ToString();
+                    DatosProducto[3] = dgvProductos.Rows[i].Cells[5].Value.ToString();
+                    DatosProducto[4] = dgvProductos.Rows[i].Cells[6].Value.ToString();
+                    DatosProducto[5] = dgvProductos.Rows[i].Cells[7].Value.ToString();
+                    DatosProducto[6] = dgvProductos.Rows[i].Cells[8].Value.ToString();
+                    object[] NombresProducto = { "pIdProducto", "pIdCompra", "pCantidad", "pPrecioCompra", "pSubtotal", "pIgv", "pPrecioTotal" };
+
+                    ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_guarda", NombresProducto, DatosProducto);
+                    
+                }
+                ConexionBD.COMMIT();
+            }
+            catch
+            { ConexionBD.ROLLBACK(); }
+            finally
+            { ConexionBD.Desconectar(); }
         }
 
 
@@ -389,26 +426,21 @@ namespace app
             tbToalCompras.Text = "0";
 
             dgvProductos.Rows.Clear();
+            contador=0;
+            //PARA REDEDINIR LOS VALORES ACUMULADOS
+            subtoralCompra = 0;
+            igvCompra = 0;
+            totalCompra = 0;
         }
 
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            gbDatos.Enabled = true; 
+            gbDatos.Enabled = true;
+            LimpiarDatos();
         }
 
-    
-
-        private void frmCompras_Load(object sender, EventArgs e)
-        {
-                        
-             
-        }
-
-        private void tbNroFactura_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+  
 
         private void tbNroFactura_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -444,6 +476,100 @@ namespace app
             busca.ShowDialog();
             tbProveedor.Text = Cfunciones.Globales.valor;//nombre del proveedor
             idProveedor = Cfunciones.Globales.codigo;//codigo id del proveedor
+        }
+
+
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 0) || (e.ColumnIndex == 1)))
+            {
+                if (e.ColumnIndex == 0)
+                {// EDITAR
+
+                    idCompra = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();//almacena el id de la compra
+                    idProveedor = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();// ide de proveedor 
+                    tbProveedor.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();// nombre del proveedor
+                    dtpFechaCompra.Value = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[5].Value);//fecha de compra
+                    tbNroFactura.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();// numero de fatura de la compra
+                    tbObservacion.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();//observaciones
+                    tbSubtoralCompras.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();// monto subtotal de la compra
+                    tbIGVCompras.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();// impuesto de la compra
+                    tbToalCompras.Text = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();// total de la compra
+                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[11].Value) == 0)//validad compras activas o inactivcas
+                    {
+                        rbtActivo.Checked = true;
+                    }
+                    else
+                    {
+                        rbtInactivo.Checked = true;
+                    }
+
+
+                    /****AQUI ALMACENAMOS LOS DATOS EN EL ARREGLO --- PARA MODIFICACION---***/
+                    DatosCompra = new object[9];
+                    DatosCompra[0] = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                    listaProducto(dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+
+                    tipo = Tipo.modificar;
+                    habilitaBoton();
+                }
+                else
+                {//ELIMINAR
+                    if (MessageBox.Show("¿ESTA SEGURO DE ELIMINAR ESTE DESCUENTO? \r", "CUIDADO!!!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        //LimpiarDatosHorario();
+                        ConexionBD.Conectar(true, string_ArchivoConfiguracion);
+                        bool SeElimino = false;
+                        try
+                        {
+
+                            /*-----evaluamos la eliminacion indivifual de la compra de productos-----*/
+                            /*----Almacena los datos de compra en datosproducto------*/
+                            DataSet datosProductos = ConexionBD.EjecutarProcedimientoReturnDataSet("compraxproducto_lista", "pIdCompra", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+                            object[] datosProductoElimina = new object[2];
+                            object[] NombresProductoElimina = { "pIdProducto", "pIdCompra"};
+
+                            for (int j = 0; j < datosProductos.Tables[0].Rows.Count; j++)
+                            {
+                                datosProductoElimina[0]= datosProductos.Tables[0].Rows[j][0];//id producto
+                                datosProductoElimina[1] = datosProductos.Tables[0].Rows[j][1];
+                                /*------ELIMINA LA COMPRA DE PRODUCTOS UNITARIOS------*/
+                                ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_elimina",NombresProductoElimina, datosProductoElimina);
+
+                            }
+                            /*-----------ELIMIA LA COMPRA TOTAL----------------*/
+                            ConexionBD.EjecutarProcedimientoReturnVoid("compras_elimina", "pId", dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                            ConexionBD.COMMIT();
+                            SeElimino = true;
+                            listarCompras();
+                            tipo = Tipo.eliminar;
+                            habilitaBoton();
+
+                        }
+                        catch
+                        {
+                            ConexionBD.ROLLBACK();
+                            SeElimino = false;
+                        }
+                        finally
+                        {
+                            ConexionBD.Desconectar();
+                        }
+
+                        if (SeElimino)
+                            MessageBox.Show("DATOS ELIMINADOS CON EXITO", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("HUBO UN ERROR AL ELIMINAR LA UNIDAD, INTENTELO NUEVAMENTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        LimpiarDatos();
+                    }
+
+                }
+            }
         }
     }
 }
