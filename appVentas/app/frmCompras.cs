@@ -142,9 +142,11 @@ namespace app
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
 
-            frmItems items = new frmItems();
-            items.ShowDialog();
-
+            if (clases.Cfunciones.Globales.codigo != "")
+            {
+                frmItems items = new frmItems();
+                items.ShowDialog();
+            }
             buscaProducto(Cfunciones.Globales.valor, Cfunciones.Globales.codigo, Cfunciones.Globales.precioCompra, Cfunciones.Globales.cantidadCompra);
             //eliminamos los valores para nogenerar duplicidad
             Cfunciones.Globales.valor="";

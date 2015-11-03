@@ -60,7 +60,7 @@
             this.tbStockMin = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pcbImagen = new System.Windows.Forms.PictureBox();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
+            this.tbPrecioCom = new System.Windows.Forms.TextBox();
             this.tbDetalle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,6 +69,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ofd_CargarImagen = new System.Windows.Forms.OpenFileDialog();
+            this.tbPrecioVen = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +80,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,8 +89,6 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.epValida = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ofd_CargarImagen = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.gbDatos2.SuspendLayout();
             this.gbDatos1.SuspendLayout();
@@ -126,7 +129,7 @@
             this.tbBurcar.MaxLength = 8;
             this.tbBurcar.Name = "tbBurcar";
             this.tbBurcar.Size = new System.Drawing.Size(737, 20);
-            this.tbBurcar.TabIndex = 17;
+            this.tbBurcar.TabIndex = 18;
             this.tbBurcar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBurcar_KeyPress);
             // 
             // gbDatos2
@@ -138,7 +141,7 @@
             this.gbDatos2.Location = new System.Drawing.Point(3, 184);
             this.gbDatos2.Name = "gbDatos2";
             this.gbDatos2.Size = new System.Drawing.Size(455, 40);
-            this.gbDatos2.TabIndex = 11;
+            this.gbDatos2.TabIndex = 12;
             this.gbDatos2.TabStop = false;
             this.gbDatos2.Text = "Ofertas";
             // 
@@ -148,7 +151,7 @@
             this.rbtDos.Location = new System.Drawing.Point(318, 17);
             this.rbtDos.Name = "rbtDos";
             this.rbtDos.Size = new System.Drawing.Size(74, 17);
-            this.rbtDos.TabIndex = 14;
+            this.rbtDos.TabIndex = 15;
             this.rbtDos.Text = "Tres x dos";
             this.rbtDos.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +161,7 @@
             this.rbtUno.Location = new System.Drawing.Point(203, 17);
             this.rbtUno.Name = "rbtUno";
             this.rbtUno.Size = new System.Drawing.Size(73, 17);
-            this.rbtUno.TabIndex = 13;
+            this.rbtUno.TabIndex = 14;
             this.rbtUno.Text = "Dos x uno";
             this.rbtUno.UseVisualStyleBackColor = true;
             // 
@@ -169,7 +172,7 @@
             this.rbtSinPromo.Location = new System.Drawing.Point(72, 17);
             this.rbtSinPromo.Name = "rbtSinPromo";
             this.rbtSinPromo.Size = new System.Drawing.Size(92, 17);
-            this.rbtSinPromo.TabIndex = 12;
+            this.rbtSinPromo.TabIndex = 13;
             this.rbtSinPromo.TabStop = true;
             this.rbtSinPromo.Text = "Sin promoción";
             this.rbtSinPromo.UseVisualStyleBackColor = true;
@@ -181,7 +184,7 @@
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(98, 42);
-            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.TabIndex = 17;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -195,7 +198,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(98, 42);
-            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -230,7 +233,7 @@
             this.btnBuscaFisicas.Location = new System.Drawing.Point(317, 65);
             this.btnBuscaFisicas.Name = "btnBuscaFisicas";
             this.btnBuscaFisicas.Size = new System.Drawing.Size(24, 23);
-            this.btnBuscaFisicas.TabIndex = 7;
+            this.btnBuscaFisicas.TabIndex = 8;
             this.btnBuscaFisicas.Text = "...";
             this.btnBuscaFisicas.UseVisualStyleBackColor = true;
             this.btnBuscaFisicas.Click += new System.EventHandler(this.btnBuscaFisicas_Click);
@@ -249,7 +252,7 @@
             this.btnBuscaUni.Location = new System.Drawing.Point(317, 42);
             this.btnBuscaUni.Name = "btnBuscaUni";
             this.btnBuscaUni.Size = new System.Drawing.Size(24, 23);
-            this.btnBuscaUni.TabIndex = 6;
+            this.btnBuscaUni.TabIndex = 7;
             this.btnBuscaUni.Text = "...";
             this.btnBuscaUni.UseVisualStyleBackColor = true;
             this.btnBuscaUni.Click += new System.EventHandler(this.btnBuscaUni_Click);
@@ -268,7 +271,7 @@
             this.btnBuscaCat.Location = new System.Drawing.Point(317, 20);
             this.btnBuscaCat.Name = "btnBuscaCat";
             this.btnBuscaCat.Size = new System.Drawing.Size(24, 23);
-            this.btnBuscaCat.TabIndex = 5;
+            this.btnBuscaCat.TabIndex = 6;
             this.btnBuscaCat.Text = "...";
             this.btnBuscaCat.UseVisualStyleBackColor = true;
             this.btnBuscaCat.Click += new System.EventHandler(this.btnBuscaCat_Click);
@@ -288,7 +291,7 @@
             this.rbtInactivo.Location = new System.Drawing.Point(144, 90);
             this.rbtInactivo.Name = "rbtInactivo";
             this.rbtInactivo.Size = new System.Drawing.Size(63, 17);
-            this.rbtInactivo.TabIndex = 9;
+            this.rbtInactivo.TabIndex = 10;
             this.rbtInactivo.Text = "Inactivo";
             this.rbtInactivo.UseVisualStyleBackColor = true;
             // 
@@ -299,7 +302,7 @@
             this.rbtActivo.Location = new System.Drawing.Point(78, 90);
             this.rbtActivo.Name = "rbtActivo";
             this.rbtActivo.Size = new System.Drawing.Size(55, 17);
-            this.rbtActivo.TabIndex = 8;
+            this.rbtActivo.TabIndex = 9;
             this.rbtActivo.TabStop = true;
             this.rbtActivo.Text = "Activo";
             this.rbtActivo.UseVisualStyleBackColor = true;
@@ -346,7 +349,7 @@
             this.tbNroSerie.MaxLength = 8;
             this.tbNroSerie.Name = "tbNroSerie";
             this.tbNroSerie.Size = new System.Drawing.Size(215, 20);
-            this.tbNroSerie.TabIndex = 10;
+            this.tbNroSerie.TabIndex = 11;
             this.tbNroSerie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNroSerie_KeyPress);
             // 
             // lblNroSerie
@@ -360,12 +363,14 @@
             // 
             // gbDatos
             // 
+            this.gbDatos.Controls.Add(this.label10);
+            this.gbDatos.Controls.Add(this.tbPrecioVen);
             this.gbDatos.Controls.Add(this.tbStock);
             this.gbDatos.Controls.Add(this.label4);
             this.gbDatos.Controls.Add(this.tbStockMin);
             this.gbDatos.Controls.Add(this.label12);
             this.gbDatos.Controls.Add(this.pcbImagen);
-            this.gbDatos.Controls.Add(this.tbPrecio);
+            this.gbDatos.Controls.Add(this.tbPrecioCom);
             this.gbDatos.Controls.Add(this.tbDetalle);
             this.gbDatos.Controls.Add(this.label3);
             this.gbDatos.Controls.Add(this.label2);
@@ -385,8 +390,8 @@
             this.tbStock.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbStock.Location = new System.Drawing.Point(72, 85);
             this.tbStock.Name = "tbStock";
-            this.tbStock.Size = new System.Drawing.Size(110, 20);
-            this.tbStock.TabIndex = 3;
+            this.tbStock.Size = new System.Drawing.Size(77, 20);
+            this.tbStock.TabIndex = 4;
             this.tbStock.Text = "0";
             // 
             // label4
@@ -403,8 +408,8 @@
             this.tbStockMin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbStockMin.Location = new System.Drawing.Point(72, 109);
             this.tbStockMin.Name = "tbStockMin";
-            this.tbStockMin.Size = new System.Drawing.Size(110, 20);
-            this.tbStockMin.TabIndex = 4;
+            this.tbStockMin.Size = new System.Drawing.Size(77, 20);
+            this.tbStockMin.TabIndex = 5;
             this.tbStockMin.Text = "5";
             // 
             // label12
@@ -427,14 +432,14 @@
             this.pcbImagen.TabStop = false;
             this.pcbImagen.Click += new System.EventHandler(this.pcbImagen_Click);
             // 
-            // tbPrecio
+            // tbPrecioCom
             // 
-            this.tbPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbPrecio.Location = new System.Drawing.Point(72, 62);
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(110, 20);
-            this.tbPrecio.TabIndex = 2;
-            this.tbPrecio.Text = "0";
+            this.tbPrecioCom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbPrecioCom.Location = new System.Drawing.Point(72, 62);
+            this.tbPrecioCom.Name = "tbPrecioCom";
+            this.tbPrecioCom.Size = new System.Drawing.Size(77, 20);
+            this.tbPrecioCom.TabIndex = 2;
+            this.tbPrecioCom.Text = "0";
             // 
             // tbDetalle
             // 
@@ -449,9 +454,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Precio:";
+            this.label3.Text = "Precio Com:";
             // 
             // label2
             // 
@@ -514,6 +519,7 @@
             this.Column5,
             this.Column13,
             this.Column6,
+            this.Column10,
             this.Column9,
             this.Column7,
             this.Column8,
@@ -529,6 +535,28 @@
             this.dgvDatos.Size = new System.Drawing.Size(817, 225);
             this.dgvDatos.TabIndex = 17;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            // 
+            // epValida
+            // 
+            this.epValida.ContainerControl = this;
+            // 
+            // tbPrecioVen
+            // 
+            this.tbPrecioVen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbPrecioVen.Location = new System.Drawing.Point(227, 64);
+            this.tbPrecioVen.Name = "tbPrecioVen";
+            this.tbPrecioVen.Size = new System.Drawing.Size(81, 20);
+            this.tbPrecioVen.TabIndex = 3;
+            this.tbPrecioVen.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(158, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Precio Ven:";
             // 
             // Column1
             // 
@@ -576,9 +604,15 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Precio";
+            this.Column6.HeaderText = "Precio Compra";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Precio Venta";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // Column9
             // 
@@ -632,10 +666,6 @@
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             // 
-            // epValida
-            // 
-            this.epValida.ContainerControl = this;
-            // 
             // frmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,7 +709,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pcbImagen;
-        private System.Windows.Forms.TextBox tbPrecio;
+        private System.Windows.Forms.TextBox tbPrecioCom;
         private System.Windows.Forms.TextBox tbDetalle;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -705,6 +735,8 @@
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.ErrorProvider epValida;
         private System.Windows.Forms.OpenFileDialog ofd_CargarImagen;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbPrecioVen;
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -712,6 +744,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;

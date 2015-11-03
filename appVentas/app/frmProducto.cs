@@ -24,7 +24,7 @@ namespace app
         string idfisicas = "";
         string idDescuento = "";
 
-        object[] DatosProducto = new object[13];
+        object[] DatosProducto = new object[14];
         string string_ArchivoConfiguracion;
 
         public frmProducto(string ArchivoCOnfig)
@@ -106,17 +106,18 @@ namespace app
                     dgvDatos.Rows[i].Cells[3].Value = datos.Tables[0].Rows[i][1];//nombre
                     dgvDatos.Rows[i].Cells[4].Value = datos.Tables[0].Rows[i][2];//detalle
                     dgvDatos.Rows[i].Cells[5].Value = datos.Tables[0].Rows[i][3];//imagen
-                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//precio
-                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//id categorioa
-                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//stock
-                    dgvDatos.Rows[i].Cells[9].Value = datos.Tables[0].Rows[i][7];//stock minimo
-                    dgvDatos.Rows[i].Cells[10].Value = datos.Tables[0].Rows[i][8];//id unidades
-                    dgvDatos.Rows[i].Cells[11].Value = datos.Tables[0].Rows[i][9];//nro de serie
-                    dgvDatos.Rows[i].Cells[12].Value = datos.Tables[0].Rows[i][10];//id caracteristicas
-                    dgvDatos.Rows[i].Cells[13].Value = datos.Tables[0].Rows[i][11];//estado
-                    dgvDatos.Rows[i].Cells[14].Value = datos.Tables[0].Rows[i][12];//promocion
+                    dgvDatos.Rows[i].Cells[6].Value = datos.Tables[0].Rows[i][4];//precio de compra
+                    dgvDatos.Rows[i].Cells[7].Value = datos.Tables[0].Rows[i][5];//precio de Venta
+                    dgvDatos.Rows[i].Cells[8].Value = datos.Tables[0].Rows[i][6];//id categorioa
+                    dgvDatos.Rows[i].Cells[9].Value = datos.Tables[0].Rows[i][7];//stock
+                    dgvDatos.Rows[i].Cells[10].Value = datos.Tables[0].Rows[i][8];//stock minimo
+                    dgvDatos.Rows[i].Cells[11].Value = datos.Tables[0].Rows[i][9];//id unidades
+                    dgvDatos.Rows[i].Cells[12].Value = datos.Tables[0].Rows[i][10];//nro de serie
+                    dgvDatos.Rows[i].Cells[13].Value = datos.Tables[0].Rows[i][11];//id caracteristicas
+                    dgvDatos.Rows[i].Cells[14].Value = datos.Tables[0].Rows[i][12];//estado
+                    dgvDatos.Rows[i].Cells[15].Value = datos.Tables[0].Rows[i][13];//promocion
 
-                    if (Convert.ToInt32(datos.Tables[0].Rows[i][11]) == 1)
+                    if (Convert.ToInt32(datos.Tables[0].Rows[i][12]) == 1)
                     {
                         dgvDatos.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         dgvDatos.Rows[i].DefaultCellStyle.ForeColor = Color.White;
@@ -132,6 +133,8 @@ namespace app
             tipo = Tipo.guardar;
             habilitaBoton();
             LimpiarDatos();
+            tbNombres.Focus();
+            tbNombres.Select();
         }
 
 
@@ -141,11 +144,12 @@ namespace app
         /// </summary>
         private void LimpiarDatos()
         {
-            DatosProducto = new object[13];
+            DatosProducto = new object[14];
 
             tbNombres.Text = "";
             tbDetalle.Text = "";
-            tbPrecio.Text = "0";
+            tbPrecioCom.Text = "0";
+            tbPrecioVen.Text = "0";
             tbStock.Text = "0";
             tbStockMin.Text = "5";
             tbCategoria.Text = "";
@@ -191,7 +195,7 @@ namespace app
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (validaError(tbNombres, "Agregue nombre de Producto") && validaError(tbDetalle, "Ingrese el detalle del producto") && validaError(tbPrecio, "Ingrese el precio del producto") && validaError(tbStock, "Ingrese el stock del producto") && validaError(tbStockMin, "Ingrese el stock minimo del producto"))
+            if (validaError(tbNombres, "Agregue nombre de Producto") && validaError(tbDetalle, "Ingrese el detalle del producto") && validaError(tbPrecioCom, "Ingrese el precio de Compra del producto") && validaError(tbPrecioVen, "Ingrese el precio de Venta del producto") && validaError(tbStock, "Ingrese el stock del producto") && validaError(tbStockMin, "Ingrese el stock minimo del producto"))
             {
                 GuardarDatos();
             }
@@ -241,42 +245,43 @@ namespace app
 
             if (DatosProducto == null || DatosProducto[0] == null)
             {
-                DatosProducto = new object[13];
+                DatosProducto = new object[14];
                 DatosProducto[0] = "0";
             }
             DatosProducto[0] = DatosProducto[0].ToString().Trim();
             DatosProducto[1] = tbNombres.Text;
             DatosProducto[2] = tbDetalle.Text;
             DatosProducto[3] = ConexionBD.Image2Bytes(pcbImagen.Image);
-            DatosProducto[4] = tbPrecio.Text;
-            DatosProducto[5] = tbStock.Text;
-            DatosProducto[6] = tbStockMin.Text;
-            /*-----previa consiocion para cargar los datos o IDs de categoria, unidades y caracteristicas fisicas----------*/
+            DatosProducto[4] = tbPrecioCom.Text;
+            DatosProducto[5] = tbPrecioVen.Text;
+            DatosProducto[6] = tbStock.Text;
+            DatosProducto[7] = tbStockMin.Text;
+            /*-----previa condicion para cargar los datos o IDs de categoria, unidades y caracteristicas fisicas----------*/
             if (tbCategoria.Text == "")
                 idcategoria = "1";
             if (tbUnidades.Text == "")
                 idunidades = "1";
             if (tbCarFisicas.Text == "")
                 idfisicas = "1";
-            DatosProducto[7] = idcategoria;
-            DatosProducto[8] = idunidades;
-            DatosProducto[9] = idfisicas;
+            DatosProducto[8] = idcategoria;
+            DatosProducto[9] = idunidades;
+            DatosProducto[10] = idfisicas;
             
             if (rbtActivo.Checked)
-                DatosProducto[10] = 0;
+                DatosProducto[11] = 0;
             else
-                DatosProducto[10] = 1;
+                DatosProducto[11] = 1;
 
-            DatosProducto[11] = tbNroSerie.Text;
+            DatosProducto[12] = tbNroSerie.Text;
             
             if (rbtSinPromo.Checked)
-                DatosProducto[12] = 0;//no tiene promocion
+                DatosProducto[13] = 0;//no tiene promocion
             if (rbtUno.Checked)
-                DatosProducto[12] = 1;//promocion de 2x1
+                DatosProducto[13] = 1;//promocion de 2x1
             if (rbtDos.Checked)
-                DatosProducto[12] = 2;//promocion de 3x2
+                DatosProducto[13] = 2;//promocion de 3x2
 
-            object[] NombresProducto = { "pId", "pNombre", "pDetalle", "pImagen", "pPrecio", "pStock", "pStockMin", "pIdCategoria", "pIdUnidades","pIdCaractFisicas","pEstado","pSerie","pPromocion" };
+            object[] NombresProducto = { "pId", "pNombre", "pDetalle", "pImagen", "pPrecioCom", "pPrecioVen", "pStock", "pStockMin", "pIdCategoria", "pIdUnidades", "pIdCaractFisicas", "pEstado", "pSerie", "pPromocion" };
 
             ConexionBD.Conectar(true, string_ArchivoConfiguracion);
             bool SeGuardo = false;
@@ -330,31 +335,32 @@ namespace app
                         pcbImagen.Image = (System.Drawing.Image)(app.Properties.Resources.descarga);
                     }
 
-                     tbPrecio.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    idcategoria = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    idunidades = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
-                    idfisicas = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
+                    tbPrecioCom.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    tbPrecioVen.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    idcategoria = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    idunidades = dgvDatos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                    idfisicas = dgvDatos.Rows[e.RowIndex].Cells[13].Value.ToString();
 
                     object[] datosNombres = new object[2];
                     object[] Nombres = { "pId", "pCriterio" };
 
                     ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
                     datosNombres[1] = "categoria";
                         tbCategoria.Text = ConexionBD.EjecutarProcedimientoReturnMensaje("producto_retornaNombres", Nombres, datosNombres);
-                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[11].Value.ToString();
                     datosNombres[1] = "unidades";
                         tbUnidades.Text = ConexionBD.EjecutarProcedimientoReturnMensaje("producto_retornaNombres", Nombres, datosNombres);
-                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
+                    datosNombres[0] = dgvDatos.Rows[e.RowIndex].Cells[13].Value.ToString();
                     datosNombres[1] = "fisicas";
                         tbCarFisicas.Text = ConexionBD.EjecutarProcedimientoReturnMensaje("producto_retornaNombres", Nombres, datosNombres);
 
                     ConexionBD.Desconectar();
-                    tbStock.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    tbStockMin.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
-                    tbNroSerie.Text = dgvDatos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                    tbStock.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
+                    tbStockMin.Text = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    tbNroSerie.Text = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
 
-                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value) == 0)
+                    if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[14].Value) == 0)
                     {
                         rbtActivo.Checked = true;
                     }
@@ -363,15 +369,15 @@ namespace app
                         rbtInactivo.Checked = true;
                     }
 
-                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[14].Value) == 0)
+                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[15].Value) == 0)
                     {
                         rbtSinPromo.Checked = true;
                     }
-                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[14].Value) == 1)
+                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[15].Value) == 1)
                     {
                         rbtUno.Checked = true;
                     }
-                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[14].Value) == 2)
+                     if (Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[15].Value) == 2)
                      {
                          rbtDos.Checked = true;
                      }
