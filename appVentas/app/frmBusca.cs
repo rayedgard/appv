@@ -73,6 +73,13 @@ namespace app
                 Cfunciones.Globales.valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
                 lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
 
+                if (datosBusqueda[0].ToString()=="PRODUCTO")
+                    Cfunciones.Globales.precioCompra = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[2].Value);
+
+                if (datosBusqueda[0].ToString() == "PRODUCTOS")
+                {
+                    Cfunciones.Globales.precioCompra = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[2].Value);
+                }
                 this.Close();
               
             }

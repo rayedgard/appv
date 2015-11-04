@@ -25,7 +25,7 @@ namespace app
             tbPrecio.Select();
 
             lbProducto.Text = clases.Cfunciones.Globales.valor;
-
+            tbPrecio.Text = clases.Cfunciones.Globales.precioCompra.ToString();
             
         }
 

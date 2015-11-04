@@ -76,8 +76,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.gbCostos.SuspendLayout();
             this.gbFactura.SuspendLayout();
@@ -574,9 +572,7 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column5,
-            this.Column6,
-            this.Column7});
+            this.Column5});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 125);
             this.dgvDatos.Name = "dgvDatos";
@@ -619,18 +615,6 @@
             // 
             this.Column5.HeaderText = "Precio";
             this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Stock";
-            this.Column6.Name = "Column6";
-            this.Column6.Visible = false;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "StockMinimo";
-            this.Column7.Name = "Column7";
-            this.Column7.Visible = false;
             // 
             // frmVenta
             // 
@@ -685,14 +669,6 @@
         private System.Windows.Forms.TextBox tbDescuento;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridViewImageColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.GroupBox gbCostos;
         private System.Windows.Forms.TextBox tbCambio;
         private System.Windows.Forms.TextBox tbPagoCon;
@@ -713,5 +689,11 @@
         private System.Windows.Forms.Label lbDireccion;
         private System.Windows.Forms.Label lbRazon;
         private System.Windows.Forms.Label lbRuc;
+        private System.Windows.Forms.DataGridViewImageColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

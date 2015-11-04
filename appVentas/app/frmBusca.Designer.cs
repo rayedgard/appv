@@ -36,9 +36,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.lbSeleccion = new System.Windows.Forms.Label();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbSeleccion = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -116,7 +117,8 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
-            this.Column3});
+            this.Column3,
+            this.Column1});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 100);
             this.dgvDatos.Name = "dgvDatos";
@@ -127,6 +129,19 @@
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             this.dgvDatos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_RowEnter);
             this.dgvDatos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDatos_KeyPress);
+            // 
+            // lbSeleccion
+            // 
+            this.lbSeleccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbSeleccion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSeleccion.ForeColor = System.Drawing.Color.White;
+            this.lbSeleccion.Location = new System.Drawing.Point(0, 281);
+            this.lbSeleccion.Name = "lbSeleccion";
+            this.lbSeleccion.Size = new System.Drawing.Size(588, 34);
+            this.lbSeleccion.TabIndex = 26;
+            this.lbSeleccion.Text = "Seleccionado";
+            this.lbSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Column4
             // 
@@ -142,18 +157,12 @@
             this.Column3.ReadOnly = true;
             this.Column3.Width = 540;
             // 
-            // lbSeleccion
+            // Column1
             // 
-            this.lbSeleccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbSeleccion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSeleccion.ForeColor = System.Drawing.Color.White;
-            this.lbSeleccion.Location = new System.Drawing.Point(0, 281);
-            this.lbSeleccion.Name = "lbSeleccion";
-            this.lbSeleccion.Size = new System.Drawing.Size(588, 34);
-            this.lbSeleccion.TabIndex = 26;
-            this.lbSeleccion.Text = "Seleccionado";
-            this.lbSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Column1.HeaderText = "idProducto";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
             // 
             // frmBusca
             // 
@@ -186,8 +195,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.Label lbSeleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.Label lbSeleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

@@ -138,7 +138,7 @@ namespace app
         private void btnBuscaProducrto_Click(object sender, EventArgs e)
         {
             //LimpiarDatos();
-            clases.Cfunciones.Globales.criterio = "PRODUCTOS";
+            clases.Cfunciones.Globales.criterio = "PRODUCTO";
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
 

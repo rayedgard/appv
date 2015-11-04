@@ -44,39 +44,37 @@ namespace app
             //adquirimos los datos del usuario
             tbUsuario.Text = clases.Cfunciones.Globales.nameUser;
            
-            //obteniendo el numero de caja e IGV
+            //obteniendo el numero de caja e IGV datos establecidos al inicio de la implantacion del sistema
             CConfigXML configXml_ArchivoConfiguracion = new CConfigXML(string_ArchivoConfiguracion);
             tbCaja.Text = configXml_ArchivoConfiguracion.GetValue("principal", "numerocaja", "");//---> numero de caja 
             IGV = Convert.ToDouble(configXml_ArchivoConfiguracion.GetValue("principal", "igv", ""));//---> igv 
 
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
             //consultas
-            DataSet datos1 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_comprobante");
-            DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_formas_pago");
-            DataSet datos2 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_tarjeta");
+            DataSet datos1 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_comprobante");/*para obtener los tipos de comprobantes de pago*/
+            DataSet datos = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_formas_pago");/*para obtener la formas de pago*/
+            DataSet datos2 = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_tipos_tarjeta");/*para obtener los tipos de tarjeta*/
             
 
-            // para generar los radiobutons de COMPORBANTE DE PAGO-----> FACTURA--- BOLETA ---TICKET 
+            // para generar los radiobutons de tipos de COMPORBANTE DE PAGO-----> FACTURA--- BOLETA ---TICKET 
 
             int y = 0;
             foreach (DataRow row in datos1.Tables[0].Rows)
             {
                 RadioButton radio = new RadioButton();
+                radio.Name = Convert.ToString(row["nombre"]);
                 radio.Text = Convert.ToString(row["nombre"]);
                 radio.Tag = Convert.ToString(row["id"]);
-    
+                    
                 y += 20;
                 radio.Location = new Point(20, y);
 
                 gbTipoComprobante.Controls.Add(radio);
 
-
-                
-
                 if (Convert.ToInt32(radio.Tag) == 1)
                 {
                     radio.Checked = true;
-                    serieNumero(radio.Text);
+                    serieNumero(radio.Name);
                 }
 
                radio.Click += new EventHandler(radiobutonComprobante);
@@ -88,6 +86,7 @@ namespace app
             foreach (DataRow row1 in datos.Tables[0].Rows)
             {
                 RadioButton radio1 = new RadioButton();
+                radio1.Name = Convert.ToString(row1["nombre"]);
                 radio1.Text = Convert.ToString(row1["nombre"]);
                 radio1.Tag = Convert.ToString(row1["id"]);
 
@@ -104,11 +103,12 @@ namespace app
                 radio1.Click += new EventHandler(radiobutonFormasPago);
             }
 
-            // para generar los radiobutons de TIPOS DE TARJETA
+            // para generar los radiobutons de TIPOS DE TARJETA--- visa --mastercar--etc
             int zz = 0;
             foreach (DataRow row2 in datos2.Tables[0].Rows)
             {
                 RadioButton radio2 = new RadioButton();
+                radio2.Name = Convert.ToString(row2["nombre"]);
                 radio2.Text = Convert.ToString(row2["nombre"]);
                 radio2.Tag = Convert.ToString(row2["id"]);
 
@@ -127,6 +127,10 @@ namespace app
 
             ConexionBD.Desconectar();
         }
+
+
+
+
         private void frmVenta_Load(object sender, EventArgs e)
         {
             //ConexionBD.Conectar(false, string_ArchivoConfiguracion);
@@ -176,12 +180,12 @@ namespace app
         /// <param name="e"></param>
         private void radiobutonComprobante(object sender, EventArgs e)
         {
-            var nombre = (RadioButton)sender;
+            var radio = (RadioButton)sender;
          
-            if (nombre.Checked)
+            if (radio.Checked)
             {
-               serieNumero(nombre.Text);
-               if (nombre.Text == "FACTURA")
+               serieNumero(radio.Name);
+               if (radio.Name == "FACTURA")
                {
                    tipo = Tipo.comprobantePago;
                    frmCliente cliente = new frmCliente(string_ArchivoConfiguracion);
@@ -222,9 +226,10 @@ namespace app
         /// <param name="e"></param>
         private void radiobutonFormasPago(object sender, EventArgs e)
         {
-            var nombre = (RadioButton)sender;
-            if (nombre.Text == "TARJETA")
+            var radio = (RadioButton)sender;
+            if (radio.Name== "TARJETA")
             {
+                //aqui acciones para seleccion de tarjeta 
                 tipo = Tipo.tipoTarjeta;
             }
             else
