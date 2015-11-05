@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">sisventas</database>
+</source>
+<canvas zoom="80">
+<tables>
+<table name="caracfisicas" view="colnames">
+<left>173</left>
+<top>424</top>
+<width>83</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `caracfisicas` (
+  `id` int(10) NOT NULL,
+  `dimencion` varchar(200) DEFAULT NULL,
+  `peso` varchar(100) DEFAULT NULL,
+  `color` char(30) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="categoria" view="colnames">
+<left>160</left>
+<top>293</top>
+<width>72</width>
+<height>117</height>
+<sql_create_table>CREATE TABLE `categoria` (
+  `id` int(8) NOT NULL,
+  `nombre` varchar(200) DEFAULT NULL,
+  `imagen` blob,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="cliente" view="colnames">
+<left>927</left>
+<top>238</top>
+<width>99</width>
+<height>158</height>
+<sql_create_table>CREATE TABLE `cliente` (
+  `documento` char(11) NOT NULL,
+  `razon` varchar(300) DEFAULT NULL,
+  `telefono` char(20) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`documento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="compras" view="colnames">
+<left>128</left>
+<top>38</top>
+<width>118</width>
+<height>185</height>
+<sql_create_table>CREATE TABLE `compras` (
+  `id` int(10) NOT NULL,
+  `idProveedor` char(11) DEFAULT NULL,
+  `fechaCompra` date DEFAULT NULL,
+  `nroFactura` char(20) DEFAULT NULL,
+  `observacion` text,
+  `subtotal` decimal(10,2) DEFAULT NULL,
+  `impuesto` decimal(10,2) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idProveedor` (`idProveedor`),
+  CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`documento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="compraxproducto" view="colnames">
+<left>288</left>
+<top>128</top>
+<width>102</width>
+<height>142</height>
+<sql_create_table>CREATE TABLE `compraxproducto` (
+  `idProducto` int(10) NOT NULL,
+  `idCompra` int(10) NOT NULL,
+  `cantidad` double DEFAULT NULL,
+  `precioCompra` decimal(10,2) DEFAULT NULL,
+  `subtotal` decimal(10,2) DEFAULT NULL,
+  `igv` decimal(10,2) DEFAULT NULL,
+  `precioTotal` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`idProducto`,`idCompra`),
+  KEY `idCompra` (`idCompra`),
+  CONSTRAINT `compraxproducto_ibfk_1` FOREIGN KEY (`idCompra`) REFERENCES `compras` (`id`),
+  CONSTRAINT `compraxproducto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="comprobante" view="colnames">
+<left>706</left>
+<top>224</top>
+<width>72</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `comprobante` (
+  `id` int(10) NOT NULL,
+  `idVenta` int(10) DEFAULT NULL,
+  `numero` int(10) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  `idTipo` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idTipo` (`idTipo`),
+  KEY `idVenta` (`idVenta`),
+  CONSTRAINT `comprobante_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipocomprobante` (`id`),
+  CONSTRAINT `comprobante_ibfk_2` FOREIGN KEY (`idVenta`) REFERENCES `ventas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="cuentacobrar" view="colnames">
+<left>807</left>
+<top>216</top>
+<width>90</width>
+<height>158</height>
+<sql_create_table>CREATE TABLE `cuentacobrar` (
+  `id` int(10) DEFAULT NULL,
+  `idVenta` int(10) DEFAULT NULL,
+  `monto` decimal(10,2) DEFAULT NULL,
+  `fechaPago` date DEFAULT NULL,
+  `fechaVence` date DEFAULT NULL,
+  `interes` int(3) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  KEY `idVenta` (`idVenta`),
+  CONSTRAINT `cuentacobrar_ibfk_1` FOREIGN KEY (`idVenta`) REFERENCES `ventas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="cuentapagar" view="colnames">
+<left>438</left>
+<top>0</top>
+<width>90</width>
+<height>158</height>
+<sql_create_table>CREATE TABLE `cuentapagar` (
+  `id` int(10) NOT NULL,
+  `idCompra` int(10) DEFAULT NULL,
+  `monto` decimal(10,2) DEFAULT NULL,
+  `fechaPago` date DEFAULT NULL,
+  `fechaVence` date DEFAULT NULL,
+  `interes` double DEFAULT NULL,
+  `estado` int(1) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `idCompra` (`idCompra`),
+  CONSTRAINT `cuentapagar_ibfk_1` FOREIGN KEY (`idCompra`) REFERENCES `compras` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="descuento" view="colnames">
+<left>645</left>
+<top>13</top>
+<width>112</width>
+<height>185</height>
+<sql_create_table>CREATE TABLE `descuento` (
+  `id` int(8) NOT NULL,
+  `criterio` varchar(200) DEFAULT NULL,
+  `idProducto` int(8) DEFAULT NULL,
+  `nomProducto` varchar(300) DEFAULT NULL,
+  `idTipoDescuento` int(8) DEFAULT NULL,
+  `nomDescuento` varchar(300) DEFAULT NULL,
+  `fechaInicio` date DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idProducto` (`idProducto`),
+  KEY `idTipoDescuento` (`idTipoDescuento`),
+  CONSTRAINT `descuento_ibfk_2` FOREIGN KEY (`idTipoDescuento`) REFERENCES `tipodescuento` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="empresa" view="colnames">
+<left>0</left>
+<top>193</top>
+<width>100</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `empresa` (
+  `id` int(8) NOT NULL,
+  `denominacion` text,
+  `ruc` char(11) DEFAULT NULL,
+  `direccion` varchar(250) DEFAULT NULL,
+  `logo` blob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="formaspago" view="colnames">
+<left>949</left>
+<top>400</top>
+<width>72</width>
+<height>103</height>
+<sql_create_table>CREATE TABLE `formaspago` (
+  `id` int(10) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `estado` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="negocio" view="colnames">
+<left>5</left>
+<top>343</top>
+<width>78</width>
+<height>144</height>
+<sql_create_table>CREATE TABLE `negocio` (
+  `id` int(8) NOT NULL,
+  `nombre` varchar(300) DEFAULT NULL,
+  `direccion` varchar(300) DEFAULT NULL,
+  `ruc` char(20) DEFAULT NULL,
+  `telefono` char(15) DEFAULT NULL,
+  `logo` blob,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="producto" view="colnames">
+<left>355</left>
+<top>312</top>
+<width>105</width>
+<height>249</height>
+<sql_create_table>CREATE TABLE `producto` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(300) DEFAULT NULL,
+  `detalle` text,
+  `imagen` blob,
+  `precioCompra` decimal(8,2) DEFAULT NULL,
+  `precioVenta` decimal(8,2) DEFAULT NULL,
+  `idCategoria` int(8) DEFAULT NULL,
+  `stock` int(8) DEFAULT NULL,
+  `stockminimo` int(8) DEFAULT NULL,
+  `idUnidades` int(8) DEFAULT NULL,
+  `nroserie` char(50) DEFAULT NULL,
+  `idCaractFisicas` int(8) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  `promocion` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idUnidades` (`idUnidades`),
+  KEY `idCategoria` (`idCategoria`),
+  KEY `idCaractFisicas` (`idCaractFisicas`),
+  CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`idUnidades`) REFERENCES `unidades` (`id`),
+  CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`id`),
+  CONSTRAINT `producto_ibfk_5` FOREIGN KEY (`idCaractFisicas`) REFERENCES `caracfisicas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="promocion" view="colnames">
+<left>-15</left>
+<top>133</top>
+<width>88</width>
+<height>117</height>
+<sql_create_table>CREATE TABLE `promocion` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) DEFAULT NULL,
+  `descripcion` text,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="proveedor" view="colnames">
+<left>11</left>
+<top>10</top>
+<width>99</width>
+<height>158</height>
+<sql_create_table>CREATE TABLE `proveedor` (
+  `documento` char(11) NOT NULL,
+  `razon` varchar(200) DEFAULT NULL,
+  `telefono` char(10) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `fechaRegistro` date DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `estado` int(1) DEFAULT '0',
+  PRIMARY KEY (`documento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tipocomprobante" view="colnames">
+<left>561</left>
+<top>244</top>
+<width>72</width>
+<height>103</height>
+<sql_create_table>CREATE TABLE `tipocomprobante` (
+  `id` int(10) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tipodescuento" view="colnames">
+<left>816</left>
+<top>61</top>
+<width>86</width>
+<height>117</height>
+<sql_create_table>CREATE TABLE `tipodescuento` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) DEFAULT NULL,
+  `porcentaje` int(5) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tipotarjeta" view="colnames">
+<left>936</left>
+<top>40</top>
+<width>72</width>
+<height>103</height>
+<sql_create_table>CREATE TABLE `tipotarjeta` (
+  `id` int(8) NOT NULL,
+  `nombre` varchar(200) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="unidades" view="colnames">
+<left>492</left>
+<top>578</top>
+<width>90</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `unidades` (
+  `id` int(10) NOT NULL,
+  `nombre` varchar(200) DEFAULT NULL,
+  `abreviatura` char(10) DEFAULT NULL,
+  `valorBase` int(10) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="usuario" view="colnames">
+<left>836</left>
+<top>428</top>
+<width>86</width>
+<height>226</height>
+<sql_create_table>CREATE TABLE `usuario` (
+  `dni` int(8) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `apaterno` varchar(100) DEFAULT NULL,
+  `amaterno` varchar(100) DEFAULT NULL,
+  `sexo` char(1) DEFAULT NULL,
+  `nick` char(50) DEFAULT NULL,
+  `pass` char(50) DEFAULT NULL,
+  `telefono` char(10) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
+  `nacimiento` date DEFAULT NULL,
+  `privilegio` int(1) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`dni`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="ventas" view="colnames">
+<left>613</left>
+<top>375</top>
+<width>126</width>
+<height>239</height>
+<sql_create_table>CREATE TABLE `ventas` (
+  `id` int(8) NOT NULL,
+  `idClinete` char(11) DEFAULT NULL,
+  `subtotal` decimal(8,2) DEFAULT NULL,
+  `impuesto` decimal(8,2) DEFAULT NULL,
+  `total` decimal(8,2) DEFAULT NULL,
+  `idFormaPago` int(10) DEFAULT NULL,
+  `idUsuario` int(8) DEFAULT NULL,
+  `fechaVenta` date DEFAULT NULL,
+  `serie` char(10) DEFAULT NULL,
+  `nroVenta` int(8) DEFAULT NULL,
+  `nroCaja` int(5) DEFAULT NULL,
+  `idTipoComprobante` int(8) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idFormaPago` (`idFormaPago`),
+  KEY `idClinete` (`idClinete`),
+  KEY `idUsuario` (`idUsuario`),
+  CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`idFormaPago`) REFERENCES `formaspago` (`id`),
+  CONSTRAINT `ventas_ibfk_4` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`dni`),
+  CONSTRAINT `ventas_ibfk_5` FOREIGN KEY (`idClinete`) REFERENCES `cliente` (`documento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="ventasxproducto" view="colnames">
+<left>510</left>
+<top>370</top>
+<width>100</width>
+<height>144</height>
+<sql_create_table>CREATE TABLE `ventasxproducto` (
+  `idVentas` int(10) NOT NULL,
+  `idProducto` int(10) NOT NULL,
+  `cantidad` int(8) DEFAULT NULL,
+  `unidad` char(10) DEFAULT NULL,
+  `precioUnitario` decimal(8,2) DEFAULT NULL,
+  `precioTotal` decimal(8,2) DEFAULT NULL,
+  PRIMARY KEY (`idVentas`,`idProducto`),
+  KEY `idProducto` (`idProducto`),
+  CONSTRAINT `ventasxproducto_ibfk_1` FOREIGN KEY (`idVentas`) REFERENCES `ventas` (`id`),
+  CONSTRAINT `ventasxproducto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

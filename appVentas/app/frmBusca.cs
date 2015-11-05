@@ -20,6 +20,7 @@ namespace app
 
         object[] datosBusqueda  = new object[2];
         object[] VariablesBusqueda = {"pCriterio","pFiltro"};
+        DataSet dsDatosGrid;
 
         public frmBusca(string ArchivoConfig)
         {
@@ -40,7 +41,7 @@ namespace app
             try
             {
                 conBD.Conectar(false, string_ArchivoConfiguracion);
-                DataSet dsDatosGrid = conBD.EjecutarProcedimientoReturnDataSet("busca_descuento",VariablesBusqueda , datosBusqueda);
+                dsDatosGrid = conBD.EjecutarProcedimientoReturnDataSet("busca_descuento",VariablesBusqueda , datosBusqueda);
                 dgvDatos.Rows.Clear();
                 for (int i = 0; i < dsDatosGrid.Tables[0].Rows.Count; i++)
                 {
@@ -78,7 +79,11 @@ namespace app
 
                 if (datosBusqueda[0].ToString() == "PRODUCTOS")
                 {
-                    Cfunciones.Globales.precioCompra = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[2].Value);
+                    Cfunciones.Globales.precioVenta = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[5].Value);/**/
+                    Cfunciones.Globales.stock = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[7].Value);       /**/
+                    Cfunciones.Globales.stockMinimo = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[8].Value); /**/
+                    Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
+                    Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
                 }
                 this.Close();
               
@@ -110,6 +115,18 @@ namespace app
                 Cfunciones.Globales.codigo = dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
                 Cfunciones.Globales.valor = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
                 lbSeleccion.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                if (datosBusqueda[0].ToString() == "PRODUCTO")
+                    Cfunciones.Globales.precioCompra = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[2].Value);
+
+                if (datosBusqueda[0].ToString() == "PRODUCTOS")
+                {
+                    Cfunciones.Globales.precioVenta = Convert.ToDouble(dgvDatos.Rows[e.RowIndex].Cells[5].Value);/**/
+                    Cfunciones.Globales.stock = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[7].Value);       /**/
+                    Cfunciones.Globales.stockMinimo = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[8].Value); /**/
+                    Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
+                    Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
+                }
 
             }
             catch

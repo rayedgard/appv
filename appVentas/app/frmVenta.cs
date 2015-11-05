@@ -322,40 +322,32 @@ namespace app
         {
             ConexionBD.Conectar(false, string_ArchivoConfiguracion);
 
-            if (filtro.Length > 2)
-            {
-                DataSet product = ConexionBD.EjecutarProcedimientoReturnDataSet("ventas_busca_producto", "pFiltro", filtro);
-
-                //eliminamos datos de busqueta VALOR Y CODIGO para no generar error
-                Cfunciones.Globales.valor = "";
-                Cfunciones.Globales.codigo = "";
-
+            //eliminamos datos de busqueta VALOR Y CODIGO para no generar error
+            int stock = Cfunciones.Globales.stock;
+            int stockMin = Cfunciones.Globales.stockMinimo;
                 try
                 {
-                    if (product.Tables[0].Rows.Count > 0)
+                    if (Cfunciones.Globales.codigo!= "")
                     {
 
-                        if (Convert.ToInt32(product.Tables[0].Rows[0][3]) > 0)
-                        {
                             dgvDatos.Rows.Add();
 
                             dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
-                            dgvDatos.Rows[contador].Cells[1].Value = product.Tables[0].Rows[0][0];//id
+                            dgvDatos.Rows[contador].Cells[1].Value = Cfunciones.Globales.codigo;//id
                             dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
-                            dgvDatos.Rows[contador].Cells[3].Value = product.Tables[0].Rows[0][1];//nombred
+                            dgvDatos.Rows[contador].Cells[3].Value = filtro;//nombred
                             dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-                            double precio = Convert.ToInt32(product.Tables[0].Rows[0][2]) * Convert.ToDouble(tbCantidad.Text);
+                            double precio = Cfunciones.Globales.precioVenta * Convert.ToDouble(tbCantidad.Text);
                             dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
-                            dgvDatos.Rows[contador].Cells[6].Value = product.Tables[0].Rows[0][3];//stock
-                            dgvDatos.Rows[contador].Cells[7].Value = product.Tables[0].Rows[0][4];//stocminimo
+                           
                             contador++;
 
-                            if (Convert.ToInt32(product.Tables[0].Rows[0][4]) >= Convert.ToInt32(product.Tables[0].Rows[0][3]))
+                            if (stockMin >= stock)
                             {
 
                                 CuadroMensaje men = new CuadroMensaje();
                                 men.mensaje = "PRECAUCIÓN, STOCK MINIMO DEL PRODUCTO";
-                                men.stock = product.Tables[0].Rows[0][3].ToString();
+                                men.stock = stock.ToString();
                                 men.ShowDialog();
 
                             }
@@ -364,29 +356,14 @@ namespace app
                             tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
 
                         }
-                        else
-                        {
-
-                            CuadroMensaje men = new CuadroMensaje();
-                            men.mensaje = "PRECAUCIÓN, NO TEANEMOS STOCK DE ESTE PRODUCTO POR EL MOMENTO";
-                            men.stock = product.Tables[0].Rows[0][3].ToString();
-                            men.ShowDialog();
-
-                        }
+                        
                             
 
                         tbBusca.Text = "";
                         tbBusca.Focus();
                         tbBusca.Select();
-                    }
-                    else
-                    {
-                        CuadroMensaje men = new CuadroMensaje();
-                        men.mensaje = "ESTE PRODUCTO ESTA DESCONTINUADO O DESHABILITADO";
-                        men.stock = "DESHABILITADO";
-                        men.ShowDialog();
-
-                    }
+                        //limpiamos los parametros utilizados
+                        limpir()
 
 
                 }
@@ -394,7 +371,7 @@ namespace app
                 {
 
                 }
-            }
+        
              ConexionBD.Desconectar();
     
         }
@@ -427,6 +404,17 @@ namespace app
                    
                 }
             }
+        }
+
+
+        
+        private void limpir()
+        {
+            Cfunciones.Globales.precioVenta = 0;/**/
+            Cfunciones.Globales.stock = 0;       /**/
+            Cfunciones.Globales.stockMinimo = 0; /**/
+            Cfunciones.Globales.idCategoria = 0; /**/
+            Cfunciones.Globales.promocion = 0; /**/
         }
 
 

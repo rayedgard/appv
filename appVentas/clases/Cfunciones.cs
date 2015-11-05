@@ -37,6 +37,17 @@ namespace clases
             public static double cantidadCompra =0;
 
 
+            //para almacenar temporalmente los valores PARA LA VENTA DE PRODUCTOS 
+            public static double precioVenta = 0;
+            public static int stock = 0;
+            public static int stockMinimo = 0;
+            public static int idCategoria = 0;
+            public static int promocion;
+                 
+
+
+
+
 
             //public static void Inicializar()
             //{
