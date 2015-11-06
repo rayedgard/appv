@@ -311,20 +311,21 @@ namespace app
             frmBusca busca = new frmBusca(string_ArchivoConfiguracion);
             busca.ShowDialog();
 
-            buscaProducto(Cfunciones.Globales.valor);
+            AgregaProducto();
 
             
         }
         /// <summary>
-        /// METODO DE BUSQUEDA DE PRODUCTO POR MEDIO DE LECTOS DE BARRAS
+        /// METODO QUE AGREGA EL PRODUCTO A LA GRILLA, PRIMERAMENTE REALIZA LOS FILTRADOS DE DESCUENTOS Y PROMOCIONES
         /// </summary>
-        private void buscaProducto(string filtro)
+        private void AgregaProducto()
         {
-            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
-
             //eliminamos datos de busqueta VALOR Y CODIGO para no generar error
             int stock = Cfunciones.Globales.stock;
             int stockMin = Cfunciones.Globales.stockMinimo;
+
+            //CAPTURAMOS EL ID DEL PRODUCTO PARA VERIFICAR SI HAY DESCUENTOS 
+            
                 try
                 {
                     if (Cfunciones.Globales.codigo!= "")
@@ -335,7 +336,7 @@ namespace app
                             dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
                             dgvDatos.Rows[contador].Cells[1].Value = Cfunciones.Globales.codigo;//id
                             dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
-                            dgvDatos.Rows[contador].Cells[3].Value = filtro;//nombred
+                            dgvDatos.Rows[contador].Cells[3].Value = Cfunciones.Globales.valor;//nombred
                             dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
                             double precio = Cfunciones.Globales.precioVenta * Convert.ToDouble(tbCantidad.Text);
                             dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
@@ -363,7 +364,7 @@ namespace app
                         tbBusca.Focus();
                         tbBusca.Select();
                         //limpiamos los parametros utilizados
-                        limpir()
+                        limpir();
 
 
                 }
@@ -371,22 +372,60 @@ namespace app
                 {
 
                 }
-        
-             ConexionBD.Desconectar();
-    
         }
 
+        private void verificaDescuento()
+        {
+            //verificacion 01 descuento por producto
 
+        }
     
 
         private void tbBusca_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                buscaProducto(tbBusca.Text);
-
+                buscarProducto();
             }
         }
+
+
+        /// <summary>
+        /// METODO QUE BUSCA EL PRODUCTO ACTIVADO DESDE EL LECTOR DE CODIGO DE BARRAS
+        /// </summary>
+        public void buscarProducto()
+        {
+            object[] datosBusqueda = new object[2];
+            object[] VariablesBusqueda = { "pCriterio", "pFiltro" };
+            datosBusqueda[0] = "PRODUCTOS";
+            datosBusqueda[1] = tbBusca.Text;
+            try
+            {
+                ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+                DataSet dsDatosGrid = ConexionBD.EjecutarProcedimientoReturnDataSet("busca_descuento", VariablesBusqueda, datosBusqueda);
+                ConexionBD.Desconectar();
+                
+                if (dsDatosGrid.Tables[0].Rows.Count > 0)
+                {
+
+                    Cfunciones.Globales.codigo = dsDatosGrid.Tables[0].Rows[0][0].ToString();
+                    Cfunciones.Globales.valor = dsDatosGrid.Tables[0].Rows[0][1].ToString();
+
+
+                    Cfunciones.Globales.precioVenta = Convert.ToDouble(dsDatosGrid.Tables[0].Rows[0][5].ToString());/**/
+                    Cfunciones.Globales.stock = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][7].ToString());       /**/
+                    Cfunciones.Globales.stockMinimo = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][8].ToString()); /**/
+                    Cfunciones.Globales.idCategoria = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][6].ToString()); /**/
+                    Cfunciones.Globales.promocion = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][13].ToString()); /**/
+
+                    AgregaProducto();
+                }
+                
+            }
+            catch { }
+        }
+
+
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {

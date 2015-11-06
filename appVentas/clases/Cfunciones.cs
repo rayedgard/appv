@@ -43,6 +43,7 @@ namespace clases
             public static int stockMinimo = 0;
             public static int idCategoria = 0;
             public static int promocion;
+            public static string nroserie;
                  
 
 

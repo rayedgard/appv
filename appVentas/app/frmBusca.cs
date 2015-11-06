@@ -84,6 +84,7 @@ namespace app
                     Cfunciones.Globales.stockMinimo = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[8].Value); /**/
                     Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
                     Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
+                    Cfunciones.Globales.nroserie = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString(); /**/
                 }
                 this.Close();
               
@@ -126,6 +127,7 @@ namespace app
                     Cfunciones.Globales.stockMinimo = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[8].Value); /**/
                     Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
                     Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
+                    Cfunciones.Globales.nroserie = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString(); /**/
                 }
 
             }
