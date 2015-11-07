@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVenta));
             this.panel2 = new System.Windows.Forms.Panel();
             this.gbCostos = new System.Windows.Forms.GroupBox();
@@ -76,6 +77,8 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbFecha = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.gbCostos.SuspendLayout();
             this.gbFactura.SuspendLayout();
@@ -309,6 +312,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbFecha);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.tbNumero);
             this.panel1.Controls.Add(this.label11);
@@ -616,6 +620,23 @@
             this.Column5.HeaderText = "Precio";
             this.Column5.Name = "Column5";
             // 
+            // lbFecha
+            // 
+            this.lbFecha.AutoSize = true;
+            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.ForeColor = System.Drawing.Color.Blue;
+            this.lbFecha.Location = new System.Drawing.Point(805, 87);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Size = new System.Drawing.Size(71, 29);
+            this.lbFecha.TabIndex = 16;
+            this.lbFecha.Text = "fecha";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -695,5 +716,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label lbFecha;
+        private System.Windows.Forms.Timer timer1;
     }
 }

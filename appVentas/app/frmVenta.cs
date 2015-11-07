@@ -325,46 +325,62 @@ namespace app
             int stockMin = Cfunciones.Globales.stockMinimo;
 
             //CAPTURAMOS EL ID DEL PRODUCTO PARA VERIFICAR SI HAY DESCUENTOS 
-            
+            int porcentajeDescuentio = 0;//variable que almacena el porcentaje de descuento
+            object[] filtros = { "PRODUCTO", "CATEGORIA","PROVEEDOR" };//ALMACENAMOS LOS FILTROS 
+
+            object[] datosDes = { "pIdProducto", "pCriterio", "pFecha" };//DATOS PARA DETERMINAR EL DESCUENTO 
+            object[] variablesDes = { "pIdProducto", "pCriterio", "pFecha" };//VARIABLES PARA CALCULAR EL DESCUENTO
+            datosDes[0]=Cfunciones.Globales.codigo;
+            datosDes[2] = lbFecha.Text;
+            ConexionBD.Conectar(false, string_ArchivoConfiguracion);
+            for (int i = 0; i < filtros.Length; i++)
+            {
+                datosDes[1] = filtros[i];
+                porcentajeDescuentio = ConexionBD.EjecutarProcedimientoReturnEntero("venta_buscaDescuento", variablesDes, datosDes);
+                
+            }
+            ConexionBD.Desconectar();
+
                 try
                 {
-                    if (Cfunciones.Globales.codigo!= "")
+                    if (Cfunciones.Globales.codigo != "")
                     {
 
-                            dgvDatos.Rows.Add();
+                        dgvDatos.Rows.Add();
 
-                            dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
-                            dgvDatos.Rows[contador].Cells[1].Value = Cfunciones.Globales.codigo;//id
-                            dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
-                            dgvDatos.Rows[contador].Cells[3].Value = Cfunciones.Globales.valor;//nombred
-                            dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-                            double precio = Cfunciones.Globales.precioVenta * Convert.ToDouble(tbCantidad.Text);
-                            dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
-                           
-                            contador++;
+                        dgvDatos.Rows[contador].Cells[0].Value = (System.Drawing.Image)(app.Properties.Resources.delete);
+                        dgvDatos.Rows[contador].Cells[1].Value = Cfunciones.Globales.codigo;//id
+                        dgvDatos.Rows[contador].Cells[2].Value = contador + 1;
+                        dgvDatos.Rows[contador].Cells[3].Value = Cfunciones.Globales.valor;//nombred
+                        dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
+                        double precio = Cfunciones.Globales.precioVenta * Convert.ToDouble(tbCantidad.Text);
+                        dgvDatos.Rows[contador].Cells[5].Value = precio.ToString("C2", CultureInfo.CurrentCulture);//precio
 
-                            if (stockMin >= stock)
-                            {
+                        contador++;
 
-                                CuadroMensaje men = new CuadroMensaje();
-                                men.mensaje = "PRECAUCIÓN, STOCK MINIMO DEL PRODUCTO";
-                                men.stock = stock.ToString();
-                                men.ShowDialog();
+                        tbDescuento.Text = descuentoPorcentaje.ToString();
+                        if (stockMin >= stock)
+                        {
 
-                            }
-                            //calculos
-                            importe += precio;
-                            tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
-
-                        }
-                        
+                            CuadroMensaje men = new CuadroMensaje();
+                            men.mensaje = "PRECAUCIÓN, STOCK MINIMO DEL PRODUCTO";
+                            men.stock = stock.ToString();
+                            men.ShowDialog();
                             
+                        }
+                        //calculos
+                        importe += precio;
+                        tbImporte.Text = importe.ToString("C2", CultureInfo.CurrentCulture);
 
-                        tbBusca.Text = "";
-                        tbBusca.Focus();
-                        tbBusca.Select();
-                        //limpiamos los parametros utilizados
-                        limpir();
+                    }
+
+
+
+                    tbBusca.Text = "";
+                    tbBusca.Focus();
+                    tbBusca.Select();
+                    //limpiamos los parametros utilizados
+                    limpir();
 
 
                 }
@@ -454,6 +470,11 @@ namespace app
             Cfunciones.Globales.stockMinimo = 0; /**/
             Cfunciones.Globales.idCategoria = 0; /**/
             Cfunciones.Globales.promocion = 0; /**/
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbFecha.Text = DateTime.Now.ToString();
         }
 
 
