@@ -49,6 +49,8 @@
             this.gbTipoComprobante = new System.Windows.Forms.GroupBox();
             this.gbFormasPago = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbDescuentoSoles = new System.Windows.Forms.TextBox();
+            this.lbFecha = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbDireccion = new System.Windows.Forms.Label();
             this.lbRazon = new System.Windows.Forms.Label();
@@ -58,7 +60,6 @@
             this.tbSerie = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.tbDescuento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,19 +67,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbCaja = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Column4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbFecha = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.gbCostos.SuspendLayout();
             this.gbFactura.SuspendLayout();
@@ -312,6 +317,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbDescuentoSoles);
             this.panel1.Controls.Add(this.lbFecha);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.tbNumero);
@@ -319,7 +325,6 @@
             this.panel1.Controls.Add(this.tbSerie);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Controls.Add(this.tbDescuento);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tbCantidad);
             this.panel1.Controls.Add(this.label2);
@@ -331,6 +336,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(984, 125);
             this.panel1.TabIndex = 2;
+            // 
+            // tbDescuentoSoles
+            // 
+            this.tbDescuentoSoles.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbDescuentoSoles.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbDescuentoSoles.BackColor = System.Drawing.SystemColors.Menu;
+            this.tbDescuentoSoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescuentoSoles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbDescuentoSoles.Location = new System.Drawing.Point(595, 22);
+            this.tbDescuentoSoles.Name = "tbDescuentoSoles";
+            this.tbDescuentoSoles.ReadOnly = true;
+            this.tbDescuentoSoles.Size = new System.Drawing.Size(110, 26);
+            this.tbDescuentoSoles.TabIndex = 17;
+            this.tbDescuentoSoles.Text = "0";
+            this.tbDescuentoSoles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbFecha
+            // 
+            this.lbFecha.AutoSize = true;
+            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFecha.ForeColor = System.Drawing.Color.Blue;
+            this.lbFecha.Location = new System.Drawing.Point(805, 87);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Size = new System.Drawing.Size(71, 29);
+            this.lbFecha.TabIndex = 16;
+            this.lbFecha.Text = "fecha";
             // 
             // groupBox1
             // 
@@ -432,30 +463,15 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // tbDescuento
-            // 
-            this.tbDescuento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tbDescuento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbDescuento.BackColor = System.Drawing.SystemColors.Menu;
-            this.tbDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tbDescuento.Location = new System.Drawing.Point(470, 8);
-            this.tbDescuento.Name = "tbDescuento";
-            this.tbDescuento.ReadOnly = true;
-            this.tbDescuento.Size = new System.Drawing.Size(246, 45);
-            this.tbDescuento.TabIndex = 10;
-            this.tbDescuento.Text = "0";
-            this.tbDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(355, 21);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(593, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 20);
+            this.label6.Size = new System.Drawing.Size(112, 17);
             this.label6.TabIndex = 9;
-            this.label6.Text = "DESCUENTO";
+            this.label6.Text = "Descuento Total";
             // 
             // tbCantidad
             // 
@@ -507,6 +523,10 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.tbCaja);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.tbUsuario);
@@ -517,17 +537,57 @@
             this.panel3.Size = new System.Drawing.Size(984, 64);
             this.panel3.TabIndex = 3;
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(180, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(53, 49);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "caja";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(121, 10);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(53, 49);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "caja";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(62, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(53, 49);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "caja";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(3, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(53, 49);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "caja";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // tbCaja
             // 
             this.tbCaja.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbCaja.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbCaja.BackColor = System.Drawing.SystemColors.Menu;
-            this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCaja.ForeColor = System.Drawing.Color.Blue;
-            this.tbCaja.Location = new System.Drawing.Point(857, 24);
+            this.tbCaja.Location = new System.Drawing.Point(857, 33);
             this.tbCaja.Name = "tbCaja";
             this.tbCaja.ReadOnly = true;
-            this.tbCaja.Size = new System.Drawing.Size(124, 35);
+            this.tbCaja.Size = new System.Drawing.Size(124, 26);
             this.tbCaja.TabIndex = 16;
             this.tbCaja.Text = "0";
             // 
@@ -535,7 +595,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(852, 4);
+            this.label13.Location = new System.Drawing.Point(853, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 20);
             this.label13.TabIndex = 15;
@@ -573,16 +633,24 @@
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
             this.Column8,
-            this.Column1,
             this.Column2,
+            this.Column1,
             this.Column3,
-            this.Column5});
+            this.Column5,
+            this.Column6});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 125);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(984, 505);
             this.dgvDatos.TabIndex = 4;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDatos_KeyPress);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Column4
             // 
@@ -594,21 +662,21 @@
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Id";
+            this.Column8.HeaderText = "IdProducto";
             this.Column8.Name = "Column8";
             this.Column8.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Item";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Producto";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 800;
+            this.Column2.Width = 560;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Unidad";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 50;
             // 
             // Column3
             // 
@@ -617,25 +685,15 @@
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Precio";
+            this.Column5.HeaderText = "Precio Uni";
             this.Column5.Name = "Column5";
+            this.Column5.Width = 170;
             // 
-            // lbFecha
+            // Column6
             // 
-            this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFecha.ForeColor = System.Drawing.Color.Blue;
-            this.lbFecha.Location = new System.Drawing.Point(805, 87);
-            this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(71, 29);
-            this.lbFecha.TabIndex = 16;
-            this.lbFecha.Text = "fecha";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Column6.HeaderText = "Precio Total";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 170;
             // 
             // frmVenta
             // 
@@ -687,7 +745,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbDescuento;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.GroupBox gbCostos;
@@ -710,13 +767,19 @@
         private System.Windows.Forms.Label lbDireccion;
         private System.Windows.Forms.Label lbRazon;
         private System.Windows.Forms.Label lbRuc;
-        private System.Windows.Forms.DataGridViewImageColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox tbDescuentoSoles;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewImageColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

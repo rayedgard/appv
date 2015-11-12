@@ -87,24 +87,6 @@
   CONSTRAINT `compraxproducto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
-<table name="comprobante" view="colnames">
-<left>706</left>
-<top>224</top>
-<width>72</width>
-<height>130</height>
-<sql_create_table>CREATE TABLE `comprobante` (
-  `id` int(10) NOT NULL,
-  `idVenta` int(10) DEFAULT NULL,
-  `numero` int(10) DEFAULT NULL,
-  `estado` int(1) DEFAULT NULL,
-  `idTipo` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idTipo` (`idTipo`),
-  KEY `idVenta` (`idVenta`),
-  CONSTRAINT `comprobante_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipocomprobante` (`id`),
-  CONSTRAINT `comprobante_ibfk_2` FOREIGN KEY (`idVenta`) REFERENCES `ventas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
-</table>
 <table name="cuentacobrar" view="colnames">
 <left>807</left>
 <top>216</top>
@@ -148,7 +130,7 @@
 <sql_create_table>CREATE TABLE `descuento` (
   `id` int(8) NOT NULL,
   `criterio` varchar(200) DEFAULT NULL,
-  `idProducto` int(8) DEFAULT NULL,
+  `idProducto` char(11) DEFAULT NULL,
   `nomProducto` varchar(300) DEFAULT NULL,
   `idTipoDescuento` int(8) DEFAULT NULL,
   `nomDescuento` varchar(300) DEFAULT NULL,
@@ -261,9 +243,9 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="tipocomprobante" view="colnames">
-<left>561</left>
-<top>244</top>
-<width>72</width>
+<left>473</left>
+<top>213</top>
+<width>122</width>
 <height>103</height>
 <sql_create_table>CREATE TABLE `tipocomprobante` (
   `id` int(10) NOT NULL,
@@ -333,9 +315,9 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="ventas" view="colnames">
-<left>613</left>
-<top>375</top>
-<width>126</width>
+<left>648</left>
+<top>229</top>
+<width>129</width>
 <height>239</height>
 <sql_create_table>CREATE TABLE `ventas` (
   `id` int(8) NOT NULL,
@@ -350,14 +332,16 @@
   `nroVenta` int(8) DEFAULT NULL,
   `nroCaja` int(5) DEFAULT NULL,
   `idTipoComprobante` int(8) DEFAULT NULL,
-  `estado` int(1) DEFAULT NULL,
+  `estado` int(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idFormaPago` (`idFormaPago`),
   KEY `idClinete` (`idClinete`),
   KEY `idUsuario` (`idUsuario`),
+  KEY `idTipoComprobante` (`idTipoComprobante`),
   CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`idFormaPago`) REFERENCES `formaspago` (`id`),
   CONSTRAINT `ventas_ibfk_4` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`dni`),
-  CONSTRAINT `ventas_ibfk_5` FOREIGN KEY (`idClinete`) REFERENCES `cliente` (`documento`)
+  CONSTRAINT `ventas_ibfk_5` FOREIGN KEY (`idClinete`) REFERENCES `cliente` (`documento`),
+  CONSTRAINT `ventas_ibfk_6` FOREIGN KEY (`idTipoComprobante`) REFERENCES `tipocomprobante` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="ventasxproducto" view="colnames">
