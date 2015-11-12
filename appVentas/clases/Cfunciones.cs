@@ -17,6 +17,7 @@ namespace clases
             /// </summary>
             public static string criterio;
             public static string nameUser;//---> para los usuarios
+            public static int idUsuario;//---> para obtener el id de los usuarios
             public static int  estado;
 
 
@@ -44,9 +45,12 @@ namespace clases
             public static int idCategoria = 0;
             public static int promocion;
             public static string nroserie;
-                 
+            public static string idUnidades;
 
-
+            //PARA LAS REALIZAR EL CALCULO DE LAS VENTAS --- 
+            public static double importe;
+            public static double pago;
+            public static double cambio;
 
 
 

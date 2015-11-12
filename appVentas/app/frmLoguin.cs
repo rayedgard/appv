@@ -67,7 +67,7 @@ namespace app
                     clases.Cfunciones.Globales.privilegio = Convert.ToInt32(tabla.Rows[0][0]); //para el usuario 
                     privilegio = tabla.Rows[0][0]; //obteniendo el tipo de privilegio
                     usuario = tabla.Rows[0][1];// obteniendo el usuario de acceso
-                 
+                    clases.Cfunciones.Globales.idUsuario = Convert.ToInt32(tabla.Rows[0][2]);// obteniendo el ID de usuario de acceso
                 }
             }
             catch
