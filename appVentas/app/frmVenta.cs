@@ -33,10 +33,14 @@ namespace app
 
         //apra almacenar los valores a guardar
         object[] datosVenta = new object[13];
+<<<<<<< HEAD
         object[] datosDetalle = new object[7];
 
         //para almacenar el ID dela venta
         string idVenta="";
+=======
+        object[] datosDetalle = new object[6];
+>>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
 
         public frmVenta(string ArchivoCOnfig)
         {
@@ -453,6 +457,7 @@ namespace app
                 precioT = (Cfunciones.Globales.precioVenta * nroProductos);
             //DESPUES DE LOS CALCULOS REINICIAMOS EL VALOR DE PROMOCION
             Cfunciones.Globales.promocion = 0;
+<<<<<<< HEAD
 
             return precioT;
         }
@@ -472,6 +477,27 @@ namespace app
                 //verificacion 01 descuento por producto
                 object[] filtros = { "PRODUCTO", "CATEGORIA", "PROVEEDOR" };//ALMACENAMOS LOS FILTROS 
 
+=======
+
+            return precioT;
+        }
+
+
+        /// <summary>
+        /// METODO QUE ETERMINA EL DESCUENTO DE UN PRODUCTO
+        /// </summary>
+        /// <returns></returns>
+        private  int verificaDescuento()
+        {   
+            int descuento = 0;
+            //para validar el codigo de producto
+            if (Cfunciones.Globales.codigo != "")
+            {
+                
+                //verificacion 01 descuento por producto
+                object[] filtros = { "PRODUCTO", "CATEGORIA", "PROVEEDOR" };//ALMACENAMOS LOS FILTROS 
+
+>>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
                 object[] datosDes = { "pIdProducto", "pCriterio", "pFecha" };//DATOS PARA DETERMINAR EL DESCUENTO 
                 object[] variablesDes = { "pIdProducto", "pCriterio", "pFecha" };//VARIABLES PARA CALCULAR EL DESCUENTO
                 datosDes[0] = Cfunciones.Globales.codigo;
@@ -732,6 +758,7 @@ namespace app
             //CODIGO PARA ALMACENAR LA LISTA DE PRODUCTOS ADJUNTOS DE DATAGRIDVIEW 
             try
             {
+<<<<<<< HEAD
              
                 for (int i = 0; i < dgvDatos.Rows.Count; i++)
                 {
@@ -747,6 +774,18 @@ namespace app
                     datosDetalle[4] = dgvDatos.Rows[i].Cells[3].Value.ToString();
                     datosDetalle[5] = dgvDatos.Rows[i].Cells[4].Value.ToString();
                     datosDetalle[6] = dgvDatos.Rows[i].Cells[5].Value.ToString();
+=======
+                for (int i = 0; i < dgvDatos.Rows.Count; i++)
+                {
+
+                    datosDetalle[0] = dgvDatos.Rows[i].Cells[1].Value.ToString();
+                    datosDetalle[1] = dgvDatos.Rows[i].Cells[2].Value.ToString();
+                    datosDetalle[2] = dgvDatos.Rows[i].Cells[4].Value.ToString();
+                    datosDetalle[3] = dgvDatos.Rows[i].Cells[5].Value.ToString();
+                    datosDetalle[4] = dgvDatos.Rows[i].Cells[6].Value.ToString();
+                    datosDetalle[5] = dgvDatos.Rows[i].Cells[7].Value.ToString();
+                    datosDetalle[6] = dgvDatos.Rows[i].Cells[8].Value.ToString();
+>>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
                     object[] NombresProducto = { "pIdProducto", "pIdCompra", "pCantidad", "pPrecioCompra", "pSubtotal", "pIgv", "pPrecioTotal" };
 
                     ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_guarda", NombresProducto, DatosProducto);
