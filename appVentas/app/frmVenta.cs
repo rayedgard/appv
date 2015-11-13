@@ -33,14 +33,16 @@ namespace app
 
         //apra almacenar los valores a guardar
         object[] datosVenta = new object[13];
-<<<<<<< HEAD
-        object[] datosDetalle = new object[7];
+        object[] datosDetalle = new object[8];
 
         //para almacenar el ID dela venta
         string idVenta="";
-=======
-        object[] datosDetalle = new object[6];
->>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
+
+        //PARA ALMACENAR EL NOMBRE DEL TIPO DE COMPROBANTE DE PAGO
+
+        string nombreComprobante;
+
+
 
         public frmVenta(string ArchivoCOnfig)
         {
@@ -97,9 +99,12 @@ namespace app
                 {
                     radio.Checked = true;
                     serieNumero(radio.Name);
+                    nombreComprobante = Convert.ToString(row["nombre"]);
+                    tipoComprobante = Convert.ToInt32(row["id"]);//AQUI DETERMINAMOS EL VALOR DEL TIPO DE COMPROBANTE CHEKADO
                 }
 
-               radio.Click += new EventHandler(radiobutonComprobante);
+               
+               radio.CheckedChanged += new EventHandler(radiobutonComprobante);
                
             }
 
@@ -121,8 +126,9 @@ namespace app
                 {
                     radio1.Checked = true;
                     //lista.Add(Convert.ToString(row1["id"]));
+                    formaPago = Convert.ToInt32(row1["id"]);
                 }
-                radio1.Click += new EventHandler(radiobutonFormasPago);
+                radio1.CheckedChanged += new EventHandler(radiobutonFormasPago);
             }
 
             // para generar los radiobutons de TIPOS DE TARJETA--- visa --mastercar--etc
@@ -143,14 +149,13 @@ namespace app
                 {
                     radio2.Checked = true;
                     //lista.Add(Convert.ToString(row2["id"]));
+                    tipoTarjeta = Convert.ToInt32(row2["id"]);
                 }
-                radio2.Click += new EventHandler(radiobutonTipoTarjeta);
+                radio2.CheckedChanged += new EventHandler(radiobutonTipoTarjeta);
             }
 
             ConexionBD.Desconectar();
         }
-
-
 
 
         private void frmVenta_Load(object sender, EventArgs e)
@@ -172,7 +177,7 @@ namespace app
             DataSet serieNumero = ConexionBD.EjecutarProcedimientoReturnDataSet("venta_serienumero","pNombreComprobante",comprobanteDePago);
             //PARA OBTENER LOS DATOS DEL TEXTO PLANO
             CConfigXML configXml_ArchivoConfiguracion = new CConfigXML(string_ArchivoConfiguracion);
-            if (Convert.ToInt32(serieNumero.Tables[0].Rows[0][0]) == 0 && Convert.ToInt32(serieNumero.Tables[0].Rows[0][1]) == 0)
+            if (serieNumero.Tables[0].Rows[0][0].ToString() == "0" && serieNumero.Tables[0].Rows[0][1].ToString() == "0")
             {
                 if (comprobanteDePago == "FACTURA")
                 {
@@ -189,7 +194,7 @@ namespace app
             else
             {
                 tbSerie.Text = serieNumero.Tables[0].Rows[0][0].ToString();//---> Serie de boleta
-                tbNumero.Text = serieNumero.Tables[0].Rows[0][0].ToString();//---> numero de boleta
+                tbNumero.Text = serieNumero.Tables[0].Rows[0][1].ToString();//---> numero de boleta
             }
             ConexionBD.Desconectar();
         }
@@ -381,16 +386,16 @@ namespace app
                         dgvDatos.Rows[contador].Cells[2].Value = Cfunciones.Globales.valor;//nombred
                         dgvDatos.Rows[contador].Cells[3].Value = unidadProducto;//nomenclatira o abreviatura de las unidades 
                         dgvDatos.Rows[contador].Cells[4].Value = tbCantidad.Text;
-                        dgvDatos.Rows[contador].Cells[5].Value = Cfunciones.Globales.precioVenta.ToString("C2", CultureInfo.CurrentCulture);//precio unitario
+                        dgvDatos.Rows[contador].Cells[5].Value = Cfunciones.Globales.precioVenta.ToString("F", CultureInfo.CurrentCulture);//precio unitario
                         
                         
                         //-----------EVALUAAMOS LAS PROMOCIONES-----
-                        double precioT = devuelvevPromocion(Convert.ToDouble(tbCantidad.Text)); 
+                        double precioT = devuelvePromocion(Convert.ToDouble(tbCantidad.Text)); 
                       
                         //---------------FIN PROMOCIONES---------------
 
 
-                        dgvDatos.Rows[contador].Cells[6].Value = precioT.ToString("C2", CultureInfo.CurrentCulture);//precio TOTAL
+                        dgvDatos.Rows[contador].Cells[6].Value = precioT.ToString("F", CultureInfo.CurrentCulture);//precio TOTAL
 
                         contador++;
 
@@ -435,7 +440,7 @@ namespace app
         ///METODO QUE VERIFICA SI UN PRODUCTO TIENE PROMOCION O NO 
         /// </summary>
         /// <returns></returns>
-        private double devuelvevPromocion(double cantidad)
+        private double devuelvePromocion(double cantidad)
         {
             //------------para detemiar las promociones ----------------------
             //   0---> sin promocion
@@ -457,11 +462,12 @@ namespace app
                 precioT = (Cfunciones.Globales.precioVenta * nroProductos);
             //DESPUES DE LOS CALCULOS REINICIAMOS EL VALOR DE PROMOCION
             Cfunciones.Globales.promocion = 0;
-<<<<<<< HEAD
 
             return precioT;
         }
 
+
+      
 
         /// <summary>
         /// METODO QUE ETERMINA EL DESCUENTO DE UN PRODUCTO
@@ -476,28 +482,6 @@ namespace app
                 
                 //verificacion 01 descuento por producto
                 object[] filtros = { "PRODUCTO", "CATEGORIA", "PROVEEDOR" };//ALMACENAMOS LOS FILTROS 
-
-=======
-
-            return precioT;
-        }
-
-
-        /// <summary>
-        /// METODO QUE ETERMINA EL DESCUENTO DE UN PRODUCTO
-        /// </summary>
-        /// <returns></returns>
-        private  int verificaDescuento()
-        {   
-            int descuento = 0;
-            //para validar el codigo de producto
-            if (Cfunciones.Globales.codigo != "")
-            {
-                
-                //verificacion 01 descuento por producto
-                object[] filtros = { "PRODUCTO", "CATEGORIA", "PROVEEDOR" };//ALMACENAMOS LOS FILTROS 
-
->>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
                 object[] datosDes = { "pIdProducto", "pCriterio", "pFecha" };//DATOS PARA DETERMINAR EL DESCUENTO 
                 object[] variablesDes = { "pIdProducto", "pCriterio", "pFecha" };//VARIABLES PARA CALCULAR EL DESCUENTO
                 datosDes[0] = Cfunciones.Globales.codigo;
@@ -561,6 +545,7 @@ namespace app
                     Cfunciones.Globales.stockMinimo = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][8].ToString()); /**/
                     Cfunciones.Globales.idCategoria = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][6].ToString()); /**/
                     Cfunciones.Globales.promocion = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][13].ToString()); /**/
+                    Cfunciones.Globales.idUnidades = Convert.ToInt32(dsDatosGrid.Tables[0].Rows[0][9].ToString()); /**/
 
                    
                 }
@@ -589,7 +574,7 @@ namespace app
                         //POR CADA REMOCION DE PRODUCTO DE LA GRILLA REALIZAR LOS CALCULOS OTRA VEZ
                         buscarProducto(nombre);
                         int descuento = verificaDescuento();
-                        double totalUnitario = devuelvevPromocion(cantidad); 
+                        double totalUnitario = devuelvePromocion(cantidad); 
                         //calculo del monto total
                         descuentoSoles = totalUnitario*descuento / 100;
 
@@ -619,7 +604,9 @@ namespace app
         }
 
 
-        
+        /// <summary>
+        /// METODO PARA LIMPIAR LAS CAJAS Y DATOS PARA UN ELEMENTO DE AGREGAR
+        /// </summary>
         private void limpir()
         {
             Cfunciones.Globales.codigo = "";
@@ -628,8 +615,9 @@ namespace app
             Cfunciones.Globales.stock = 0;       
             Cfunciones.Globales.stockMinimo = 0; 
             Cfunciones.Globales.idCategoria = 0; 
-            Cfunciones.Globales.promocion = 0; 
+            Cfunciones.Globales.promocion = 0;
 
+            
             tbCantidad.Text = "1";
             tbBusca.Focus();
             tbBusca.Select();
@@ -671,6 +659,7 @@ namespace app
             // imprimimos el tiket
             
             //luego guardamos los datos de venta a la base de datos
+            GuardarVenta();
         }
 
 
@@ -707,7 +696,7 @@ namespace app
             /*-----PROCESO DE AGREGAR DATOS A TABLA PORDUCTOPORCOMPRAS---------*/
 
 
-            object[] NombresVenta = { "pId", "pIdCliente", "pSubtotal", "pImpuesto", "pTotal", "pIdFormaPago", "pIdUsuario", "pFechaVenta", "pSerie","pNroVenta","pNroCaja","pIdTipoComprobante"};
+            object[] NombresVenta = { "pId", "pIdCliente", "pSubtotal", "pImpuesto", "pTotal", "pIdFormaPago", "pIdUsuario", "pFechaVenta", "pSerie","pNroVenta","pNroCaja","pIdTipoComprobante","pEstado"};
 
             ConexionBD.Conectar(true, string_ArchivoConfiguracion);
             bool SeGuardo = false;
@@ -758,13 +747,12 @@ namespace app
             //CODIGO PARA ALMACENAR LA LISTA DE PRODUCTOS ADJUNTOS DE DATAGRIDVIEW 
             try
             {
-<<<<<<< HEAD
-             
+
                 for (int i = 0; i < dgvDatos.Rows.Count; i++)
                 {
                     if (datosDetalle == null || datosDetalle[0] == null)
                     {
-                        datosDetalle = new object[7];
+                        datosDetalle = new object[8];
                         datosDetalle[0] = "0";
                     }
                     datosDetalle[0] = datosDetalle[0].ToString().Trim();
@@ -774,21 +762,12 @@ namespace app
                     datosDetalle[4] = dgvDatos.Rows[i].Cells[3].Value.ToString();
                     datosDetalle[5] = dgvDatos.Rows[i].Cells[4].Value.ToString();
                     datosDetalle[6] = dgvDatos.Rows[i].Cells[5].Value.ToString();
-=======
-                for (int i = 0; i < dgvDatos.Rows.Count; i++)
-                {
+                    datosDetalle[7] = dgvDatos.Rows[i].Cells[6].Value.ToString();
 
-                    datosDetalle[0] = dgvDatos.Rows[i].Cells[1].Value.ToString();
-                    datosDetalle[1] = dgvDatos.Rows[i].Cells[2].Value.ToString();
-                    datosDetalle[2] = dgvDatos.Rows[i].Cells[4].Value.ToString();
-                    datosDetalle[3] = dgvDatos.Rows[i].Cells[5].Value.ToString();
-                    datosDetalle[4] = dgvDatos.Rows[i].Cells[6].Value.ToString();
-                    datosDetalle[5] = dgvDatos.Rows[i].Cells[7].Value.ToString();
-                    datosDetalle[6] = dgvDatos.Rows[i].Cells[8].Value.ToString();
->>>>>>> 359a58f4fcf964ae8fc96123a01ddb54ac86d787
-                    object[] NombresProducto = { "pIdProducto", "pIdCompra", "pCantidad", "pPrecioCompra", "pSubtotal", "pIgv", "pPrecioTotal" };
+            
+                    object[] NombresDetalle = {"pId","pIdVenta", "pIdProducto", "pNomProducto","pUnidad","pCantidad","pPrecioUnitario", "pPrecioTotal"};
 
-                    ConexionBD.EjecutarProcedimientoReturnVoid("compraxproducto_guarda", NombresProducto, DatosProducto);
+                    ConexionBD.EjecutarProcedimientoReturnVoid("ventaxproducto_guarda", NombresDetalle, datosDetalle);
 
                 }
                 ConexionBD.COMMIT();
@@ -803,7 +782,16 @@ namespace app
         private void limpiaVenta()
         {
             dgvDatos.Rows.Clear();
+            
+            //INICIALIZAMOS LOS VALORES GLOVALES
+            contador = 0;//PONE EL CONTADOR DE LA GRILLA EN CERO
+            subtotal = 0;
+            igv = 0;
+            importe = 0;
+            descuentoTotal = 0;
         }
+
+    
 
     }
 }

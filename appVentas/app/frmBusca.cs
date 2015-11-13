@@ -85,6 +85,8 @@ namespace app
                     Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
                     Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
                     Cfunciones.Globales.nroserie = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString(); /**/
+                    Cfunciones.Globales.idUnidades = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[9].Value); /**/
+
                 }
                 this.Close();
               
@@ -109,6 +111,12 @@ namespace app
             }
         }
 
+
+        /// <summary>
+        /// METODO OARA AGREGAR A LA GRILLA DE VENTAS COMPRAS DESPUES DE UN ENTER EN LA GRILLA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvDatos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -128,6 +136,9 @@ namespace app
                     Cfunciones.Globales.idCategoria = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[6].Value); /**/
                     Cfunciones.Globales.promocion = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[13].Value); /**/
                     Cfunciones.Globales.nroserie = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString(); /**/
+                    Cfunciones.Globales.idUnidades = Convert.ToInt32(dgvDatos.Rows[e.RowIndex].Cells[9].Value); /**/
+                    
+
                 }
 
             }

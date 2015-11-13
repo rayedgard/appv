@@ -24,9 +24,9 @@ namespace clases
             public static int privilegio;///2 PARA LOS PRIVILEGIOS DE NOMBRADOS Y CAS// 1 PARA LOS PRIVILEGIOS DE INVERSION // 0 PARA LOS PRIVILEGIOS TOTALES
 
             //valores para la facrurarion
-            public static string ruc;
-            public static string razon;
-            public static string direccion;
+            public static string ruc="";
+            public static string razon="";
+            public static string direccion="";
 
             //para almnacenar 
             public static string valor = "";
@@ -45,7 +45,7 @@ namespace clases
             public static int idCategoria = 0;
             public static int promocion;
             public static string nroserie;
-            public static string idUnidades;
+            public static int idUnidades;
 
             //PARA LAS REALIZAR EL CALCULO DE LAS VENTAS --- 
             public static double importe;
